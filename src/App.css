@@ -1,38 +1,16 @@
-.App {
-  text-align: center;
-}
+@import "assets/fonts/woff/oswald/oswald-fontface.css";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Main Colors */
+none {
+    /*Linear Gradient*/
+    color: hsl(180, 62%, 58%);
+    color: hsl(268, 30%, 42%);
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+    /*Darkest color*/
+    color: hsl(227, 45%, 16%);
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+    /*Lightes color*/
+    color: hsl(215, 68%, 93%);
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    font-family: oswalt;
 }
