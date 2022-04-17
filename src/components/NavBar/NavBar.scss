@@ -1,11 +1,11 @@
-@import "../../GlobalVariables.scss";
+@import "../../GlobalVariables";
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: oswaldregular;
     background: $white;
+    border-bottom: 2px solid ;
 }
 
 .logo {
@@ -19,6 +19,7 @@ nav {
 }
 
 .logo--name {
+    font-family: $logoFont;
     font-size: 30px;
 }
 
@@ -27,23 +28,25 @@ nav {
     justify-content: space-between;
     align-content: center;
     margin: 10px;
+    font-family: $mainFont;
 }
 
 .account__btn {
-    font-family: oswald_regularregular;
-    font-size: 20px;
+    font-family: inherit;
+    font-size: 25px;
     margin-left: 8px;
-    background: $darkBlue;
-    color: $white;
+    background: none;
     border: none;
-    padding: 10px;
-    background-image: linear-gradient($purple, $lightBlue);
     border-radius: 5px;
+    color: $darkBlue;
 }
 
 a,
-a:visited,
-a:active {
+a:visited {
     text-decoration: none;
-    color: hsl(227, 45%, 16%);
+    color: $darkBlue;
+}
+
+a:active {
+    color:$purple
 }

@@ -1,6 +1,20 @@
+@import "/src/assets/fonts/woff/josefin/josefin-fontface";
+@import "/src/assets/fonts/woff/oswald/oswald-fontface";
+
+
 /*Define colors*/
-$purple: hsl(268, 30%, 42%);
-$lightBlue: hsl(180, 62%, 58%);
+$purple: #694b8b;
+$lightBlue: #51d6d6;
 $darkBlue: hsl(227, 45%, 16%);
 $white: hsl(215, 67%, 93%);
 
+/*Define fonts*/
+$mainFont: josefin_sansregular;
+$logoFont: oswaldmedium;
+$mainFontSize: 20px;
+
+
+
+.void { // helper brackets
+  font-family: josefin_sanslight;
+}

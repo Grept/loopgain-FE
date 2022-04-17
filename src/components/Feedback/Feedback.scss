@@ -1,0 +1,12 @@
+@import "../../GlobalVariables";
+
+.feedbackContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 20%;
+
+  color: $lightBlue;
+  background: $darkBlue;
+}

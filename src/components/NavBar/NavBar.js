@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import logo from "../../assets/logos/loopgain_gradient_play.png";
+import logo from "../../assets/logos/loopgain_gradient_circle-play.svg";
 import "./NavBar.scss";
 
 export default function Navbar() {
@@ -14,12 +14,12 @@ export default function Navbar() {
                 </span>
             </Link>
             <div className="account">
-                <button className="account__btn">
-                    sign in
-                </button>
-                <button className="account__btn">
+                <Link type="button" className="account account__btn">
+                    signin
+                </Link>
+                <Link type="button" className="account account__btn">
                     register
-                </button>
+                </Link>
             </div>
         </nav>
     );

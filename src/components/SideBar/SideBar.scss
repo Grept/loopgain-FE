@@ -1,0 +1,42 @@
+@import "../../GlobalVariables.scss";
+
+.sidebar {
+  font-family: $mainFont;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 150px;
+
+
+  //border: 5px solid red;
+}
+
+.sidebar__userDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: $darkBlue;
+  //border: 1px solid $white;
+  color: $lightBlue;
+  padding: 20px;
+}
+
+.sidebar__userDetails > * {
+  margin: 0 0 3px 0;
+}
+
+.sidebar__projectList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $white;
+  flex-grow: 1;
+
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
