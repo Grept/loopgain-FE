@@ -7,6 +7,8 @@ import HomePage from "./pages/home/HomePage";
 import UserPage from "./pages/user/UserPage";
 import Footer from "./components/Footer/Footer";
 import ContentViewPage from "./pages/contentview/ContentViewPage";
+import SignInPage from "./pages/signIn/SignInPage";
+import Header from "./components/Header/Header";
 
 function App() {
     return (
@@ -14,10 +16,14 @@ function App() {
             {/*<div className="container__outer">*/}
             {/*    <div className="container__inner">*/}
                     <Navbar />
+                    {/*<Header />*/}
                     <div className="content">
                         <Switch>
                             <Route exact path="/">
                                 <HomePage />
+                            </Route>
+                            <Route exact path="/signin">
+                                <SignInPage />
                             </Route>
                             <Route exact path="/user">
                                 <UserPage />
