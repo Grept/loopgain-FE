@@ -1,8 +1,9 @@
 import React from "react";
 import "./CommentInput.scss"
 import Counter from "../Counter/Counter";
+import {withRouter} from "react-router-dom";
 
-export default function CommentInput() {
+function CommentInput() {
 
     return(
         <>
@@ -26,3 +27,5 @@ export default function CommentInput() {
         </>
     );
 }
+
+export default withRouter(CommentInput);

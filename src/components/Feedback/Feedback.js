@@ -1,8 +1,9 @@
 import React from "react";
 import "./Feedback.scss"
 import Comment from "../Comment/Comment";
+import {withRouter} from "react-router-dom";
 
-export default function Feedback() {
+function Feedback() {
 
     return(
         <div className="feedbackContainer">
@@ -18,3 +19,5 @@ export default function Feedback() {
         </div>
     );
 }
+
+export default withRouter(Feedback);

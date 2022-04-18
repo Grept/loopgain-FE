@@ -1,7 +1,8 @@
 import React from "react";
 import "./Counter.scss"
+import {withRouter} from "react-router-dom";
 
-export default function Counter() {
+function Counter() {
 
     return(
         <>
@@ -11,3 +12,5 @@ export default function Counter() {
         </>
     );
 }
+
+export default withRouter(Counter);

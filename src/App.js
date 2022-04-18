@@ -8,35 +8,32 @@ import UserPage from "./pages/user/UserPage";
 import Footer from "./components/Footer/Footer";
 import ContentViewPage from "./pages/contentview/ContentViewPage";
 import SignInPage from "./pages/signIn/SignInPage";
-import Header from "./components/Header/Header";
 
 function App() {
     return (
         <>
-            {/*<div className="container__outer">*/}
-            {/*    <div className="container__inner">*/}
+            <div className="container__outer">
+                <div className="container__inner">
                     <Navbar />
-                    {/*<Header />*/}
                     <div className="content">
                         <Switch>
                             <Route exact path="/">
-                                <HomePage />
+                                <HomePage/>
                             </Route>
                             <Route exact path="/signin">
-                                <SignInPage />
+                                <SignInPage/>
                             </Route>
                             <Route exact path="/user">
-                                <UserPage />
+                                <UserPage/>
                             </Route>
                             <Route exact path="/content">
-                                <ContentViewPage />
+                                <ContentViewPage/>
                             </Route>
-
                         </Switch>
                     </div>
                     <Footer />
-                {/*</div>*/}
-            {/*</div>*/}
+                </div>
+            </div>
         </>
     );
 }

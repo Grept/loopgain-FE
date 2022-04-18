@@ -3,8 +3,9 @@ import video_1 from "../../assets/__TEST-MEDIA__/ledl-trailer-Apple Devices HD (
 import video_2 from "../../assets/__TEST-MEDIA__/sputum-trailer-Apple Devices HD (Most Compatible).m4v"
 
 import "./Content.scss";
+import {withRouter} from "react-router-dom";
 
-export default function Content() {
+function Content() {
 
     return(
         <>
@@ -14,3 +15,5 @@ export default function Content() {
         </>
     );
 }
+
+export default withRouter(Content);

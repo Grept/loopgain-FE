@@ -1,8 +1,8 @@
 import React from "react";
 import "./ProjectInfo.scss"
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
-export default function ProjectInfo() {
+function ProjectInfo() {
 
     return (
         <main className="projectInfo__container">
@@ -21,5 +21,6 @@ export default function ProjectInfo() {
             </div>
         </main>
     );
-
 }
+
+export default withRouter(ProjectInfo);

@@ -1,7 +1,8 @@
 import React from "react";
 import "./Footer.scss"
+import {withRouter} from "react-router-dom";
 
-export default function Footer() {
+function Footer() {
 
     return(
         <>
@@ -11,3 +12,5 @@ export default function Footer() {
         </>
     );
 }
+
+export default withRouter(Footer);

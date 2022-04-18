@@ -1,7 +1,27 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./SignInPage.scss"
+import {useForm} from "react-hook-form";
+import axios from "axios";
+import {AuthContext} from "../../context/AuthContext";
 
-export default function SignInPage() {
+function SignInPage() {
+
+    const {loginFunction} = useContext(AuthContext);
+    const {register, handleSubmit, formState: {errors}} = useForm()
+
+    async function requestLogin(data) {
+        try {
+            const {headers: {authorization: jwtToken}} = await axios.post('http://localhost:8080/auth', {
+                    username: data.username,
+                    password: data.password
+            });
+            console.log(jwtToken);
+            loginFunction(jwtToken);
+        } catch (e) {
+            console.log("WE HAVE AN ERROR!!!")
+            console.log(e);
+        }
+    }
 
     return(
         <main className="signInPage">
@@ -9,14 +29,27 @@ export default function SignInPage() {
                 <h3>Sign In</h3>
                 <form
                     className="signIn__form"
-                    action=""
+                    onSubmit={handleSubmit(requestLogin)}
                 >
-                    <input type="email"/>
-                    <input type="password"/>
+                    <input
+                        type="username"
+                        placeholder="username"
+                        {...register("username", {required: true})}
+                    />
+                    {errors.email && <p>Please enter a username</p>}
 
-                    <button type="button">submit</button>
+                    <input
+                        type="password"
+                        placeholder="password"
+                        {...register("password", {required: true})}
+                    />
+                    {errors.password && <p>Please enter a password</p>}
+
+                    <button type="submit">submit</button>
                 </form>
             </div>
         </main>
     );
 }
+
+export default SignInPage;

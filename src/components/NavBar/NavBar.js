@@ -1,26 +1,46 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useContext} from "react";
+import {Link, useHistory, withRouter} from "react-router-dom";
 import logo from "../../assets/logos/loopgain_gradient_circle-play.svg";
 import "./NavBar.scss";
+import {AuthContext} from "../../context/AuthContext";
 
-export default function Navbar() {
+function Navbar() {
+
+    const history = useHistory();
+    const {auth, logoutFunction} = useContext(AuthContext);
+
 
     return(
         <nav>
-            <Link>
+            <Link exact to="/">
                 <span className="logo">
                     <img src={logo} alt="loopgain-logo" className="logo--img"/>
                     <h3 className="logo--name">loopgain</h3>
                 </span>
             </Link>
+
             <div className="account">
-                <Link type="button" className="account account__btn">
-                    signin
-                </Link>
-                <Link type="button" className="account account__btn">
-                    register
-                </Link>
+                {!auth
+                    ?
+                    <Link
+                        type="button"
+                        className="account account__btn"
+                        onClick={() => history.push("/signin")}
+                    >
+                        signin
+                    </Link>
+                    :
+                    <button
+                        type="button"
+                        className="account account__btn"
+                        onClick={() => console.log("signout")}
+                    >
+                        logout
+                    </button>
+                }
             </div>
         </nav>
     );
 }
+
+export default withRouter(Navbar);

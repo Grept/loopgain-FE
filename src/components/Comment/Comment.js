@@ -1,7 +1,8 @@
 import React from "react";
 import "./Comment.scss"
+import {withRouter} from "react-router-dom";
 
-export default function Comment() {
+function Comment(props) {
 
     const timestamp = "00:02:04:22"
 
@@ -21,3 +22,5 @@ export default function Comment() {
         </div>
     );
 }
+
+export default withRouter(Comment);

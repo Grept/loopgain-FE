@@ -1,8 +1,33 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./SideBar.scss";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import axios from "axios";
+import {logDOM} from "@testing-library/react";
 
-export default function SideBar() {
+function SideBar() {
+
+    const [projectList, setProjectList] = useState(["item 1", "item 2", "item 3"])
+
+    useEffect(() => {
+        setProjectList(getAllProjects());
+    }, [])
+
+    async function getAllProjects(jwtToken) {
+        console.log("Request project List")
+        try {
+            const result = await axios.get("http://localhost:8080/projects", {
+                header: {
+                    "Content-Type" : "application/json",
+                    Authentication: `Bearer ${jwtToken}`
+                }
+            })
+
+            console.log(result);
+            return result;
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     return(
         <section className="sidebar">
@@ -15,12 +40,19 @@ export default function SideBar() {
             <section className="sidebar sidebar__projectList">
                 <h3>Project List</h3>
                 <ul>
-                    <li><Link>Project 1</Link></li>
-                    <li><Link>Project 2</Link></li>
-                    <li><Link>Project 3</Link></li>
-                    <li><Link>Project 4</Link></li>
+                    {projectList.map(() => {
+                        return (
+                            <li>item</li>
+                        )
+                    })}
+                    {/*<li><Link>Project 1</Link></li>*/}
+                    {/*<li><Link>Project 2</Link></li>*/}
+                    {/*<li><Link>Project 3</Link></li>*/}
+                    {/*<li><Link>Project 4</Link></li>*/}
                 </ul>
             </section>
         </section>
     );
 }
+
+export default withRouter(SideBar);
