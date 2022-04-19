@@ -1,0 +1,64 @@
+@import "../../GlobalVariables";
+
+.register__page {
+  display: flex;
+  justify-content: center;
+  font-family: $mainFont;
+}
+
+.register__container {
+  background: $lightPurple;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: 60px;
+  border: 1px solid $darkBlue;
+  border-radius: 10px;
+}
+
+.register__container-title {
+  margin-top: 0;
+  align-self: center;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.register__form-field {
+  border: 0;
+  background: inherit;
+  border-bottom: 1px solid $darkBlue;
+}
+
+.register__form-field:focus {
+  border-bottom: 1px solid $lightBlue;
+  color: $darkBlue;
+  outline: none;
+}
+
+.register__form-radio {
+
+}
+
+.register__form-btn {
+  margin-top: 20px;
+  align-self: center;
+  background: $purple;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+.register__form-btn:active {
+  margin-top: 20px;
+  align-self: center;
+  background: $lightBlue;
+  color: $purple;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}

@@ -24,13 +24,22 @@ function Navbar() {
             <div className="account">
                 {!auth
                     ?
-                    <button
-                        type="button"
-                        className="account account__btn"
-                        onClick={() => history.push("/signin")}
-                    >
-                        signin
-                    </button>
+                    <>
+                        <button
+                            type="button"
+                            className="account account__btn"
+                            onClick={() => history.push("/signin")}
+                        >
+                            signin
+                        </button>
+                        <button
+                            type="button"
+                            className="account account__btn"
+                            onClick={() => history.push("/register")}
+                        >
+                            register
+                        </button>
+                    </>
                     :
                     <>
                         <button

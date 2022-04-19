@@ -8,6 +8,8 @@ import UserPage from "./pages/user/UserPage";
 import Footer from "./components/Footer/Footer";
 import ContentViewPage from "./pages/contentview/ContentViewPage";
 import SignInPage from "./pages/signIn/SignInPage";
+import RegisterPage from "./pages/register/RegisterPage";
+
 
 function App() {
     return (
@@ -22,6 +24,9 @@ function App() {
                             </Route>
                             <Route exact path="/signin">
                                 <SignInPage/>
+                            </Route>
+                            <Route exact path="/register">
+                                <RegisterPage/>
                             </Route>
                             <Route exact path="/user">
                                 <UserPage/>
