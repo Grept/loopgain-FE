@@ -16,10 +16,8 @@ function SignInPage() {
                     password: data.password
             });
             const jwtToken = bearerToken.slice(7);
-            console.log(jwtToken);
             loginFunction(jwtToken);
         } catch (e) {
-            console.log("WE HAVE AN ERROR!!!")
             console.log(e);
         }
     }

@@ -7,7 +7,7 @@ import {AuthContext} from "../../context/AuthContext";
 function Navbar() {
 
     const history = useHistory();
-    const {auth, logoutFunction} = useContext(AuthContext);
+    const {auth, logoutFunction, user} = useContext(AuthContext);
 
 
     return(
@@ -18,6 +18,8 @@ function Navbar() {
                     <h3 className="logo--name">loopgain</h3>
                 </span>
             </Link>
+
+            {user !== null && <h3>{user}</h3>}
 
             <div className="account">
                 {!auth

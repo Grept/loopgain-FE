@@ -29,25 +29,20 @@ export default function AuthContextProvider({children}) {
     const history = useHistory();
 
     async function getUserData(jwtToken) {
-        console.log("getting user data...")
-        // const decodedToken = jwtDecode(jwtToken);
-        // console.log(decodedToken);
-        // const {sub: username} = jwtDecode(jwtToken);
-        // console.log(username);
         try {
-            const response = await axios.get(`http://localhost:8080/getUserData`, {
+            const {data} = await axios.get(`http://localhost:8080/getUserData`, {
                 headers: {
                     "Content-Type" : "apllication/json",
                     Authorization: `Bearer ${jwtToken}`
                 }
             })
 
-            console.log(response);
+            console.log(data);
 
             setUserAuth({
                 ...userAuth,
                 isAuth: true,
-                user: null,
+                user: data.username,
                 status: "done"
             })
 
@@ -58,9 +53,9 @@ export default function AuthContextProvider({children}) {
     }
 
     function logIn(jwtToken) {
-        console.log("in login function...")
+        // console.log("in login function...")
         localStorage.setItem("token", jwtToken);
-        console.log("token: " + localStorage.getItem("token"));
+        // console.log("token: " + localStorage.getItem("token"));
         getUserData(localStorage.getItem("token"));
     }
 
