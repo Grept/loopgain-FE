@@ -11,10 +11,11 @@ function SignInPage() {
 
     async function requestLogin(data) {
         try {
-            const {headers: {authorization: jwtToken}} = await axios.post('http://localhost:8080/auth', {
+            const {headers: {authorization: bearerToken}} = await axios.post('http://localhost:8080/auth', {
                     username: data.username,
                     password: data.password
             });
+            const jwtToken = bearerToken.slice(7);
             console.log(jwtToken);
             loginFunction(jwtToken);
         } catch (e) {

@@ -24,39 +24,44 @@ export default function AuthContextProvider({children}) {
                 status: "done"
             });
         }
-    })
+    }, [])
 
     const history = useHistory();
 
     async function getUserData(jwtToken) {
         console.log("getting user data...")
-        const decodedToken = jwtDecode(jwtToken);
-        console.log(decodedToken);
-        // const {sub: userId} = jwtDecode(jwtToken);
+        // const decodedToken = jwtDecode(jwtToken);
+        // console.log(decodedToken);
+        // const {sub: username} = jwtDecode(jwtToken);
+        // console.log(username);
+        try {
+            const response = await axios.get(`http://localhost:8080/getUserData`, {
+                headers: {
+                    "Content-Type" : "apllication/json",
+                    Authorization: `Bearer ${jwtToken}`
+                }
+            })
 
-        // try {
-        //     const {data} = await axios.get(`http://localhost:8080/users/$userId`, {
-        //         headers: {
-        //             "Content-Type" : "apllication/json",
-        //             Authorization: `Bearer ${jwtToken}`
-        //         }
-        //     })
-        //
-        //     setUserAuth({
-        //         ...userAuth,
-        //         isAuth: true,
-        //         user: null,
-        //         status: "done"
-        //     })
-        // } catch (e) {
-        //     console.log(e);
-        // }
+            console.log(response);
+
+            setUserAuth({
+                ...userAuth,
+                isAuth: true,
+                user: null,
+                status: "done"
+            })
+
+            history.push("/user");
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     function logIn(jwtToken) {
         console.log("in login function...")
         localStorage.setItem("token", jwtToken);
-        getUserData(jwtToken);
+        console.log("token: " + localStorage.getItem("token"));
+        getUserData(localStorage.getItem("token"));
     }
 
     function logOut() {

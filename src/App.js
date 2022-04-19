@@ -17,20 +17,17 @@ function App() {
                     <Navbar />
                     <div className="content">
                         <Switch>
-                            {/*<Route exact path="/">*/}
-                            {/*    <HomePage/>*/}
-                            {/*</Route>*/}
+                            <Route exact path="/">
+                                <HomePage/>
+                            </Route>
                             <Route exact path="/signin">
                                 <SignInPage/>
                             </Route>
-                            <Route path="/user">
+                            <Route exact path="/user">
                                 <UserPage/>
                             </Route>
-                            <Route path="/content">
+                            <Route exact path="/content">
                                 <ContentViewPage/>
-                            </Route>
-                            <Route exact path="/">
-                                <HomePage/>
                             </Route>
                         </Switch>
                     </div>

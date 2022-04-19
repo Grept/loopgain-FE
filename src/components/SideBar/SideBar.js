@@ -9,7 +9,7 @@ function SideBar() {
     const [projectList, setProjectList] = useState(["item 1", "item 2", "item 3"])
 
     useEffect(() => {
-        setProjectList(getAllProjects());
+        // setProjectList(getAllProjects());
     }, [])
 
     async function getAllProjects(jwtToken) {
@@ -40,15 +40,12 @@ function SideBar() {
             <section className="sidebar sidebar__projectList">
                 <h3>Project List</h3>
                 <ul>
-                    {projectList.map(() => {
-                        return (
-                            <li>item</li>
-                        )
-                    })}
-                    {/*<li><Link>Project 1</Link></li>*/}
-                    {/*<li><Link>Project 2</Link></li>*/}
-                    {/*<li><Link>Project 3</Link></li>*/}
-                    {/*<li><Link>Project 4</Link></li>*/}
+                    {/*{projectList.map(() => {*/}
+                    {/*    return (*/}
+                    {/*        <li>item</li>*/}
+                    {/*    )*/}
+                    {/*})}*/}
+
                 </ul>
             </section>
         </section>

@@ -7,6 +7,7 @@ export default function UserPage() {
 
     return(
         <main className="userPage__container">
+            {/*<h3>User Page</h3>*/}
             <SideBar />
             <ProjectInfo />
         </main>

@@ -22,21 +22,30 @@ function Navbar() {
             <div className="account">
                 {!auth
                     ?
-                    <Link
+                    <button
                         type="button"
                         className="account account__btn"
                         onClick={() => history.push("/signin")}
                     >
                         signin
-                    </Link>
-                    :
-                    <button
-                        type="button"
-                        className="account account__btn"
-                        onClick={() => console.log("signout")}
-                    >
-                        logout
                     </button>
+                    :
+                    <>
+                        <button
+                            type="button"
+                            className="account account__btn"
+                            onClick={() => history.push("/user")}
+                        >
+                            profile
+                        </button>
+                        <button
+                            type="button"
+                            className="account account__btn"
+                            onClick={logoutFunction}
+                        >
+                            logout
+                        </button>
+                    </>
                 }
             </div>
         </nav>
