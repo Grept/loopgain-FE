@@ -1,6 +1,6 @@
 import React from "react";
 import './App.scss';
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, withRouter} from "react-router-dom";
 
 import Navbar from "./components/NavBar/NavBar";
 import HomePage from "./pages/home/HomePage";
@@ -17,17 +17,20 @@ function App() {
                     <Navbar />
                     <div className="content">
                         <Switch>
-                            <Route exact path="/">
-                                <HomePage/>
-                            </Route>
+                            {/*<Route exact path="/">*/}
+                            {/*    <HomePage/>*/}
+                            {/*</Route>*/}
                             <Route exact path="/signin">
                                 <SignInPage/>
                             </Route>
-                            <Route exact path="/user">
+                            <Route path="/user">
                                 <UserPage/>
                             </Route>
-                            <Route exact path="/content">
+                            <Route path="/content">
                                 <ContentViewPage/>
+                            </Route>
+                            <Route exact path="/">
+                                <HomePage/>
                             </Route>
                         </Switch>
                     </div>
