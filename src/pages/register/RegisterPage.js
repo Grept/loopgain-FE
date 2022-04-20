@@ -7,7 +7,7 @@ import {useHistory} from "react-router-dom";
 export default function RegisterPage() {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const {history} = useHistory();
+    const history = useHistory();
 
     async function registerNewUser(data) {
         console.log(data)
@@ -55,7 +55,7 @@ export default function RegisterPage() {
                             type="radio"
                             id="project_host"
                             value="PROJECT_HOST"
-                            {...register("user_role")}
+                            {...register("role")}
                         />
                         Project Host
                     </label>
@@ -65,7 +65,7 @@ export default function RegisterPage() {
                             type="radio"
                             id="reviewer"
                             value="REVIEWER"
-                            {...register("user_role")}
+                            {...register("role")}
                         />
                         Reviewer
                     </label>

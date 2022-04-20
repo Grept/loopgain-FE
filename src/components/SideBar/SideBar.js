@@ -4,26 +4,29 @@ import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {logDOM} from "@testing-library/react";
 
-function SideBar() {
+function SideBar({toggleAddProject, isAddProject}) {
 
     const [projectList, setProjectList] = useState(["item 1", "item 2", "item 3"])
 
     useEffect(() => {
-        // setProjectList(getAllProjects());
+        getAllProjects();
+        // console.log(projects);
+        // setProjectList(projects);
     }, [])
 
-    async function getAllProjects(jwtToken) {
+    async function getAllProjects() {
         console.log("Request project List")
         try {
-            const result = await axios.get("http://localhost:8080/projects", {
-                header: {
+            const {data: userProjects} = await axios.get("http://localhost:8080/user/projects", {
+                headers: {
                     "Content-Type" : "application/json",
-                    Authentication: `Bearer ${jwtToken}`
+                    Authentication: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-
-            console.log(result);
-            return result;
+            console.log("Get all projects:")
+            console.log(userProjects);
+            setProjectList(userProjects);
+            return userProjects;
         } catch (e) {
             console.log(e);
         }
@@ -40,14 +43,23 @@ function SideBar() {
             <section className="sidebar sidebar__projectList">
                 <h3>Project List</h3>
                 <ul>
-                    {/*{projectList.map(() => {*/}
-                    {/*    return (*/}
-                    {/*        <li>item</li>*/}
-                    {/*    )*/}
-                    {/*})}*/}
-
+                    {
+                        projectList.map((p) => {
+                            return(
+                                <li key={`${p.id} + ${p.projectName}`}>
+                                    {p.projectName}
+                                </li>
+                            );
+                        })
+                    }
                 </ul>
             </section>
+            <button
+                type="button"
+                onClick={() => toggleAddProject()}
+            >
+                {!isAddProject ? <>Add New Project</> : <>See Media List</>}
+            </button>
         </section>
     );
 }
