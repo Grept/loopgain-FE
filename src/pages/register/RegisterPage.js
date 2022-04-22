@@ -10,11 +10,11 @@ export default function RegisterPage() {
     const history = useHistory();
 
     async function registerNewUser(data) {
-        console.log(data)
+        // console.log(data)
 
         try {
             const response = await axios.post("http://localhost:8080/register", data)
-            console.log(response);
+            // console.log(response);
             history.push("/signin")
         } catch (e) {
             console.log(e);

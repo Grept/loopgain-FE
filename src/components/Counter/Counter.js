@@ -1,13 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Counter.scss"
 import {withRouter} from "react-router-dom";
+import formatCurrentTime from "../../helpers/formatCurrentTime";
 
-function Counter() {
+function Counter({currentTime}) {
+
+    // useEffect(() => {
+    //     console.log("currentTime changed")
+    //
+    //     hh = Math.floor(currentTime / 3600);
+    //     mm = Math.floor((currentTime - (hh * 3600)) / 60);
+    //     ss = Math.floor(currentTime - (hh * 3600) - (mm * 60));
+    // }, [currentTime])
+
+    // useEffect(() => {
+    // }, [currentTime])
 
     return(
         <>
             <div className="counter__container">
-                <p className="counter__clock">00:02:45:21</p>
+                <p className="counter__clock">{formatCurrentTime(currentTime)}</p>
             </div>
         </>
     );

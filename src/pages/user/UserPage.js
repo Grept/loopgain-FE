@@ -3,44 +3,45 @@ import SideBar from "../../components/SideBar/SideBar";
 import ProjectInfo from "../../components/ProjectInfo/ProjectInfo";
 import "./UserPage.scss";
 import axios from "axios";
-import AddProjectForm from "../../components/AddProject/AddProjectForm";
+import AddProjectForm from "../../components/AddProjectForm/AddProjectForm";
 
 export default function UserPage() {
 
     // STATE
-    const [isAddProject, setIsAddProject] = useState(false);
+    const [showAddProject, setShowAddProject] = useState(false);
+    const [mediaList, setMediaList] = useState([{projectName: "testname"}]);
 
+    // EFFECT
     useEffect(() => {
-        getProjectList();
+        // getProjectList();
     }, [])
 
+    useEffect(() => {
+        console.log("mediaList updated...")
+        console.log(mediaList);
+    }, [mediaList])
+
+    // METHODS
     function toggleAddProject(){
-        setIsAddProject(!isAddProject);
+        setShowAddProject(!showAddProject);
     }
 
-    async function getProjectList() {
-        try {
-            const response = await axios.get("http://localhost:8080/user/projects", {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            });
-
-            console.log(response);
-        } catch (e) {
-            console.error(e);
-        }
+    function loadProjectMedia(mediaList) {
+        setMediaList(mediaList);
     }
 
+    // RENDER
     return(
         <main className="userPage__container">
             {/*<h3>User Page</h3>*/}
             <SideBar
-                isAddProject={isAddProject}
+                showAddProject={showAddProject}
                 toggleAddProject={toggleAddProject}
+                loadProjectMedia={loadProjectMedia}
             />
-            {!isAddProject ? <ProjectInfo /> : <AddProjectForm /> }
+            {!showAddProject
+                ? <ProjectInfo mediaList={mediaList} />
+                : <AddProjectForm toggleAddProject={toggleAddProject}/> }
         </main>
     );
 }

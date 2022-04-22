@@ -1,22 +1,51 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./ProjectInfo.scss"
 import {Link, withRouter} from "react-router-dom";
+import AddMediaForm from "../AddMediaForm/AddMediaForm";
 
-function ProjectInfo() {
+function ProjectInfo({mediaList}) {
+
+    const [showAddMedia, setShowAddMedia] = useState(false);
+
+    useEffect(() => {
+        console.log("page load")
+    }, [])
+
+    useEffect(() => {
+        console.log("ProjectInfo: MediaList updated")
+    }, [mediaList])
+
+    useEffect(() => {
+        console.log(`showAddMedia: ${showAddMedia}`);
+    }, [showAddMedia])
+
+    function toggleShowAddMedia() {
+        setShowAddMedia(!showAddMedia);
+    }
 
     return (
         <main className="projectInfo__container">
             <h3 className="projectInfo__title">Media List</h3>
+            <button onClick={toggleShowAddMedia}>Add Media File</button>
+            {showAddMedia && <AddMediaForm />}
             <div className="projectInfo__list">
                 <ul>
-                    <li><Link>Media 1</Link></li>
-                    <li><Link>Media 2</Link></li>
-                    <li><Link>Media 3</Link></li>
-                    <li><Link>Media 4</Link></li>
-                    <li><Link>Media 5</Link></li>
-                    <li><Link>Media 6</Link></li>
-                    <li><Link>Media 7</Link></li>
-                    <li><Link>Media 8</Link></li>
+                    {
+                        mediaList.map((m) => {
+                            return(
+                                <li
+                                    key={`${m.id} + ${m.fileName}`}
+                                >
+                                    <Link exact to={`/content/${m.id}`}>
+                                        <div className="mediaList__container">
+                                        <span>{m.fileName}</span>
+                                        <span>{m.id}</span>
+                                        </div>
+                                    </Link>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
         </main>

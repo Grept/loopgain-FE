@@ -31,8 +31,8 @@ function App() {
                             <Route exact path="/user">
                                 <UserPage/>
                             </Route>
-                            <Route exact path="/content">
-                                <ContentViewPage/>
+                            <Route exact path="/content/:id">
+                                <ContentViewPage />
                             </Route>
                         </Switch>
                     </div>

@@ -3,12 +3,12 @@ import "./AddProjectForm.scss"
 import {useForm} from "react-hook-form";
 import axios from "axios";
 
-function AddProjectForm() {
+function AddProjectForm({toggleAddProject}) {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
 
     async function addProject(data) {
-        console.log(data);
+        // console.log(data);
 
         try {
             const response = await axios.post("http://localhost:8080/user/projects", data, {
@@ -20,7 +20,8 @@ function AddProjectForm() {
 
             )
 
-            console.log(response);
+            // console.log(response);
+            toggleAddProject()
         } catch (e) {
             console.error(e)
         }

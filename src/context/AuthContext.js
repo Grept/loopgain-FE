@@ -32,12 +32,12 @@ export default function AuthContextProvider({children}) {
         try {
             const {data} = await axios.get(`http://localhost:8080/getUserData`, {
                 headers: {
-                    "Content-Type" : "apllication/json",
+                    "Content-Type" : "application/json",
                     Authorization: `Bearer ${jwtToken}`
                 }
             })
 
-            console.log(data);
+            // console.log(data);
 
             setUserAuth({
                 ...userAuth,
