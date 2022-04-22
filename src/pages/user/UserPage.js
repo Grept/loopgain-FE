@@ -10,16 +10,22 @@ export default function UserPage() {
     // STATE
     const [showAddProject, setShowAddProject] = useState(false);
     const [mediaList, setMediaList] = useState([{projectName: "testname"}]);
+    const [currentProject, setCurrentProject] = useState({projectMedia:[]});
 
     // EFFECT
-    useEffect(() => {
-        // getProjectList();
-    }, [])
-
-    useEffect(() => {
-        console.log("mediaList updated...")
-        console.log(mediaList);
-    }, [mediaList])
+    // useEffect(() => {
+    //     // getProjectList();
+    // }, [])
+    //
+    // // useEffect(() => {
+    // //     console.log("mediaList updated...")
+    // //     console.log(mediaList);
+    // // }, [mediaList])
+    // //
+    // // useEffect(() => {
+    // //     console.log("currentProject:")
+    // //     console.log(currentProject)
+    // // }, [currentProject])
 
     // METHODS
     function toggleAddProject(){
@@ -35,12 +41,13 @@ export default function UserPage() {
         <main className="userPage__container">
             {/*<h3>User Page</h3>*/}
             <SideBar
+                setCurrentProject={setCurrentProject}
                 showAddProject={showAddProject}
                 toggleAddProject={toggleAddProject}
                 loadProjectMedia={loadProjectMedia}
             />
             {!showAddProject
-                ? <ProjectInfo mediaList={mediaList} />
+                ? <ProjectInfo mediaList={mediaList} currentProject={currentProject} />
                 : <AddProjectForm toggleAddProject={toggleAddProject}/> }
         </main>
     );

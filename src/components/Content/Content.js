@@ -8,8 +8,7 @@ import axios from "axios";
 
 function Content({id, setCurrentTime}) {
 
-    // const [currentMedia, setCurrentMedia] = useState({})
-    // const [currentTime, setCurrentTime] = useState(0);
+    const [currentMedia, setCurrentMedia] = useState({})
 
     useEffect(() => {
         const player = document.getElementById("player");
@@ -20,43 +19,49 @@ function Content({id, setCurrentTime}) {
 
 
 
-    // useEffect(() => {
-    //     console.log("currentMedia changed");
-    //     console.log(currentMedia);
-    // }, [currentMedia])
+    useEffect(() => {
+        const player = document.getElementById("player");
+        player.src = currentMedia;
+        player.load();
+    }, [currentMedia])
 
-    // useEffect(() => {
-    //     async function getContent(id) {
-    //         try {
-    //             const contentResponse = await axios.get(`http://localhost:8080/media/${id}`, {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //                 },
-    //                 responseType: "blob"
-    //             })
-    //
-    //             setCurrentMedia(contentResponse);
-    //             // const videoPlayer = document.getElementById("video-player")
-    //             // videoPlayer.src = URL.createObjectURL(contentResponse);
-    //             // videoPlayer.load();
-    //         } catch (e) {
-    //             console.error(e)
-    //         }
-    //     }
-    //
-    //     getContent(id);
-    //
-    //     console.log(currentMedia)
-    // }, [])
+    useEffect(() => {
+        async function getContent(id) {
+            try {
+                const contentResponse = await axios.get(`http://localhost:8080/media/${id}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                    responseType: "blob"
+                })
+
+                const contentUrl = URL.createObjectURL(contentResponse.data);
+
+                setCurrentMedia(contentUrl);
+
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        getContent(id);
+    }, [])
 
 
     return (
         <>
-            <video id="player" className="video-player" controls>
-                <source id="video" src={`http://localhost:8080/media/${id}`}/>
-                {/*<source id="video" src={video_1}/>*/}
-            </video>
+            {/*{console.log("currentMedia:")}*/}
+            {/*{console.log(currentMedia)}*/}
+            {currentMedia &&
+                <video id="player" className="video-player" controls>
+                    {/*<source id="video" src={`http://localhost:8080/media/${id}`}/>*/}
+                    {/*{console.log("In return")}*/}
+                    {/*{console.log(currentMedia)}*/}
+                    <source id="video" src="" />
+                    {/*<source id="video" src={video_1}/>*/}
+                </video>
+            }
         </>
     );
 }

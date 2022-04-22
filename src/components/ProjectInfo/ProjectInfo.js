@@ -3,17 +3,13 @@ import "./ProjectInfo.scss"
 import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddMediaForm/AddMediaForm";
 
-function ProjectInfo({mediaList}) {
+function ProjectInfo({currentProject}) {
 
     const [showAddMedia, setShowAddMedia] = useState(false);
 
     useEffect(() => {
         console.log("page load")
     }, [])
-
-    useEffect(() => {
-        console.log("ProjectInfo: MediaList updated")
-    }, [mediaList])
 
     useEffect(() => {
         console.log(`showAddMedia: ${showAddMedia}`);
@@ -27,11 +23,11 @@ function ProjectInfo({mediaList}) {
         <main className="projectInfo__container">
             <h3 className="projectInfo__title">Media List</h3>
             <button onClick={toggleShowAddMedia}>Add Media File</button>
-            {showAddMedia && <AddMediaForm />}
+            {showAddMedia && <AddMediaForm currentProject={currentProject}/>}
             <div className="projectInfo__list">
                 <ul>
-                    {
-                        mediaList.map((m) => {
+                    {currentProject &&
+                        currentProject.projectMedia.map((m) => {
                             return(
                                 <li
                                     key={`${m.id} + ${m.fileName}`}

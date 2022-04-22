@@ -4,7 +4,7 @@ import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {logDOM} from "@testing-library/react";
 
-function SideBar({toggleAddProject, showAddProject, loadProjectMedia}) {
+function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrentProject}) {
 
     const [projectList, setProjectList] = useState([])
 
@@ -56,6 +56,7 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia}) {
                                         onClick={() => {
                                             console.log(p.projectMedia);
                                             loadProjectMedia(p.projectMedia);
+                                            setCurrentProject(p);
                                         }}
                                     >
                                         {p.projectName}

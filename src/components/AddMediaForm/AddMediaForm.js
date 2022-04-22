@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 
 
-function AddMediaForm() {
+function AddMediaForm({currentProject: {id}}) {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
 
@@ -11,7 +11,12 @@ function AddMediaForm() {
         console.log(data)
 
         try {
-            const response = await axios.post(`localhost:8080/project/${projectId}/media`)
+            const response = await axios.post(`localhost:8080/project/${id}/media`, data, {
+                headers: {
+                    "Content-type": "application/json",
+                    Authentication: `Bearer ${localStorage}`
+                }
+            })
         } catch (e) {
             console.error(e);
         }
