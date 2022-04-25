@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./ProjectInfo.scss"
 import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddMediaForm/AddMediaForm";
+import {ProjectContext} from "../../context/ProjectContext";
 
 function ProjectInfo({currentProject}) {
 

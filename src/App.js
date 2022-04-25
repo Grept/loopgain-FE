@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import ContentViewPage from "./pages/contentview/ContentViewPage";
 import SignInPage from "./pages/signIn/SignInPage";
 import RegisterPage from "./pages/register/RegisterPage";
+import ProjectContextProvider from "./context/ProjectContext";
 
 
 function App() {
@@ -17,25 +18,27 @@ function App() {
             <div className="container__outer">
                 <div className="container__inner">
                     <Navbar />
-                    <div className="content">
-                        <Switch>
-                            <Route exact path="/">
-                                <HomePage/>
-                            </Route>
-                            <Route exact path="/signin">
-                                <SignInPage/>
-                            </Route>
-                            <Route exact path="/register">
-                                <RegisterPage/>
-                            </Route>
-                            <Route exact path="/user">
-                                <UserPage/>
-                            </Route>
-                            <Route exact path="/content/:id">
-                                <ContentViewPage />
-                            </Route>
-                        </Switch>
-                    </div>
+                    <ProjectContextProvider>
+                        <div className="content">
+                            <Switch>
+                                <Route exact path="/">
+                                    <HomePage/>
+                                </Route>
+                                <Route exact path="/signin">
+                                    <SignInPage/>
+                                </Route>
+                                <Route exact path="/register">
+                                    <RegisterPage/>
+                                </Route>
+                                <Route exact path="/user">
+                                    <UserPage/>
+                                </Route>
+                                <Route exact path="/content/:id">
+                                    <ContentViewPage />
+                                </Route>
+                            </Switch>
+                        </div>
+                    </ProjectContextProvider>
                     <Footer />
                 </div>
             </div>
