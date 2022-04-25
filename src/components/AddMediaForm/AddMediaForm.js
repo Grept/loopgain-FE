@@ -10,13 +10,20 @@ function AddMediaForm({currentProject: {id}}) {
     async function addMedia(data) {
         console.log(data)
 
+        const formData = new FormData();
+        formData.append("fileName", data.fileName);
+        formData.append("file", data.file[0]);
+        console.log(formData)
+
         try {
-            const response = await axios.post(`localhost:8080/project/${id}/media`, data, {
+            const response = await axios.post(`http://localhost:8080/project/${id}/media`, formData, {
                 headers: {
                     "Content-type": "application/json",
                     Authentication: `Bearer ${localStorage}`
                 }
             })
+
+            console.log(response)
         } catch (e) {
             console.error(e);
         }
