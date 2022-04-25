@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   font-family: $mainFont;
+  font-size: $mainFontSize;
 }
 
 .register__container {
@@ -31,6 +32,8 @@
   border: 0;
   background: inherit;
   border-bottom: 1px solid $darkBlue;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .register__form-field:focus {
@@ -51,6 +54,8 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .register__form-btn:active {

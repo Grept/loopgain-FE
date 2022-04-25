@@ -4,6 +4,6 @@ export const UserContext = createContext({})
 
 export default function UserContextProvider({children}) {
 
-    const [userDetails, setUserDetails] = useState({})
+    const [userProjects, setUserProjects] = useState([])
 
 }

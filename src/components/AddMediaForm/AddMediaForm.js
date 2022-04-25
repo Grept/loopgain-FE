@@ -10,6 +10,7 @@ function AddMediaForm({currentProject: {id}}) {
     async function addMedia(data) {
         console.log(data)
 
+        // Omdat we een multipart-file sturen (de video-file) gebruiken we formData om mee te geven aan axios.
         const formData = new FormData();
         formData.append("fileName", data.fileName);
         formData.append("file", data.file[0]);

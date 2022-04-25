@@ -54,7 +54,7 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
                                     <button
                                         className="projectList__btn"
                                         onClick={() => {
-                                            console.log(p.projectMedia);
+                                            // console.log(p.projectMedia);
                                             loadProjectMedia(p.projectMedia);
                                             setCurrentProject(p);
                                         }}
@@ -66,13 +66,14 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
                         })
                     }
                 </ul>
-            </section>
             <button
+                className="projectList__btn-addNew"
                 type="button"
                 onClick={() => toggleAddProject()}
             >
                 {!showAddProject ? <>Add New Project</> : <>See Media List</>}
             </button>
+            </section>
         </section>
     );
 }

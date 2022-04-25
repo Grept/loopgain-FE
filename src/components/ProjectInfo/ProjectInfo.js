@@ -9,6 +9,7 @@ function ProjectInfo({currentProject}) {
 
     useEffect(() => {
         console.log("page load")
+        console.log(currentProject)
     }, [])
 
     useEffect(() => {
@@ -21,7 +22,14 @@ function ProjectInfo({currentProject}) {
 
     return (
         <main className="projectInfo__container">
-            <h3 className="projectInfo__title">Media List</h3>
+            <div className="projectInfo__info">
+                <h1 className="projectInfo__info-title">{currentProject.projectName}</h1>
+                <div className="projectInfo__info-other">
+                    <p>Director: {currentProject.director}</p>
+                    <p>Producer: {currentProject.producer}</p>
+                </div>
+            </div>
+            <h3 className="projectInfo__header">Media List</h3>
             <button onClick={toggleShowAddMedia}>Add Media File</button>
             {showAddMedia && <AddMediaForm currentProject={currentProject}/>}
             <div className="projectInfo__list">

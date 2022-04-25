@@ -13,19 +13,10 @@ export default function UserPage() {
     const [currentProject, setCurrentProject] = useState({projectMedia:[]});
 
     // EFFECT
-    // useEffect(() => {
-    //     // getProjectList();
-    // }, [])
-    //
-    // // useEffect(() => {
-    // //     console.log("mediaList updated...")
-    // //     console.log(mediaList);
-    // // }, [mediaList])
-    // //
-    // // useEffect(() => {
-    // //     console.log("currentProject:")
-    // //     console.log(currentProject)
-    // // }, [currentProject])
+    useEffect(() => {
+        console.log("current project:")
+        console.log(currentProject)
+    }, [currentProject])
 
     // METHODS
     function toggleAddProject(){

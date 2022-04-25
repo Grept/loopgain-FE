@@ -2,6 +2,7 @@
 
 .sidebar {
   font-family: $mainFont;
+  font-size: $mainFontSize;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +31,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: $black;
+  justify-content: space-between;
+  height: 100%;
+  background: $purple;
   flex-grow: 1;
 
 }
@@ -38,5 +41,33 @@
 ul {
   list-style-type: none;
   padding-left: 0;
+}
+
+.projectList__btn {
+  border: none;
+  background: none;
+  color: $white;
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: 7px;
+}
+
+.projectList__btn:hover {
+  color: $lightBlue;
+}
+
+.projectList__btn-addNew {
+  background: $lightPurple;
+  color: $darkBlue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.projectList__btn-addNew:active {
+  background: $lightBlue;
+  color: $purple;
 }
 

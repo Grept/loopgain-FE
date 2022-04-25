@@ -12,5 +12,14 @@
   margin-top: 0;
 }
 
-.projecInfo__title {
+.projectInfo__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.projectInfo__info-title {
+  margin-top: 4px;
+
+}
+

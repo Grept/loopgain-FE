@@ -25,26 +25,30 @@ function SignInPage() {
     return(
         <main className="signInPage">
             <div className="signIn__container">
-                <h3>Sign In</h3>
+                <h3 className="signIn__container-title">Sign In</h3>
                 <form
                     className="signIn__form"
                     onSubmit={handleSubmit(requestLogin)}
                 >
+                    <p>Username:</p>
                     <input
+                        className="signIn__form-field"
                         type="username"
                         placeholder="username"
                         {...register("username", {required: true})}
                     />
                     {errors.email && <p>Please enter a username</p>}
 
+                    <p>Username:</p>
                     <input
+                        className="signIn__form-field"
                         type="password"
                         placeholder="password"
                         {...register("password", {required: true})}
                     />
                     {errors.password && <p>Please enter a password</p>}
 
-                    <button type="submit">submit</button>
+                    <button className="signIn__form-btn" type="submit">submit</button>
                 </form>
             </div>
         </main>
