@@ -2,8 +2,9 @@
 
 .projectInfo__container {
   margin-top: 0;
-  padding: 20px 0 0 20px;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 136px);
 
   flex-grow: 1;
 }
@@ -16,10 +17,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-bottom: 1px solid $purple;
+  margin-bottom: 10px;
 }
 
 .projectInfo__info-title {
   margin-top: 4px;
 
+}
+
+.projectInfo__btn-addMedia {
+  justify-self: flex-end;
 }
 

@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
+import {ProjectContext} from "../../context/ProjectContext";
 
 
-function AddMediaForm({currentProject: {id}}) {
+function AddMediaForm() {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
+    const {project: {id}} = useContext(ProjectContext);
 
     async function addMedia(data) {
         console.log(data)

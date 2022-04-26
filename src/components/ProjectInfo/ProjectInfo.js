@@ -4,13 +4,15 @@ import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
 
+
 function ProjectInfo({currentProject}) {
 
     const [showAddMedia, setShowAddMedia] = useState(false);
+    const {project} = useContext(ProjectContext);
 
     useEffect(() => {
         console.log("page load")
-        console.log(currentProject)
+        console.log(project)
     }, [])
 
     useEffect(() => {
@@ -23,20 +25,20 @@ function ProjectInfo({currentProject}) {
 
     return (
         <main className="projectInfo__container">
-            <div className="projectInfo__info">
-                <h1 className="projectInfo__info-title">{currentProject.projectName}</h1>
+            <section className="projectInfo__info">
+                <h1 className="projectInfo__info-title">{project.projectName}</h1>
                 <div className="projectInfo__info-other">
-                    <p>Director: {currentProject.director}</p>
-                    <p>Producer: {currentProject.producer}</p>
+                    <p>Director: {project.director}</p>
+                    <p>Producer: {project.producer}</p>
                 </div>
-            </div>
+            </section>
+
+
+            <section className="projectInfo__list">
             <h3 className="projectInfo__header">Media List</h3>
-            <button onClick={toggleShowAddMedia}>Add Media File</button>
-            {showAddMedia && <AddMediaForm currentProject={currentProject}/>}
-            <div className="projectInfo__list">
                 <ul>
-                    {currentProject &&
-                        currentProject.projectMedia.map((m) => {
+                    {project &&
+                        project.projectMedia.map((m) => {
                             return(
                                 <li
                                     key={`${m.id} + ${m.fileName}`}
@@ -52,7 +54,9 @@ function ProjectInfo({currentProject}) {
                         })
                     }
                 </ul>
-            </div>
+            </section>
+            {showAddMedia && <AddMediaForm />}
+            <button className="projectInfo__btn-addMedia" onClick={toggleShowAddMedia}>Add Media File</button>
         </main>
     );
 }
