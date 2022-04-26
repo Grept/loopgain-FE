@@ -19,7 +19,7 @@ function Navbar() {
                 </span>
             </Link>
 
-            {user !== null && <h3>{user}</h3>}
+            {user !== null && <h3>{user.username}</h3>}
 
             <div className="account">
                 {!auth

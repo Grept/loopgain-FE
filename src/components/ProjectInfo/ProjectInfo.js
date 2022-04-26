@@ -4,8 +4,7 @@ import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
 
-
-function ProjectInfo({currentProject}) {
+function ProjectInfo() {
 
     const [showAddMedia, setShowAddMedia] = useState(false);
     const {project} = useContext(ProjectContext);

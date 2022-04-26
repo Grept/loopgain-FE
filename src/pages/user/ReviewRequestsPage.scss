@@ -1,0 +1,13 @@
+@import "../../GlobalVariables";
+
+.reviewRequestPage__mediaList > ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.reviewRequestPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

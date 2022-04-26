@@ -4,12 +4,16 @@ import {Switch, Route, withRouter} from "react-router-dom";
 
 import Navbar from "./components/NavBar/NavBar";
 import HomePage from "./pages/home/HomePage";
-import UserPage from "./pages/user/UserPage";
+import ProjectHostPage from "./pages/user/ProjectHostPage";
 import Footer from "./components/Footer/Footer";
 import ContentViewPage from "./pages/contentview/ContentViewPage";
 import SignInPage from "./pages/signIn/SignInPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import ProjectContextProvider from "./context/ProjectContext";
+import UserPage from "./pages/user/UserPage";
+import AuthRoute from "./components/PrivateRoute/AuthRoute";
+import ReviewRequestsPage from "./pages/user/ReviewRequestsPage";
+import RolesRoute from "./components/PrivateRoute/RolesRoute";
 
 
 function App() {
@@ -30,12 +34,22 @@ function App() {
                                 <Route exact path="/register">
                                     <RegisterPage/>
                                 </Route>
-                                <Route exact path="/user">
+                                <AuthRoute exact path="/user">
                                     <UserPage/>
-                                </Route>
-                                <Route exact path="/content/:id">
+                                </AuthRoute>
+                                <AuthRoute exact path="/projecthost">
+                                    <RolesRoute allowedRole="PROJECT_HOST">
+                                        <ProjectHostPage />
+                                    </RolesRoute>
+                                </AuthRoute>
+                                <AuthRoute exact path="/review-requests">
+                                    <RolesRoute allowedRole="REVIEWER">
+                                        <ReviewRequestsPage />
+                                    </RolesRoute>
+                                </AuthRoute>
+                                <AuthRoute exact path="/content/:id">
                                     <ContentViewPage />
-                                </Route>
+                                </AuthRoute>
                             </Switch>
                         </div>
                     </ProjectContextProvider>

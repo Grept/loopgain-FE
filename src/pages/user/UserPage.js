@@ -1,45 +1,34 @@
-import React, {useEffect, useState} from "react";
-import SideBar from "../../components/SideBar/SideBar";
-import ProjectInfo from "../../components/ProjectInfo/ProjectInfo";
-import "./UserPage.scss";
-import axios from "axios";
-import AddProjectForm from "../../components/AddProjectForm/AddProjectForm";
+import React, {useContext, useEffect} from "react";
+import {Redirect} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 
 export default function UserPage() {
+    const {user} = useContext(AuthContext)
 
-    // STATE
-    const [showAddProject, setShowAddProject] = useState(false);
-    const [mediaList, setMediaList] = useState([{projectName: "testname"}]);
-    const [currentProject, setCurrentProject] = useState({projectMedia:[]});
-
-    // EFFECT
     useEffect(() => {
-        console.log("current project:")
-        console.log(currentProject)
-    }, [currentProject])
+        console.log("UserPage Loaded...")
+        console.log(user)
+    }, [])
 
-    // METHODS
-    function toggleAddProject(){
-        setShowAddProject(!showAddProject);
+    if(user.role === "PROJECT_HOST") {
+        console.log("role:" + user.role)
+        return(
+            <>
+                {console.log("Redirect to projecthost")}
+                <Redirect exact to="projecthost" />
+            </>
+        );
+    } else if(user.role === "REVIEWER") {
+        console.log("role:" + user.role)
+        return(
+            <>
+                {console.log("Redirect to review-request")}
+                <Redirect exact to="review-requests" />
+            </>
+        );
+
     }
 
-    function loadProjectMedia(mediaList) {
-        setMediaList(mediaList);
-    }
 
-    // RENDER
-    return(
-        <main className="userPage__container">
-            {/*<h3>User Page</h3>*/}
-            <SideBar
-                setCurrentProject={setCurrentProject}
-                showAddProject={showAddProject}
-                toggleAddProject={toggleAddProject}
-                loadProjectMedia={loadProjectMedia}
-            />
-            {!showAddProject
-                ? <ProjectInfo mediaList={mediaList} currentProject={currentProject} />
-                : <AddProjectForm toggleAddProject={toggleAddProject}/> }
-        </main>
-    );
+
 }

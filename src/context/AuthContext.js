@@ -9,7 +9,7 @@ export default function AuthContextProvider({children}) {
 
     const [userAuth, setUserAuth] = useState({
         isAuth: false,
-        user: null,
+        user: {},
         status: "pending"
     })
 
@@ -26,6 +26,11 @@ export default function AuthContextProvider({children}) {
         }
     }, [])
 
+    useEffect(() => {
+        console.log("userAuth has changed:")
+        console.log(userAuth);
+    }, [userAuth])
+
     const history = useHistory();
 
     async function getUserData(jwtToken) {
@@ -36,17 +41,18 @@ export default function AuthContextProvider({children}) {
                     Authorization: `Bearer ${jwtToken}`
                 }
             })
-
-            // console.log(data);
+            console.log("getUserData response:")
+            console.log(data);
 
             setUserAuth({
                 ...userAuth,
                 isAuth: true,
-                user: data.username,
+                user: data,
                 status: "done"
             })
 
             history.push("/user");
+
         } catch (e) {
             console.log(e);
         }
