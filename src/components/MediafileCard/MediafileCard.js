@@ -16,10 +16,10 @@ export default function MediafileCard({mediafile}) {
                 {mediafile.fileName}
             </button>
 
-            <p><strong>Project: </strong>{mediafile.parentProjectName}</p>
-            <p><strong>Director: </strong>{mediafile.director}</p>
-            <p><strong>Producer: </strong>{mediafile.producer}</p>
-            <p><strong>Project Host: </strong>{mediafile.projectHost}</p>
+            <p className="mediafileCard__title"><strong>Project: </strong>{mediafile.parentProjectName}</p>
+            <p className="mediafileCard__title"><strong>Director: </strong>{mediafile.director}</p>
+            <p className="mediafileCard__title"><strong>Producer: </strong>{mediafile.producer}</p>
+            <p className="mediafileCard__title"><strong>Project Host: </strong>{mediafile.projectHost}</p>
         </section>
     );
 

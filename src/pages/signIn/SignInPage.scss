@@ -8,13 +8,15 @@
 }
 
 .signIn__container {
-  background: $purple;
+  background-image: linear-gradient($purple 50%, $black);
   display: flex;
   flex-direction: column;
   padding: 20px;
   margin-top: 60px;
   border: 1px solid $darkBlue;
+  border-bottom: none;
   border-radius: 10px;
+  height: 400px;
 }
 
 .signIn__container-title {
@@ -32,8 +34,8 @@
   border: 0;
   background: inherit;
   border-bottom: 1px solid $darkBlue;
-  font-family: inherit;
-  font-size: inherit;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
 }
 
 .signIn__form-field:focus {
@@ -50,6 +52,8 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
 }
 
 .signIn__form-btn:active {

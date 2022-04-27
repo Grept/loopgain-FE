@@ -1,36 +1,29 @@
 @import "../../GlobalVariables";
 
-.addProject {
+.addMedia {
   display: flex;
   justify-content: center;
-  font-family: $mainFont;
-  flex-grow: 1;
 }
 
-.addProject__container {
+.addMedia__container {
   background-image: linear-gradient($purple 50%, $black);
   display: flex;
   flex-direction: column;
+  //align-items: center;
   padding: 20px;
   margin-top: 60px;
   border: 1px solid $darkBlue;
   border-bottom: none;
   border-radius: 10px;
-  max-height: 400px;
+  max-height: 300px;
 }
 
-.addProject__container-title {
-  margin-top: 0;
-  align-self: center;
-}
-
-.addProject__form {
+.addMedia__form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
-.addProject__form-field {
+.addMedia__form-field {
   border: 0;
   background: inherit;
   border-bottom: 1px solid $darkBlue;
@@ -38,13 +31,14 @@
   font-size: inherit;
 }
 
-.addProject__form-field:focus {
+.addMedia__form-field:focus {
   border-bottom: 1px solid $lightBlue;
   color: $lightBlue;
   outline: none;
 }
 
-.addProject__form-btn {
+.addMedia__form-btn,
+.addMedia__form-file::file-selector-button {
   margin-top: 20px;
   align-self: center;
   background: $lightPurple;
@@ -56,7 +50,7 @@
   font-size: inherit;
 }
 
-.addProject__form-btn:active {
+.addMedia__form-btn:active {
   margin-top: 20px;
   align-self: center;
   background: $lightBlue;
@@ -64,9 +58,4 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
-}
-
-.field_error_message {
-  color: red;
-  font-size: 12px;
 }

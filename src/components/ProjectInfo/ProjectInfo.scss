@@ -13,6 +13,13 @@
   margin-top: 0;
 }
 
+.projectInfo__list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .projectInfo__info {
   display: flex;
   flex-direction: column;

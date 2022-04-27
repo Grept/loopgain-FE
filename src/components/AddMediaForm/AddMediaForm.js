@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {ProjectContext} from "../../context/ProjectContext";
-
+import "./AddMediaForm.scss";
 
 function AddMediaForm() {
 
@@ -45,6 +45,7 @@ function AddMediaForm() {
                         <label htmlFor="media_name">
                             <p>Filename</p>
                             <input
+                                className="addMedia__form-field"
                                 type="text"
                                 name="media_name"
                                 {...register("fileName", {required: true})}
@@ -56,6 +57,7 @@ function AddMediaForm() {
                         <label htmlFor="file">
                             <p>Choose File</p>
                             <input
+                                className="addMedia__form-file"
                                 type="file"
                                 name="file"
                                 {...register("file", {required: true})}
@@ -63,7 +65,10 @@ function AddMediaForm() {
                         </label>
                         {errors.director && <p className="field_error_message">Please choose a file to upload.</p>}
 
-                        <button type="submit">
+                        <button
+                            className="addMedia__form-btn"
+                            type="submit"
+                        >
                             submit
                         </button>
                     </form>

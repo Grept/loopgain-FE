@@ -1,0 +1,16 @@
+@import "../../GlobalVariables";
+
+.contentReviewPage {
+  max-height: 100px;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+.contentReviewPage__feedback {
+  width: 300px;
+}
+
+.liveContainer {
+  height: calc(100vh - 110.5px - 30px);
+}

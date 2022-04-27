@@ -3,6 +3,7 @@ import "./ProjectInfo.scss"
 import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
+import MediafileCard from "../MediafileCard/MediafileCard";
 
 function ProjectInfo() {
 
@@ -32,30 +33,43 @@ function ProjectInfo() {
                 </div>
             </section>
 
-
-            <section className="projectInfo__list">
-            <h3 className="projectInfo__header">Media List</h3>
-                <ul>
-                    {project &&
-                        project.projectMedia.map((m) => {
-                            return(
-                                <li
-                                    key={`${m.id} + ${m.fileName}`}
-                                >
-                                    <Link exact to={`/content/${m.id}`}>
-                                        <div className="mediaList__container">
-                                        <span>{m.fileName}</span>
-                                        <span>{m.id}</span>
-                                        </div>
-                                    </Link>
-                                </li>
-                            )
-                        })
+            <section className="projectInfo__list-container">
+                <section className="projectInfo__list">
+                    <h3 className="projectInfo__header">Project Media:</h3>
+                    {
+                        showAddMedia
+                            ?
+                            <AddMediaForm/>
+                            :
+                            <ul>
+                                {project &&
+                                project.projectMedia.map((m) => {
+                                    return (
+                                        <li
+                                            key={`${m.id} + ${m.fileName}`}
+                                        >
+                                            <Link exact to={`/content/${m.id}`}>
+                                                {/*<div className="mediaList__container">*/}
+                                                {/*    <span>{m.fileName}</span>*/}
+                                                {/*</div>*/}
+                                                <MediafileCard mediafile={m}/>
+                                            </Link>
+                                        </li>
+                                    )
+                                })
+                                }
+                            </ul>
                     }
-                </ul>
+                </section>
+
+
+                <button
+                    className="projectInfo__btn-addMedia"
+                    onClick={toggleShowAddMedia}
+                >
+                    Add Media File
+                </button>
             </section>
-            {showAddMedia && <AddMediaForm />}
-            <button className="projectInfo__btn-addMedia" onClick={toggleShowAddMedia}>Add Media File</button>
         </main>
     );
 }

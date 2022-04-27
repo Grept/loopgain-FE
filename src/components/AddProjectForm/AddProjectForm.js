@@ -38,6 +38,7 @@ function AddProjectForm({toggleAddProject}) {
                     <label htmlFor="project_name">
                         <p>Project Name</p>
                         <input
+                            className="addProject__form-field"
                             type="text"
                             name="project_name"
                             {...register("projectName", {required: true})}
@@ -48,6 +49,7 @@ function AddProjectForm({toggleAddProject}) {
                     <label htmlFor="director">
                         <p>Director</p>
                         <input
+                            className="addProject__form-field"
                             type="text"
                             name="director"
                             {...register("director", {required: true})}
@@ -58,13 +60,17 @@ function AddProjectForm({toggleAddProject}) {
                     <label htmlFor="producer">
                         <p>Producer</p>
                         <input
+                            className="addProject__form-field"
                             type="text"
                             name="producer"
                             {...register("producer")}
                         />
                     </label>
 
-                    <button type="submit">
+                    <button
+                        className="addProject__form-btn"
+                        type="submit"
+                    >
                         submit
                     </button>
                 </form>

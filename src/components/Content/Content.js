@@ -21,6 +21,7 @@ function Content({id, setCurrentTime}) {
 
     useEffect(() => {
         const player = document.getElementById("player");
+        // player.type = currentMedia.contentMimeType;
         player.src = currentMedia;
         player.load();
     }, [currentMedia])

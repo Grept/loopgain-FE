@@ -37,7 +37,9 @@ export default function ReviewRequestsPage() {
                         allMedia.map((file) => {
                             return (
                                 <li key={`${file.contentId}`}>
-                                    <MediafileCard mediafile={file} />
+                                    <Link exact to={`/content-review/${file.id}`}>
+                                        <MediafileCard mediafile={file} />
+                                    </Link>
                                 </li>
                             )
                         })

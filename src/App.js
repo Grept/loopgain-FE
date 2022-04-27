@@ -6,7 +6,7 @@ import Navbar from "./components/NavBar/NavBar";
 import HomePage from "./pages/home/HomePage";
 import ProjectHostPage from "./pages/user/ProjectHostPage";
 import Footer from "./components/Footer/Footer";
-import ContentViewPage from "./pages/contentview/ContentViewPage";
+import ContentViewPage from "./pages/content/ContentViewPage";
 import SignInPage from "./pages/signIn/SignInPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import ProjectContextProvider from "./context/ProjectContext";
@@ -14,7 +14,7 @@ import UserPage from "./pages/user/UserPage";
 import AuthRoute from "./components/PrivateRoute/AuthRoute";
 import ReviewRequestsPage from "./pages/user/ReviewRequestsPage";
 import RolesRoute from "./components/PrivateRoute/RolesRoute";
-
+import ContentReviewPage from "./pages/content/ContentReviewPage";
 
 function App() {
     return (
@@ -50,6 +50,12 @@ function App() {
                                 <AuthRoute exact path="/content/:id">
                                     <ContentViewPage />
                                 </AuthRoute>
+                                <AuthRoute exact path="/content-review/:id">
+                                    <RolesRoute allowedRole="REVIEWER">
+                                        <ContentReviewPage />
+                                    </RolesRoute>
+                                </AuthRoute>
+
                             </Switch>
                         </div>
                     </ProjectContextProvider>
