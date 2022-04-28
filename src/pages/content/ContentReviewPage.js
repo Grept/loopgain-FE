@@ -4,20 +4,49 @@ import Content from "../../components/Content/Content";
 import CommentInput from "../../components/CommentInput/CommentInput";
 import Feedback from "../../components/Feedback/Feedback";
 import "./ContentReviewPage.scss"
+import axios from "axios";
 
 export default function ContentReviewPage() {
 
     const [currentTime, setCurrentTime] = useState(0);
+    const [commentList, setCommentList] = useState([]);
     const {id} = useParams();
+
+    async function newFeedbackString() {
+        try {
+            const response = await axios.post(`http://localhost:8080/media/${id}/feedback`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+
+            console.log(response);
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     return(
         <>
             <main className="contentReviewPage">
                 <div className="liveContainer">
-                    <Content id={id} setCurrentTime={setCurrentTime}/>
-                    <CommentInput currentTime={currentTime}/>
+                    <Content
+                        id={id}
+                        setCurrentTime={setCurrentTime}
+                        currentTime={currentTime}
+                    />
+                    <CommentInput
+                        currentTime={currentTime}
+                        commentList={commentList}
+                        setCommentList={setCommentList}
+                    />
                 </div>
-                <Feedback className="contentReviewPage__feedback" />
+                <Feedback
+                    className="contentReviewPage__feedback"
+                    commentList={commentList}
+                    setCurrentTime={setCurrentTime}
+                />
             </main>
         </>
     );

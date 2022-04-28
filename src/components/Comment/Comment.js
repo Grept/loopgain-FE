@@ -1,13 +1,15 @@
 import React from "react";
 import "./Comment.scss"
 import {withRouter} from "react-router-dom";
+import formatCurrentTime from "../../helpers/formatCurrentTime";
 
-function Comment(props) {
+function Comment({timestamp, comment, setCurrentTime}) {
 
-    const timestamp = "00:02:04:22"
+    // const timestamp = "00:02:04:22"
 
     function playerToTimestamp() {
-        console.log("Video to timestamp x.");
+        console.log(`Video to timestamp ${formatCurrentTime(timestamp)}.`);
+        setCurrentTime(timestamp)
     }
 
     return (
@@ -15,9 +17,9 @@ function Comment(props) {
             className="comment"
             onClick={playerToTimestamp}
         >
-            <h4 className="comment__timestamp">{timestamp}</h4>
+            <h4 className="comment__timestamp">{formatCurrentTime(timestamp)}</h4>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, optio?
+                {comment}
             </p>
         </div>
     );

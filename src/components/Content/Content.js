@@ -6,15 +6,15 @@ import "./Content.scss";
 import {withRouter} from "react-router-dom";
 import axios from "axios";
 
-function Content({id, setCurrentTime}) {
+function Content({id, setCurrentTime, currentTime}) {
 
     const [currentMedia, setCurrentMedia] = useState({})
 
     useEffect(() => {
-        const player = document.getElementById("player");
-        player.addEventListener("timeupdate", () => {
-            setCurrentTime(player.currentTime);
-        })
+        // const player = document.getElementById("player");
+        // player.addEventListener("timeupdate", () => {
+        //     setCurrentTime(player.currentTime);
+        // })
     }, [])
 
 
@@ -49,6 +49,14 @@ function Content({id, setCurrentTime}) {
         getContent(id);
     }, [])
 
+    useEffect(() => {
+        setPlaybackToTime(currentTime)
+    }, [currentTime])
+
+    function setPlaybackToTime(time) {
+        const player = document.getElementById("player");
+        player.currentTime = time;
+    }
 
     return (
         <>

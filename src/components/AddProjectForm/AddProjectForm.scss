@@ -39,6 +39,8 @@
 }
 
 .addProject__form-field:focus {
+  background: inherit;
+  border: 0;
   border-bottom: 1px solid $lightBlue;
   color: $lightBlue;
   outline: none;
