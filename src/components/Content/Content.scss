@@ -1,3 +1,13 @@
-.video-player {
-  max-width: 100%;
+.content__container {
+  //height: 100%;
+  //width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-height: 100%;
+}
+
+.content__videoplayer {
+  border: 2px solid blue;
+  max-height: inherit;
 }

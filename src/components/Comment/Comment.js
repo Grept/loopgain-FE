@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Comment.scss"
 import {withRouter} from "react-router-dom";
 import formatCurrentTime from "../../helpers/formatCurrentTime";
+import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
-function Comment({timestamp, comment, setCurrentTime}) {
+function Comment({timestamp, comment}) {
 
-    // const timestamp = "00:02:04:22"
+    const {setPlayHead} = useContext(MediaPlayerContext)
 
     function playerToTimestamp() {
         console.log(`Video to timestamp ${formatCurrentTime(timestamp)}.`);
-        setCurrentTime(timestamp)
+        setPlayHead(timestamp)
     }
 
     return (

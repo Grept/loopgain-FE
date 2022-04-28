@@ -3,7 +3,7 @@ import "./Feedback.scss"
 import Comment from "../Comment/Comment";
 import {withRouter} from "react-router-dom";
 
-function Feedback({commentList, setCurrentTime}) {
+function Feedback({commentList}) {
 
     useEffect(() => {
 
@@ -18,21 +18,13 @@ function Feedback({commentList, setCurrentTime}) {
                         return(
                           <li key={`${comment.newComment}+${comment.currentTime}`}>
                               <Comment
-                                  timestamp={comment.currentTime}
+                                  timestamp={comment.time}
                                   comment={comment.newComment}
-                                  setCurrentTime={setCurrentTime}
                               />
                           </li>
                         );
                     })
                 }
-
-                {/*<li><Comment /></li>*/}
-                {/*<li><Comment /></li>*/}
-                {/*<li><Comment /></li>*/}
-                {/*<li><Comment /></li>*/}
-                {/*<li><Comment /></li>*/}
-                {/*<li><Comment /></li>*/}
             </ul>
         </div>
     );

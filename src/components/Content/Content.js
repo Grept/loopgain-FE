@@ -1,20 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import video_1 from "../../assets/__TEST-MEDIA__/ledl-trailer-Apple Devices HD (Most Compatible).m4v"
 import video_2 from "../../assets/__TEST-MEDIA__/sputum-trailer-Apple Devices HD (Most Compatible).m4v"
 
 import "./Content.scss";
 import {withRouter} from "react-router-dom";
 import axios from "axios";
+import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
 function Content({id, setCurrentTime, currentTime}) {
 
     const [currentMedia, setCurrentMedia] = useState({})
+    const {time, setTime, playHead, setPlayHead} = useContext(MediaPlayerContext)
 
     useEffect(() => {
-        // const player = document.getElementById("player");
-        // player.addEventListener("timeupdate", () => {
-        //     setCurrentTime(player.currentTime);
-        // })
+        const player = document.getElementById("player");
+        player.addEventListener("timeupdate", () => {
+            setTime(player.currentTime);
+        })
     }, [])
 
 
@@ -50,20 +52,20 @@ function Content({id, setCurrentTime, currentTime}) {
     }, [])
 
     useEffect(() => {
-        setPlaybackToTime(currentTime)
-    }, [currentTime])
+        setPlaybackToTime(playHead)
+    }, [playHead])
 
-    function setPlaybackToTime(time) {
+    function setPlaybackToTime(playHeadPosition) {
         const player = document.getElementById("player");
-        player.currentTime = time;
+        player.currentTime = playHeadPosition;
     }
 
     return (
-        <>
+        <div className="content__container">
             {/*{console.log("currentMedia:")}*/}
             {/*{console.log(currentMedia)}*/}
             {currentMedia &&
-                <video id="player" className="video-player" controls>
+                <video id="player" className="content__videoplayer" controls>
                     {/*<source id="video" src={`http://localhost:8080/media/${id}`}/>*/}
                     {/*{console.log("In return")}*/}
                     {/*{console.log(currentMedia)}*/}
@@ -71,7 +73,7 @@ function Content({id, setCurrentTime, currentTime}) {
                     {/*<source id="video" src={video_1}/>*/}
                 </video>
             }
-        </>
+        </div>
     );
 }
 

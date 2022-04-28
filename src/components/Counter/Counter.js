@@ -1,9 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import "./Counter.scss"
 import {withRouter} from "react-router-dom";
 import formatCurrentTime from "../../helpers/formatCurrentTime";
+import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
 function Counter({currentTime}) {
+
+    const {time} = useContext(MediaPlayerContext)
 
     // useEffect(() => {
     //     console.log("currentTime changed")
@@ -19,7 +22,7 @@ function Counter({currentTime}) {
     return(
         <>
             <div className="counter__container">
-                <p className="counter__clock">{formatCurrentTime(currentTime)}</p>
+                <p className="counter__clock">{formatCurrentTime(time)}</p>
             </div>
         </>
     );

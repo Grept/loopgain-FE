@@ -13,7 +13,7 @@ export default function ContentViewPage() {
 
     return(
         <main className="contentViewPage">
-            <div className="liveContainer">
+            <div className="contentReviewPage__liveContainer">
                 <Content id={id} setCurrentTime={setCurrentTime}/>
                 <CommentInput currentTime={currentTime}/>
             </div>

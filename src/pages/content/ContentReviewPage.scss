@@ -1,16 +1,31 @@
 @import "../../GlobalVariables";
 
 .contentReviewPage {
-  //max-height: 100px;
+  background: yellow;
   display: flex;
-  //width: 100vw;
+  width: 100%;
   justify-content: space-between;
+  //height: calc(100vh - 110.5px - 30px);
+  height: calc(100vh - 110.5px - 30px);
 }
 
 .contentReviewPage__feedback {
   width: 300px;
+  max-width: 300px;
 }
 
-.liveContainer {
-  height: calc(100vh - 110.5px - 30px);
+.contentReviewPage__liveContainer {
+  max-height: calc(100vh - 110.5px - 30px);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
+
+.contentReviewPage__content {
+
+}
+
+//.contentReviewPage__commentInput {
+//  display: none;
+//  border: 2px solid red;
+//}

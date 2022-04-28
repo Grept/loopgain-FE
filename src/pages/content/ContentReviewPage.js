@@ -5,10 +5,8 @@ import CommentInput from "../../components/CommentInput/CommentInput";
 import Feedback from "../../components/Feedback/Feedback";
 import "./ContentReviewPage.scss"
 import axios from "axios";
-
 export default function ContentReviewPage() {
 
-    const [currentTime, setCurrentTime] = useState(0);
     const [commentList, setCommentList] = useState([]);
     const {id} = useParams();
 
@@ -30,14 +28,13 @@ export default function ContentReviewPage() {
     return(
         <>
             <main className="contentReviewPage">
-                <div className="liveContainer">
+                <div className="contentReviewPage__liveContainer">
                     <Content
+                        className="contentReviewPage__content"
                         id={id}
-                        setCurrentTime={setCurrentTime}
-                        currentTime={currentTime}
                     />
                     <CommentInput
-                        currentTime={currentTime}
+                        className="contentReviewPage__commentInput"
                         commentList={commentList}
                         setCommentList={setCommentList}
                     />
@@ -45,7 +42,6 @@ export default function ContentReviewPage() {
                 <Feedback
                     className="contentReviewPage__feedback"
                     commentList={commentList}
-                    setCurrentTime={setCurrentTime}
                 />
             </main>
         </>
