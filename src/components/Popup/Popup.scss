@@ -17,8 +17,8 @@
 
 .popup__window {
   background: $purple;
-  height: 300px;
-  width: 200px;
+  height: content-box;
+  width: content-box;
   border-radius: 5%;
 
   display: flex;

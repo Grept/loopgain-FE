@@ -14,14 +14,17 @@ function Comment({timestamp, comment}) {
     }
 
     return (
-        <div
-            className="comment"
-            onClick={playerToTimestamp}
-        >
-            <h4 className="comment__timestamp">{formatCurrentTime(timestamp)}</h4>
-            <p>
-                {comment}
-            </p>
+        <div className="comment-card">
+            <div
+                className="comment"
+                onClick={playerToTimestamp}
+            >
+                <h4 className="comment__timestamp">{formatCurrentTime(timestamp)}</h4>
+                <p>
+                    {comment}
+                </p>
+            </div>
+            <button className="comment-card__btn">-</button>
         </div>
     );
 }

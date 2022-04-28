@@ -1,10 +1,35 @@
 @import "../../GlobalVariables";
 
+.comment-card {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid $white;
+
+}
+
+.comment-card__btn {
+  background: $purple;
+  border-style: none;
+  color: $white;
+  border-radius: 50%;
+  position: relative;
+  right: -20px;
+
+  flex-grow: 0;
+}
+
+.comment-card .comment-card__btn {
+  visibility: hidden;
+}
+
+.comment-card:hover .comment-card__btn {
+  visibility: visible;
+}
+
 .comment {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid $white;
 }
 
 .comment__timestamp {
