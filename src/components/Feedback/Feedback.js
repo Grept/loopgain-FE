@@ -10,22 +10,25 @@ function Feedback({commentList}) {
     }, [commentList])
 
     return(
-        <div className="feedbackContainer">
-            <h2>Feedback String</h2>
-            <ul>
-                {commentList &&
-                    commentList.map((comment) => {
-                        return(
-                          <li key={`${comment.newComment}+${comment.currentTime}`}>
-                              <Comment
-                                  timestamp={comment.time}
-                                  comment={comment.newComment}
-                              />
-                          </li>
-                        );
-                    })
-                }
-            </ul>
+        <div className="feedback">
+            <section className="feedback__list">
+                <h2 className="feedback__header">Feedback String</h2>
+                <ul>
+                    {commentList &&
+                        commentList.map((comment) => {
+                            return(
+                              <li key={`${comment.newComment}+${comment.currentTime}`}>
+                                  <Comment
+                                      timestamp={comment.time}
+                                      comment={comment.newComment}
+                                  />
+                              </li>
+                            );
+                        })
+                    }
+                </ul>
+            </section>
+            <button className="feedback__btn-save">Save Feedback</button>
         </div>
     );
 }

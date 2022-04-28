@@ -1,12 +1,35 @@
 @import "../../GlobalVariables";
 
-.feedbackContainer {
+.feedback {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   padding: 20px;
   max-width: 20%;
 
   color: $lightBlue;
   background: $darkBlue;
+}
+
+.feedback__btn-save {
+  margin-top: 20px;
+  align-self: center;
+  background: $lightPurple;
+  color: $darkBlue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+}
+
+.feedback__btn-save:active {
+  margin-top: 20px;
+  align-self: center;
+  background: $lightBlue;
+  color: $purple;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
 }

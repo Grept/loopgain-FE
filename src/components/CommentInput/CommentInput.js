@@ -8,8 +8,20 @@ import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 function CommentInput({currentTime, commentList, setCommentList}) {
 
     const [composingComment, setComposingComment] = useState(false);
+    const [commentTime, setCommentTime] = useState(0);
     const {time} = useContext(MediaPlayerContext)
     const {register, handleSubmit, formState:{errors}} = useForm();
+
+    useEffect(() => {
+        console.log("Composing comment?: " + composingComment)
+        console.log(time)
+        setCommentTime(time)
+    }, [composingComment])
+
+    useEffect(() => {
+        const textArea = document.getElementById("commentInput");
+        textArea.addEventListener("input", checkIfEmpty)
+    }, [])
 
     useEffect(() => {
         console.log("commentListChanged:")
@@ -17,11 +29,23 @@ function CommentInput({currentTime, commentList, setCommentList}) {
 
     },[commentList])
 
+
+    // Check if a comment is being composed. If user is writing, save current time.
+    function checkIfEmpty(){
+        const field = this.value;
+        if(field !== "") {
+            setComposingComment(true);
+        } else {
+            setComposingComment(false)
+        }
+    }
+
     function procesComment(data) {
-        const newComment = {...data, time};
+        const newComment = {...data, time: commentTime};
         addCommentToList(newComment);
         console.log(newComment);
         clearForm();
+        setComposingComment(false);
     }
 
     function addCommentToList(comment) {
