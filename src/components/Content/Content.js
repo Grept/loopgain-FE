@@ -7,7 +7,7 @@ import {withRouter} from "react-router-dom";
 import axios from "axios";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
-function Content({id, setCurrentTime, currentTime}) {
+function Content({id}) {
 
     const [currentMedia, setCurrentMedia] = useState({})
     const {time, setTime, playHead, setPlayHead} = useContext(MediaPlayerContext)
@@ -17,18 +17,7 @@ function Content({id, setCurrentTime, currentTime}) {
         player.addEventListener("timeupdate", () => {
             setTime(player.currentTime);
         })
-    }, [])
 
-
-
-    useEffect(() => {
-        const player = document.getElementById("player");
-        // player.type = currentMedia.contentMimeType;
-        player.src = currentMedia;
-        player.load();
-    }, [currentMedia])
-
-    useEffect(() => {
         async function getContent(id) {
             try {
                 const contentResponse = await axios.get(`http://localhost:8080/media/${id}`, {
@@ -52,6 +41,13 @@ function Content({id, setCurrentTime, currentTime}) {
     }, [])
 
     useEffect(() => {
+        const player = document.getElementById("player");
+        player.src = currentMedia;
+        player.load();
+    }, [currentMedia])
+
+
+    useEffect(() => {
         setPlaybackToTime(playHead)
     }, [playHead])
 
@@ -62,8 +58,6 @@ function Content({id, setCurrentTime, currentTime}) {
 
     return (
         <div className="content__container">
-            {/*{console.log("currentMedia:")}*/}
-            {/*{console.log(currentMedia)}*/}
             {currentMedia &&
                 <video id="player" className="content__videoplayer" controls>
                     {/*<source id="video" src={`http://localhost:8080/media/${id}`}/>*/}

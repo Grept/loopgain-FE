@@ -5,12 +5,19 @@ import {withRouter} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
-function CommentInput({currentTime, commentList, setCommentList}) {
+export default function CommentInput({commentList, setCommentList}) {
 
+    // HOOKS
     const [composingComment, setComposingComment] = useState(false);
     const [commentTime, setCommentTime] = useState(0);
     const {time} = useContext(MediaPlayerContext)
     const {register, handleSubmit, formState:{errors}} = useForm();
+
+    // STATE
+    useEffect(() => {
+        const textArea = document.getElementById("commentInput");
+        textArea.addEventListener("input", checkIfEmpty)
+    }, [])
 
     useEffect(() => {
         console.log("Composing comment?: " + composingComment)
@@ -19,19 +26,15 @@ function CommentInput({currentTime, commentList, setCommentList}) {
     }, [composingComment])
 
     useEffect(() => {
-        const textArea = document.getElementById("commentInput");
-        textArea.addEventListener("input", checkIfEmpty)
-    }, [])
-
-    useEffect(() => {
         console.log("commentListChanged:")
         console.log(commentList);
 
     },[commentList])
 
 
-    // Check if a comment is being composed. If user is writing, save current time.
+    // METHODS
     function checkIfEmpty(){
+        // Check if a comment is being composed. If user is writing, save current time.
         const field = this.value;
         if(field !== "") {
             setComposingComment(true);
@@ -57,6 +60,7 @@ function CommentInput({currentTime, commentList, setCommentList}) {
         form.reset();
     }
 
+    // RENDER
     return(
         <>
             <div className="commentInput__container">
@@ -90,5 +94,3 @@ function CommentInput({currentTime, commentList, setCommentList}) {
         </>
     );
 }
-
-export default withRouter(CommentInput);

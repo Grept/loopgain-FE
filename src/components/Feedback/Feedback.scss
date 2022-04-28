@@ -5,11 +5,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  max-width: 20%;
+  padding: 0px;
+  width: 200px;
+  max-width: 200px;
 
   color: $lightBlue;
   background: $darkBlue;
+}
+
+.feedback__list {
+  margin: 0;
 }
 
 .feedback__btn-save {
