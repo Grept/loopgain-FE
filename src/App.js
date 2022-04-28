@@ -15,6 +15,7 @@ import AuthRoute from "./components/PrivateRoute/AuthRoute";
 import ReviewRequestsPage from "./pages/user/ReviewRequestsPage";
 import RolesRoute from "./components/PrivateRoute/RolesRoute";
 import ContentReviewPage from "./pages/content/ContentReviewPage";
+import MediaPlayerContextProvider from "./context/MediaPlayerContext";
 
 function App() {
     return (
@@ -52,7 +53,9 @@ function App() {
                                 </AuthRoute>
                                 <AuthRoute exact path="/content-review/:id">
                                     <RolesRoute allowedRole="REVIEWER">
-                                        <ContentReviewPage />
+                                        <MediaPlayerContextProvider>
+                                            <ContentReviewPage />
+                                        </MediaPlayerContextProvider>
                                     </RolesRoute>
                                 </AuthRoute>
 
