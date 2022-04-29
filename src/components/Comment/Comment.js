@@ -4,13 +4,13 @@ import {withRouter} from "react-router-dom";
 import formatCurrentTime from "../../helpers/formatCurrentTime";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
-function Comment({timestamp, comment}) {
+function Comment({comment, removeComment}) {
 
     const {setPlayHead} = useContext(MediaPlayerContext)
 
     function playerToTimestamp() {
-        console.log(`Video to timestamp ${formatCurrentTime(timestamp)}.`);
-        setPlayHead(timestamp)
+        console.log(`Video to timestamp ${formatCurrentTime(comment.timeStamp)}.`);
+        setPlayHead(comment.timeStamp)
     }
 
     return (
@@ -19,12 +19,17 @@ function Comment({timestamp, comment}) {
                 className="comment"
                 onClick={playerToTimestamp}
             >
-                <h4 className="comment__timestamp">{formatCurrentTime(timestamp)}</h4>
+                <h4 className="comment__timestamp">{formatCurrentTime(comment.timeStamp)}</h4>
                 <p>
-                    {comment}
+                    {comment.commentText}
                 </p>
             </div>
-            <button className="comment-card__btn">-</button>
+
+            <button className="comment-card__btn" onClick={() => {
+                removeComment(comment);
+            }}>
+                <strong>-</strong>
+            </button>
         </div>
     );
 }

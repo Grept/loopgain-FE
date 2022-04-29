@@ -44,11 +44,30 @@ export default function CommentInput({commentList, setCommentList}) {
     }
 
     function procesComment(data) {
-        const newComment = {...data, time: commentTime};
-        addCommentToList(newComment);
-        console.log(newComment);
-        clearForm();
+
+        // Empty comments are ignored
+        if(data.commentText !== "") {
+            const newComment = {...data, timeStamp: commentTime};
+
+            // Duplicate comments are ignored
+            // This also solves the unique-key problem in the commentList li-items
+            if(!commentAlreadyInList(newComment)) {
+                addCommentToList(newComment);
+            } else {
+                console.log("comment already exists...")
+            }
+        }
+
         setComposingComment(false);
+        clearForm();
+    }
+
+    function commentAlreadyInList(comment) {
+        const exists = commentList.find((c) => {
+            return (c.commentText === comment.commentText && c.timeStamp === comment.timeStamp)
+        })
+
+        return exists !== undefined;
     }
 
     function addCommentToList(comment) {
@@ -69,24 +88,24 @@ export default function CommentInput({commentList, setCommentList}) {
                     <div className="textArea__container">
                         <textarea
                             className="commentInput__textarea"
-                            {...register("newComment")}
+                            {...register("commentText")}
                             id="commentInput"
                             placeholder="Write your comment..."
                         />
                     </div>
                     <div className="commentInput__buttons">
                         <button
+                            className="commentInput__buttons-btn"
+                            type="submit"
+                        >
+                            save
+                        </button>
+                        <button
                             type="button"
                             className="commentInput__buttons-btn"
                             onClick={clearForm}
                         >
                             clear
-                        </button>
-                        <button
-                            className="commentInput__buttons-btn"
-                            type="submit"
-                        >
-                            save
                         </button>
                     </div>
                 </form>

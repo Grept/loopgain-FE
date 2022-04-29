@@ -42,6 +42,8 @@ export default function ContentReviewPage() {
                 <Feedback
                     className="contentReviewPage__feedback"
                     commentList={commentList}
+                    setCommentList={setCommentList}
+                    mediaId={id}
                 />
             </main>
         </>
