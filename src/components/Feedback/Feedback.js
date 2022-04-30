@@ -8,7 +8,7 @@ function Feedback({commentList, setCommentList, mediaId}) {
 
     useEffect(() => {
 
-    }, [commentList])
+    }, [])
 
     function removeComment(comment) {
         const newList = commentList.filter((element) => {
@@ -29,6 +29,8 @@ function Feedback({commentList, setCommentList, mediaId}) {
 
     }
 
+    // Deze methode moet echt een andere naam krijgen.
+    // Misschien combineren met saveFeedback
     async function requestNewFeedbackString() {
         console.log("commentList: ")
         console.log(commentList)
@@ -57,7 +59,6 @@ function Feedback({commentList, setCommentList, mediaId}) {
                         return (
                             <li key={`${comment.commentText}+${comment.timeStamp}`}>
                                 <Comment
-
                                     comment={comment}
                                     removeComment={removeComment}
                                 />

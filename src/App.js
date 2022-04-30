@@ -52,7 +52,11 @@ function App() {
                                         </RolesRoute>
                                     </AuthRoute>
                                     <AuthRoute exact path="/content/:id">
-                                        <ContentViewPage/>
+                                        <RolesRoute allowedRole="PROJECT_HOST">
+                                            <MediaPlayerContextProvider>
+                                                <ContentViewPage/>
+                                            </MediaPlayerContextProvider>
+                                        </RolesRoute>
                                     </AuthRoute>
                                     <AuthRoute exact path="/content-review/:id">
                                         <RolesRoute allowedRole="REVIEWER">

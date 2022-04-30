@@ -46,7 +46,6 @@ function Content({id}) {
         player.load();
     }, [currentMedia])
 
-
     useEffect(() => {
         setPlaybackToTime(playHead)
     }, [playHead])

@@ -4,19 +4,25 @@ import {withRouter} from "react-router-dom";
 import formatCurrentTime from "../../helpers/formatCurrentTime";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
-function Comment({comment, removeComment}) {
+function Comment({comment, removeComment, currentComment, setCurrentComment}) {
 
-    const {setPlayHead} = useContext(MediaPlayerContext)
+    const {time, setPlayHead} = useContext(MediaPlayerContext)
 
     function playerToTimestamp() {
         console.log(`Video to timestamp ${formatCurrentTime(comment.timeStamp)}.`);
         setPlayHead(comment.timeStamp)
     }
 
+    function isCurrentComment() {
+        if(time >= comment.timeStamp){
+            return true
+        }
+    }
+
     return (
         <div className="comment-card">
             <div
-                className="comment"
+                className={"comment " + (isCurrentComment && "highlight")}
                 onClick={playerToTimestamp}
             >
                 <h4 className="comment__timestamp">{formatCurrentTime(comment.timeStamp)}</h4>
