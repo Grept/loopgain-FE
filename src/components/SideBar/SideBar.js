@@ -5,45 +5,17 @@ import axios from "axios";
 import {logDOM} from "@testing-library/react";
 import {ProjectContext} from "../../context/ProjectContext";
 
-function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrentProject}) {
+function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrentProject, projectList, setProjectList}) {
 
-    const [projectList, setProjectList] = useState([])
+    // const [projectList, setProjectList] = useState([])
     const {setProject} = useContext(ProjectContext)
 
-
     useEffect(() => {
-        getAllProjects();
-        // console.log(projects);
-        // setProjectList(projects);
-    }, [])
-
-    useEffect(() => {
-
+        console.log("project list changed...")
     }, [projectList])
-
-    async function getAllProjects() {
-        console.log("Request project List")
-        try {
-            const {data: {projectDtoList: userProjects}} = await axios.get(`http://localhost:8080/getUserData`, {
-                headers: {
-                    "Content-Type" : "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            setProjectList(userProjects);
-            // return userProjects;
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
     return(
         <section className="sidebar">
-            {/*<section className="sidebar sidebar__userDetails">*/}
-            {/*    <h4>User Details</h4>*/}
-            {/*    <p>Tom Jansen</p>*/}
-            {/*    <p>Project Host</p>*/}
-            {/*</section>*/}
             <section className="sidebar__projectList">
                 <h3>Project List</h3>
                 <ul>

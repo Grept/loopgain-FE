@@ -2,21 +2,21 @@ import React from "react";
 import './App.scss';
 import {Switch, Route} from "react-router-dom";
 
-import Navbar from "./components/NavBar/NavBar";
+import Navbar from "./components/GlobalComponents/NavBar/NavBar";
 import HomePage from "./pages/home/HomePage";
 import ProjectHostPage from "./pages/user/ProjectHostPage";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/GlobalComponents/Footer/Footer";
 import ContentViewPage from "./pages/content/ContentViewPage";
 import SignInPage from "./pages/signIn/SignInPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import ProjectContextProvider from "./context/ProjectContext";
 import UserPage from "./pages/user/UserPage";
-import AuthRoute from "./components/PrivateRoute/AuthRoute";
+import AuthRoute from "./components/GlobalComponents/PrivateRoute/AuthRoute";
 import ReviewRequestsPage from "./pages/user/ReviewRequestsPage";
-import RolesRoute from "./components/PrivateRoute/RolesRoute";
+import RolesRoute from "./components/GlobalComponents/PrivateRoute/RolesRoute";
 import ContentReviewPage from "./pages/content/ContentReviewPage";
 import MediaPlayerContextProvider from "./context/MediaPlayerContext";
-import Popup from "./components/Popup/Popup";
+import Popup from "./components/GlobalComponents/Popup/Popup";
 import PopupContextProvider from "./context/PopupContext";
 
 function App() {

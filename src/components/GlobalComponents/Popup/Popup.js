@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import "./Popup.scss";
-import {PopupContext} from "../../context/PopupContext";
+import {PopupContext} from "../../../context/PopupContext";
 
 export default function Popup({children}) {
 

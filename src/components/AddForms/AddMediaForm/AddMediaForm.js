@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {ProjectContext} from "../../context/ProjectContext";
+import {ProjectContext} from "../../../context/ProjectContext";
 import "./AddMediaForm.scss";
 
-function AddMediaForm() {
+function AddMediaForm({toggleShowAddMedia}) {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const {project: {id}} = useContext(ProjectContext);
+    const {getAllProjects, project: {id}} = useContext(ProjectContext);
 
     async function addMedia(data) {
         console.log(data)
@@ -22,11 +22,13 @@ function AddMediaForm() {
             const response = await axios.post(`http://localhost:8080/project/${id}/media`, formData, {
                 headers: {
                     "Content-type": "application/json",
-                    Authentication: `Bearer ${localStorage}`
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
 
             console.log(response)
+            toggleShowAddMedia();
+            getAllProjects();
         } catch (e) {
             console.error(e);
         }

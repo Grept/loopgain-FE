@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import "./ProjectInfo.scss"
 import {Link, withRouter} from "react-router-dom";
-import AddMediaForm from "../AddMediaForm/AddMediaForm";
+import AddMediaForm from "../AddForms/AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
 import MediafileCard from "../MediafileCard/MediafileCard";
 
@@ -23,6 +23,10 @@ function ProjectInfo() {
         setShowAddMedia(!showAddMedia);
     }
 
+    // function reloadPage() {
+    //     window.location.reload(true);
+    // }
+
     return (
         <main className="projectInfo__container">
             <section className="projectInfo__info">
@@ -39,7 +43,7 @@ function ProjectInfo() {
                     {
                         showAddMedia
                             ?
-                            <AddMediaForm/>
+                            <AddMediaForm toggleShowAddMedia={toggleShowAddMedia}/>
                             :
                             <ul>
                                 {project &&
@@ -49,9 +53,6 @@ function ProjectInfo() {
                                             key={`${m.id} + ${m.fileName}`}
                                         >
                                             <Link exact to={`/content/${m.id}`}>
-                                                {/*<div className="mediaList__container">*/}
-                                                {/*    <span>{m.fileName}</span>*/}
-                                                {/*</div>*/}
                                                 <MediafileCard mediafile={m}/>
                                             </Link>
                                         </li>

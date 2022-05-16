@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
 import {Link, useHistory, withRouter} from "react-router-dom";
-import logo from "../../assets/logos/loopgain_gradient_circle-play.svg";
+import logo from "../../../assets/logos/loopgain_gradient_circle-play.svg";
 import "./NavBar.scss";
-import {AuthContext} from "../../context/AuthContext";
+import {AuthContext} from "../../../context/AuthContext";
 
 function Navbar() {
 

@@ -44,6 +44,7 @@ export default function ContentViewPage() {
                     id={id}
                 />
             </div>
+
             <CollectedFeedback
                 className="contentViewPage__feedback"
                 mediaData={mediaData}

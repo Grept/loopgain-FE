@@ -28,10 +28,8 @@ export default function ProjectContextProvider({children}) {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            // console.log("Get all projects:")
-            // console.log(userProjects);
+
             setProjectCollection([...projectCollection, userProjects])
-            // return userProjects;
         } catch (e) {
             console.log(e);
         }

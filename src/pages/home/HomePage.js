@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import {ProjectContext} from "../../context/ProjectContext";
-import Popup from "../../components/Popup/Popup";
+import Popup from "../../components/GlobalComponents/Popup/Popup";
 import {PopupContext} from "../../context/PopupContext";
 
 export default function HomePage() {

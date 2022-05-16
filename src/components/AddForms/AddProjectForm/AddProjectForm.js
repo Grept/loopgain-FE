@@ -3,7 +3,7 @@ import "./AddProjectForm.scss"
 import {useForm} from "react-hook-form";
 import axios from "axios";
 
-function AddProjectForm({toggleAddProject}) {
+function AddProjectForm({toggleAddProject, getAllProjects}) {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
 
@@ -20,7 +20,7 @@ function AddProjectForm({toggleAddProject}) {
 
             )
 
-            // console.log(response);
+            getAllProjects();
             toggleAddProject()
         } catch (e) {
             console.error(e)
