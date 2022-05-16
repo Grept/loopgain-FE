@@ -2,6 +2,8 @@ import React, {useContext, useEffect} from "react";
 import {ProjectContext} from "../../context/ProjectContext";
 import Popup from "../../components/GlobalComponents/Popup/Popup";
 import {PopupContext} from "../../context/PopupContext";
+import Counter from "../../components/Counter/Counter";
+import AddProjectForm from "../../components/AddForms/AddProjectForm/AddProjectForm";
 
 export default function HomePage() {
 
@@ -18,7 +20,8 @@ export default function HomePage() {
             <button onClick={togglePopup}>popup</button>
             {showPopup &&
             <Popup>
-                <h1>This is a popup</h1>
+                {/*<h1>This is a popup</h1>*/}
+                <AddProjectForm />
             </Popup>
             }
         </>

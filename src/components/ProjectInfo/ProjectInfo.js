@@ -4,11 +4,14 @@ import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddForms/AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
 import MediafileCard from "../MediafileCard/MediafileCard";
+import Popup from "../GlobalComponents/Popup/Popup";
+import {PopupContext} from "../../context/PopupContext";
 
 function ProjectInfo() {
 
     const [showAddMedia, setShowAddMedia] = useState(false);
     const {project} = useContext(ProjectContext);
+    const {showPopup, togglePopup} = useContext(PopupContext);
 
     useEffect(() => {
         console.log("page load")
@@ -40,31 +43,31 @@ function ProjectInfo() {
             <section className="projectInfo__list-container">
                 <section className="projectInfo__list">
                     <h3 className="projectInfo__header">Project Media:</h3>
-                    {
-                        showAddMedia
-                            ?
+
+                    <ul>
+                        {project &&
+                        project.projectMedia.map((m) => {
+                            return (
+                                <li
+                                    key={`${m.id} + ${m.fileName}`}
+                                >
+                                    <Link exact to={`/content/${m.id}`}>
+                                        <MediafileCard mediafile={m}/>
+                                    </Link>
+                                </li>
+                            )
+                        })
+                        }
+                    </ul>
+                    {showAddMedia &&
+                        <Popup toggle={toggleShowAddMedia}>
                             <AddMediaForm toggleShowAddMedia={toggleShowAddMedia}/>
-                            :
-                            <ul>
-                                {project &&
-                                project.projectMedia.map((m) => {
-                                    return (
-                                        <li
-                                            key={`${m.id} + ${m.fileName}`}
-                                        >
-                                            <Link exact to={`/content/${m.id}`}>
-                                                <MediafileCard mediafile={m}/>
-                                            </Link>
-                                        </li>
-                                    )
-                                })
-                                }
-                            </ul>
+                        </Popup>
                     }
                 </section>
 
-
                 <button
+                    type="button"
                     className="projectInfo__btn-addMedia"
                     onClick={toggleShowAddMedia}
                 >

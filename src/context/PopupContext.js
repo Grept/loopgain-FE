@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 
 export const PopupContext = createContext({})
 
@@ -6,13 +6,18 @@ export default function PopupContextProvider({children}) {
 
     const [showPopup, setShowPopup] = useState(false);
 
+    useEffect(() => {
+        console.log("showPopup: " + showPopup)
+    }, [showPopup])
+
     function togglePopup() {
         setShowPopup(!showPopup);
     }
 
     const data = {
         showPopup: showPopup,
-        togglePopup: togglePopup
+        togglePopup: togglePopup,
+        setShowPopup: setShowPopup
     }
 
 

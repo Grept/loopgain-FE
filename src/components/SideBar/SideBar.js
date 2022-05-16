@@ -4,12 +4,16 @@ import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 import {logDOM} from "@testing-library/react";
 import {ProjectContext} from "../../context/ProjectContext";
+import {PopupContext} from "../../context/PopupContext";
 
 function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrentProject, projectList, setProjectList}) {
 
-    // const [projectList, setProjectList] = useState([])
+    // STATE
     const {setProject} = useContext(ProjectContext)
+    const {togglePopup} = useContext(PopupContext)
 
+
+    // EFFECTS
     useEffect(() => {
         console.log("project list changed...")
     }, [projectList])
@@ -41,9 +45,12 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
             <button
                 className="projectList__btn-addNew"
                 type="button"
-                onClick={() => toggleAddProject()}
+                onClick={() => {
+                    toggleAddProject();
+                    togglePopup();
+                }}
             >
-                {!showAddProject ? <>Add New Project</> : <>See Media List</>}
+                Add New Project
             </button>
         </section>
     );

@@ -1,18 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ProjectInfo from "../../components/ProjectInfo/ProjectInfo";
 import "./ProjectHostPage.scss";
 import axios from "axios";
 import AddProjectForm from "../../components/AddForms/AddProjectForm/AddProjectForm";
 import {set} from "react-hook-form";
+import Popup from "../../components/GlobalComponents/Popup/Popup";
+import {PopupContext} from "../../context/PopupContext";
 
 export default function ProjectHostPage() {
 
     // STATE
     const [showAddProject, setShowAddProject] = useState(false);
     const [mediaList, setMediaList] = useState([{projectName: "testname"}]);
-    const [currentProject, setCurrentProject] = useState({projectMedia:[]});
+    const [currentProject, setCurrentProject] = useState({projectMedia: []});
     const [projectList, setProjectList] = useState([]);
+
+    // CONTEXT
+    const {showPopup} = useContext(PopupContext)
 
     // EFFECT
     useEffect(() => {
@@ -25,7 +30,8 @@ export default function ProjectHostPage() {
     }, [currentProject])
 
     // METHODS
-    function toggleAddProject(){
+    function toggleAddProject() {
+        console.log("toggleAddProject")
         setShowAddProject(!showAddProject);
     }
 
@@ -38,7 +44,7 @@ export default function ProjectHostPage() {
         try {
             const {data: {projectDtoList: userProjects}} = await axios.get(`http://localhost:8080/getUserData`, {
                 headers: {
-                    "Content-Type" : "application/json",
+                    "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
@@ -49,7 +55,7 @@ export default function ProjectHostPage() {
     }
 
     // RENDER
-    return(
+    return (
         <main className="userPage__container">
             {/*<h3>User Page</h3>*/}
             <SideBar
@@ -60,15 +66,18 @@ export default function ProjectHostPage() {
                 projectList={projectList}
                 setProjectList={setProjectList}
             />
-            {!showAddProject
-                ? <ProjectInfo
-                    mediaList={mediaList}
-                    currentProject={currentProject}
-                />
-                : <AddProjectForm
-                    toggleAddProject={toggleAddProject}
-                    getAllProjects={getAllProjects}
-                /> }
+            <ProjectInfo
+                mediaList={mediaList}
+                currentProject={currentProject}
+            />
+            {showAddProject &&
+                <Popup toggle={toggleAddProject}>
+                    <AddProjectForm
+                        toggleAddProject={toggleAddProject}
+                        getAllProjects={getAllProjects}
+                    />
+                </Popup>
+            }
         </main>
     );
 }
