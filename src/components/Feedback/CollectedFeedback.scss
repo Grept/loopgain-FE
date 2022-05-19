@@ -1,0 +1,7 @@
+@import "../../GlobalVariables";
+
+.collected-feedback {
+  height: calc(100vh - #{$navbar_height + $navbar_bottom_border + $footer_heigth});
+  overflow: auto;
+  padding: 0 10px 0 10px;
+}

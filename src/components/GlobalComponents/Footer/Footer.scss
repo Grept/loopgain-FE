@@ -2,7 +2,6 @@
 
 .footer__container {
   background-image: linear-gradient(90deg, $black, $purple 10% 90%, $black);
-  height: 30px;
-
+  height: $footer_heigth;
   margin-top: auto;
 }

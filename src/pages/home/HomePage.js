@@ -17,13 +17,6 @@ export default function HomePage() {
     return (
         <>
             <h1>Home Page</h1>
-            <button onClick={togglePopup}>popup</button>
-            {showPopup &&
-            <Popup>
-                {/*<h1>This is a popup</h1>*/}
-                <AddProjectForm />
-            </Popup>
-            }
         </>
     );
 }

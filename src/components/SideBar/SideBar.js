@@ -5,18 +5,22 @@ import axios from "axios";
 import {logDOM} from "@testing-library/react";
 import {ProjectContext} from "../../context/ProjectContext";
 import {PopupContext} from "../../context/PopupContext";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
 function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrentProject, projectList, setProjectList}) {
 
     // STATE
-    const {setProject} = useContext(ProjectContext)
+    const {setProject, project, projectCollection, setProjectCollection} = useContext(ProjectContext)
     const {togglePopup} = useContext(PopupContext)
 
 
     // EFFECTS
     useEffect(() => {
-        console.log("project list changed...")
-    }, [projectList])
+        console.log("projectCollection:")
+        console.log(projectCollection)
+        console.log("projectList:")
+        console.log(projectList)
+    }, [projectCollection])
 
     return(
         <section className="sidebar">
@@ -24,17 +28,21 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
                 <h3>Project List</h3>
                 <ul>
                     {
-                        projectList.map((p) => {
+                        projectCollection.map((p) => {
                             return(
                                 <li key={`${p.id} + ${p.projectName}`}>
                                     <button
-                                        className="projectList__btn"
+                                        className={
+                                            `projectList__btn 
+                                            ${project.projectName === p.projectName ? "selectedProject" : ""}`
+                                        }
                                         onClick={() => {
                                             loadProjectMedia(p.projectMedia);
                                             setProject(p);
                                         }}
                                     >
                                         {p.projectName}
+                                        {/*<ProjectCard project={p}/>*/}
                                     </button>
                                 </li>
                             );

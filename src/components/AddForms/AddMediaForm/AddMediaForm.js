@@ -7,7 +7,7 @@ import "./AddMediaForm.scss";
 function AddMediaForm({toggleShowAddMedia}) {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const {getAllProjects, project: {id}} = useContext(ProjectContext);
+    const {getAllProjects, project, setProject} = useContext(ProjectContext);
 
     async function addMedia(data) {
         console.log(data)
@@ -19,7 +19,7 @@ function AddMediaForm({toggleShowAddMedia}) {
         console.log(formData)
 
         try {
-            const response = await axios.post(`http://localhost:8080/project/${id}/media`, formData, {
+            const response = await axios.post(`http://localhost:8080/project/${project.id}/media`, formData, {
                 headers: {
                     "Content-type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -27,8 +27,9 @@ function AddMediaForm({toggleShowAddMedia}) {
             })
 
             console.log(response)
-            toggleShowAddMedia();
             getAllProjects();
+            setProject(project);
+            toggleShowAddMedia();
         } catch (e) {
             console.error(e);
         }

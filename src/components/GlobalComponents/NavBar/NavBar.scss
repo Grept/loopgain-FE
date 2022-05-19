@@ -5,8 +5,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     background: $black;
-    border-bottom: 7px solid $purple;
-    //border-style: ;
+    border-bottom: $navbar_bottom_border solid $purple;
+    height: $navbar_height;
 }
 
 .logo {

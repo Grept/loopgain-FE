@@ -5,13 +5,14 @@ import AddMediaForm from "../AddForms/AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
 import MediafileCard from "../MediafileCard/MediafileCard";
 import Popup from "../GlobalComponents/Popup/Popup";
-import {PopupContext} from "../../context/PopupContext";
+import VerifyDelete from "../VerifyDelete/VerifyDelete";
+import axios from "axios";
 
 function ProjectInfo() {
 
     const [showAddMedia, setShowAddMedia] = useState(false);
+    const [showVerifyDeleteProject, setShowVerifyDeleteProject] = useState(false);
     const {project} = useContext(ProjectContext);
-    const {showPopup, togglePopup} = useContext(PopupContext);
 
     useEffect(() => {
         console.log("page load")
@@ -26,9 +27,24 @@ function ProjectInfo() {
         setShowAddMedia(!showAddMedia);
     }
 
-    // function reloadPage() {
-    //     window.location.reload(true);
-    // }
+    function toggleShowVerifyDeleteProject() {
+        setShowVerifyDeleteProject(!showVerifyDeleteProject);
+    }
+
+    async function deleteProject() {
+        try {
+            const response = await axios.delete(`http://localhost:8080/user/projects/${project.id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            console.log(response);
+
+        } catch (e) {
+            console.error(e.getMessage)
+        }
+    }
 
     return (
         <main className="projectInfo__container">
@@ -51,9 +67,7 @@ function ProjectInfo() {
                                 <li
                                     key={`${m.id} + ${m.fileName}`}
                                 >
-                                    <Link exact to={`/content/${m.id}`}>
-                                        <MediafileCard mediafile={m}/>
-                                    </Link>
+                                        <MediafileCard mediafile={m} url={`/content/${m.id}`}/>
                                 </li>
                             )
                         })
@@ -66,12 +80,30 @@ function ProjectInfo() {
                     }
                 </section>
 
+                {showVerifyDeleteProject &&
+                    <Popup toggle={toggleShowVerifyDeleteProject}>
+                        <VerifyDelete
+                            togglePopup={toggleShowVerifyDeleteProject}
+                            doDelete={deleteProject}
+                            itemName={project.projectName}
+                        />
+                    </Popup>
+                }
+
                 <button
                     type="button"
                     className="projectInfo__btn-addMedia"
+                    disabled={project.id === null}
                     onClick={toggleShowAddMedia}
                 >
                     Add Media File
+                </button>
+                <button
+                    type="button"
+                    onClick={toggleShowVerifyDeleteProject}
+                    disabled={project.id === null}
+                >
+                    Delete Project
                 </button>
             </section>
         </main>

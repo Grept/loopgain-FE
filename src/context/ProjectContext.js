@@ -7,13 +7,22 @@ export default function ProjectContextProvider({children}) {
 
     const [project, setProject] = useState({
         id: null,
-        projectName: "PROJECT",
+        projectName: "NO PROJECT SELECTED",
         director: null,
         producer: null,
         projectMedia: []
     })
 
     const [projectCollection, setProjectCollection] =useState([])
+
+    useEffect(() => {
+        getAllProjects();
+    }, [])
+
+    useEffect(() => {
+        console.log("Project Collection:")
+        console.log(projectCollection)
+    }, [projectCollection])
 
     useEffect(() => {
         console.log("project changed")
@@ -28,8 +37,9 @@ export default function ProjectContextProvider({children}) {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-
-            setProjectCollection([...projectCollection, userProjects])
+            console.log("userProjects:")
+            console.log(userProjects)
+            setProjectCollection(userProjects)
         } catch (e) {
             console.log(e);
         }
@@ -38,6 +48,7 @@ export default function ProjectContextProvider({children}) {
     const data = {
         project: project,
         setProject: setProject,
+        projectCollection: projectCollection,
         getAllProjects: getAllProjects
     };
 

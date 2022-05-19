@@ -7,6 +7,7 @@ import AddProjectForm from "../../components/AddForms/AddProjectForm/AddProjectF
 import {set} from "react-hook-form";
 import Popup from "../../components/GlobalComponents/Popup/Popup";
 import {PopupContext} from "../../context/PopupContext";
+import {ProjectContext} from "../../context/ProjectContext";
 
 export default function ProjectHostPage() {
 
@@ -17,7 +18,7 @@ export default function ProjectHostPage() {
     const [projectList, setProjectList] = useState([]);
 
     // CONTEXT
-    const {showPopup} = useContext(PopupContext)
+    const {projectCollection, setProjectCollection} = useContext(ProjectContext)
 
     // EFFECT
     useEffect(() => {
@@ -59,6 +60,7 @@ export default function ProjectHostPage() {
         <main className="userPage__container">
             {/*<h3>User Page</h3>*/}
             <SideBar
+                currentProject={currentProject}
                 setCurrentProject={setCurrentProject}
                 showAddProject={showAddProject}
                 toggleAddProject={toggleAddProject}

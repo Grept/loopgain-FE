@@ -2,13 +2,13 @@ import React, {useContext} from "react";
 import "./AddProjectForm.scss"
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {PopupContext} from "../../../context/PopupContext";
+import {ProjectContext} from "../../../context/ProjectContext";
 
-function AddProjectForm({toggleAddProject, getAllProjects}) {
+function AddProjectForm({toggleAddProject}) {
 
     const {register, handleSubmit, formState: {errors}} = useForm()
 
-    const {togglePopup} = useContext(PopupContext)
+    const {getAllProjects} = useContext(ProjectContext)
 
     async function addProject(data) {
         // console.log(data);
@@ -24,7 +24,7 @@ function AddProjectForm({toggleAddProject, getAllProjects}) {
             )
 
             getAllProjects();
-            togglePopup()
+            toggleAddProject()
         } catch (e) {
             console.error(e)
         }
