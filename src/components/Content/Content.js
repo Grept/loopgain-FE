@@ -8,11 +8,12 @@ import axios from "axios";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
 function Content({id}) {
-
     const [currentMedia, setCurrentMedia] = useState({})
     const {time, setTime, playHead, setPlayHead} = useContext(MediaPlayerContext)
 
     useEffect(() => {
+        let keysPressed = {};
+
         const player = document.getElementById("player");
         player.addEventListener("timeupdate", () => {
             setTime(player.currentTime);
@@ -38,6 +39,7 @@ function Content({id}) {
         }
 
         getContent(id);
+
     }, [])
 
     useEffect(() => {

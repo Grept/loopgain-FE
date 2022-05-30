@@ -11,12 +11,13 @@
 
 .projectInfo__container > * {
   margin-top: 0;
+
 }
 
 .projectInfo__list-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-grow: 1;
 }
 
@@ -24,8 +25,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid $purple;
+  //border-bottom: 1px solid $purple;
+  background-image: linear-gradient($purple, $black 90%);
   margin-bottom: 10px;
+}
+
+.projectInfo__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .projectInfo__info-title {
@@ -34,6 +42,56 @@
 }
 
 .projectInfo__btn-addMedia {
-  justify-self: flex-end;
+  background: $lightPurple;
+  color: $darkBlue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0 7px 7px 7px;
+  font-size: 20px;
 }
+
+.projectInfo__btn-addMedia:active {
+  background: $lightBlue;
+  color: $purple;
+}
+
+.projectInfo__btn-addMedia:disabled {
+  background: $lightPurple;
+  color: grey;
+}
+
+.projectInfo__btn-addMedia:disabled:active {
+  color: grey;
+}
+
+.projectInfo__btn-deleteProject {
+  background: $lightPurple;
+  color: $darkBlue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0 7px 7px 7px;
+  font-size: 20px;
+}
+
+.projectInfo__btn-deleteProject:active {
+  background: $lightBlue;
+  color: $purple;
+}
+
+.projectInfo__btn-deleteProject:disabled {
+  background: $lightPurple;
+  color: grey;
+}
+
+.projectInfo__btn-deleteProject:disabled:active {
+  color: grey;
+}
+
+
 

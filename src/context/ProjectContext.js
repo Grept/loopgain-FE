@@ -37,19 +37,34 @@ export default function ProjectContextProvider({children}) {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log("userProjects:")
-            console.log(userProjects)
             setProjectCollection(userProjects)
         } catch (e) {
             console.log(e);
         }
     }
 
+    async function getProject(projectId) {
+        console.log("Request project")
+        try {
+            const response = await axios.get(`http://localhost:8080/user/projects/${projectId}`, {
+                headers: {
+                    "Content-Type" : "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            setProject(response.data)
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+
     const data = {
         project: project,
         setProject: setProject,
         projectCollection: projectCollection,
-        getAllProjects: getAllProjects
+        getAllProjects: getAllProjects,
+        getProject: getProject
     };
 
     return(

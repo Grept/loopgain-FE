@@ -1,18 +1,17 @@
 @import "../../GlobalVariables";
 
 .contentReviewPage {
-  //background: yellow;
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  //height: calc(100vh - 110.5px - 30px);
-  height: calc(100vh - 110.5px - 30px);
+  height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+  overflow: auto;
 }
 
 .contentReviewPage__feedback {
   width: 300px;
   max-width: 300px;
-  height: 70%;
+  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+  overflow: hidden;
 }
 
 .contentReviewPage__liveContainer {
@@ -25,9 +24,6 @@
   justify-content: space-between;
 }
 
-.contentReviewPage__content {
-
-}
 
 //.contentReviewPage__commentInput {
 //  flex-grow: 1;

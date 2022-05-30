@@ -14,15 +14,6 @@ function ProjectInfo() {
     const [showVerifyDeleteProject, setShowVerifyDeleteProject] = useState(false);
     const {project} = useContext(ProjectContext);
 
-    useEffect(() => {
-        console.log("page load")
-        console.log(project)
-    }, [])
-
-    useEffect(() => {
-        console.log(`showAddMedia: ${showAddMedia}`);
-    }, [showAddMedia])
-
     function toggleShowAddMedia() {
         setShowAddMedia(!showAddMedia);
     }
@@ -33,13 +24,13 @@ function ProjectInfo() {
 
     async function deleteProject() {
         try {
-            const response = await axios.delete(`http://localhost:8080/user/projects/${project.id}`, {
+            const {response: {data}} = await axios.delete(`http://localhost:8080/user/projects/${project.id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(response);
+            console.log(data);
 
         } catch (e) {
             console.error(e.getMessage)
@@ -57,39 +48,39 @@ function ProjectInfo() {
             </section>
 
             <section className="projectInfo__list-container">
-                <section className="projectInfo__list">
-                    <h3 className="projectInfo__header">Project Media:</h3>
+                <h3 className="projectInfo__header">Project Media:</h3>
 
-                    <ul>
-                        {project &&
-                        project.projectMedia.map((m) => {
-                            return (
-                                <li
-                                    key={`${m.id} + ${m.fileName}`}
-                                >
-                                        <MediafileCard mediafile={m} url={`/content/${m.id}`}/>
-                                </li>
-                            )
-                        })
-                        }
-                    </ul>
-                    {showAddMedia &&
-                        <Popup toggle={toggleShowAddMedia}>
-                            <AddMediaForm toggleShowAddMedia={toggleShowAddMedia}/>
-                        </Popup>
+                <ul className="projectInfo__list">
+                    {project &&
+                    project.projectMedia.map((m) => {
+                        return (
+                            <li
+                                key={`${m.id} + ${m.fileName}`}
+                            >
+                                <MediafileCard mediafile={m} url={`/content/${m.id}`}/>
+                            </li>
+                        )
+                    })
                     }
-                </section>
+                </ul>
 
-                {showVerifyDeleteProject &&
-                    <Popup toggle={toggleShowVerifyDeleteProject}>
-                        <VerifyDelete
-                            togglePopup={toggleShowVerifyDeleteProject}
-                            doDelete={deleteProject}
-                            itemName={project.projectName}
-                        />
-                    </Popup>
+                {showAddMedia &&
+                <Popup toggle={toggleShowAddMedia}>
+                    <AddMediaForm toggleShowAddMedia={toggleShowAddMedia}/>
+                </Popup>
                 }
 
+                {showVerifyDeleteProject &&
+                <Popup toggle={toggleShowVerifyDeleteProject}>
+                    <VerifyDelete
+                        togglePopup={toggleShowVerifyDeleteProject}
+                        doDelete={deleteProject}
+                        itemName={project.projectName}
+                    />
+                </Popup>
+                }
+            </section>
+            <section className="projectInfo__btn">
                 <button
                     type="button"
                     className="projectInfo__btn-addMedia"
@@ -99,6 +90,7 @@ function ProjectInfo() {
                     Add Media File
                 </button>
                 <button
+                    className="projectInfo__btn-deleteProject"
                     type="button"
                     onClick={toggleShowVerifyDeleteProject}
                     disabled={project.id === null}

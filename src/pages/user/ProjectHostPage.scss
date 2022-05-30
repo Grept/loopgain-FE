@@ -1,3 +1,7 @@
+@import "../../GlobalVariables";
+
 .userPage__container {
   display: flex;
+  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+  overflow: auto;
 }

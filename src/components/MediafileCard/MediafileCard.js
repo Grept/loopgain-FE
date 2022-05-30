@@ -30,8 +30,7 @@ export default function MediafileCard({mediafile, url}) {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(response);
-
+            console.log(response.data);
 
         } catch (e) {
             console.error(e.getMessage)

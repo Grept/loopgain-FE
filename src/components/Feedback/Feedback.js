@@ -1,10 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./Feedback.scss"
 import Comment from "../Comment/Comment";
 import {withRouter} from "react-router-dom";
 import axios from "axios";
 
 function Feedback({commentList, setCommentList, mediaId}) {
+
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
 
@@ -22,7 +24,7 @@ function Feedback({commentList, setCommentList, mediaId}) {
     function saveFeedback() {
         if (commentList.length !== 0) {
             console.log("save all comments...")
-            requestNewFeedbackString();
+            postNewFeedbackString();
         } else {
             console.log("no comments in list...")
         }
@@ -31,7 +33,7 @@ function Feedback({commentList, setCommentList, mediaId}) {
 
     // Deze methode moet echt een andere naam krijgen.
     // Misschien combineren met saveFeedback
-    async function requestNewFeedbackString() {
+    async function postNewFeedbackString() {
         console.log("commentList: ")
         console.log(commentList)
         try {

@@ -1,16 +1,37 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Content from "../../components/Content/Content";
 import CommentInput from "../../components/CommentInput/CommentInput";
 import Feedback from "../../components/Feedback/Feedback";
 import "./ContentReviewPage.scss"
+import axios from "axios";
 
 export default function ContentReviewPage() {
 
     const [commentList, setCommentList] = useState([]);
     const {id} = useParams();
 
-    return(
+    useEffect(() => {
+        async function getUserFeedbackString(mediaId) {
+            try {
+                const {data: {commentList}} = await axios.get(`http://localhost:8080/feedback/${mediaId}`, {
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                });
+
+                setCommentList(commentList)
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        getUserFeedbackString(id)
+
+    }, [])
+
+    return (
         <>
             <main className="contentReviewPage">
                 <div className="contentReviewPage__liveContainer">
