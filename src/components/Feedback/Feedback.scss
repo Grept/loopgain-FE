@@ -5,21 +5,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0;
+  padding: 5px;
+  margin: 10px 10px 0 10px;
+  border-radius: 10px;
+  border: 1px solid $purple;
   width: 200px;
-  max-width: 200px;
-  //height: 100%;
 
+  max-height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_heigth});
   color: $lightBlue;
   background: $darkBlue;
+
+}
+
+.feedback__list--container {
+  margin: 0;
+
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .feedback__list {
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .feedback__btn-save {
-  margin-top: 20px;
+  margin: 20px 0 10px 0;
   align-self: center;
   background: $lightPurple;
   color: $darkBlue;

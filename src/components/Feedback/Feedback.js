@@ -1,51 +1,73 @@
 import React, {useEffect, useState} from "react";
 import "./Feedback.scss"
 import Comment from "../Comment/Comment";
-import {withRouter} from "react-router-dom";
 import axios from "axios";
+import Popup from "../GlobalComponents/Popup/Popup";
 
-function Feedback({commentList, setCommentList, mediaId}) {
+function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString}) {
 
-    const [comments, setComments] = useState([]);
+    const [saveFeedbackMessage, setSaveFeedbackMessage] = useState();
 
-    useEffect(() => {
+    const [showSaveAlert, setShowSaveAlert] = useState(false);
 
-    }, [])
+    function toggleShowSaveAlert() {
+        setShowSaveAlert(!showSaveAlert);
+    }
 
     function removeComment(comment) {
         const newList = commentList.filter((element) => {
             return element !== comment;
         })
 
-        console.log(newList);
+        // Comments coming from the DB already have an ID. Those comments we also need to delete from the DB.
+        // If a comment does not have an ID, that means it is not in the DB so we dont have to make a
+        // DELETE-request to the DB; we'll skip this step.
+        if (comment.id !== undefined) {
+            deleteCommentFromFeedbackString(comment);
+        }
+
         setCommentList(newList);
     }
 
+    async function deleteCommentFromFeedbackString(comment) {
+        try {
+            // Use comment ID to delete comment
+            await axios.delete(`http://localhost:8080/media/${mediaId}/comments/${comment.id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     function saveFeedback() {
+        // Check if feedbackstring contains any comments.
         if (commentList.length !== 0) {
-            console.log("save all comments...")
             postNewFeedbackString();
+            setSaveFeedbackMessage("Feedback String Saved.")
         } else {
-            console.log("no comments in list...")
+            setSaveFeedbackMessage("There were no comments in the Feedback String. Nothing saved.")
         }
 
     }
 
-    // Deze methode moet echt een andere naam krijgen.
-    // Misschien combineren met saveFeedback
     async function postNewFeedbackString() {
-        console.log("commentList: ")
-        console.log(commentList)
         try {
-            const response = await axios.post(`http://localhost:8080/media/${mediaId}/feedback`, commentList,{
+            await axios.post(`http://localhost:8080/media/${mediaId}/feedback`, commentList, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             });
 
-            console.log("Created feedback String")
-            console.log(response)
+            // Do a new request for the feedbackstring so all comments have ID's.
+            // This is necessary so they can be deleted without having to reload the page.
+            getUserFeedbackString(mediaId);
+
         } catch (e) {
             console.error(e);
         }
@@ -53,9 +75,9 @@ function Feedback({commentList, setCommentList, mediaId}) {
 
     return (
         <div className="feedback">
-            <section className="feedback__list">
+            <section className="feedback__list--container">
                 <h2 className="feedback__header">Feedback String</h2>
-                <ul>
+                <ul className="feedback__list">
                     {commentList &&
                     commentList.map((comment) => {
                         return (
@@ -70,11 +92,21 @@ function Feedback({commentList, setCommentList, mediaId}) {
                     }
                 </ul>
             </section>
-            <button className="feedback__btn-save" onClick={saveFeedback}>
+
+            <button className="feedback__btn-save" onClick={() => {
+                saveFeedback();
+                toggleShowSaveAlert();
+            }}>
                 Save Feedback
             </button>
+
+            {showSaveAlert &&
+            <Popup toggle={toggleShowSaveAlert}>
+                <h3>{saveFeedbackMessage}</h3>
+            </Popup>
+            }
         </div>
     );
 }
 
-export default withRouter(Feedback);
+export default Feedback;

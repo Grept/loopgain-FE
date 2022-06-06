@@ -6,13 +6,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 100%;
+  max-height: 200px;
 
   padding: 0 20px 0px 20px;
+  margin-top: 3vh;
   font-family: $mainFont;
-  background-image: linear-gradient($black 15%, $purple, $black 85%);
+  background: $darkBlue;
+  border-radius: 10px;
+  border: 1px solid $purple;
 }
 
+.newCommentForm {
+  display: flex;
+  flex-direction: row;
+}
 
 .textArea__container {
   width: 500px;
@@ -36,8 +43,8 @@
 
 .commentInput__buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-around;
   flex-grow: 1;
   margin: 20px 0 0 0;
 

@@ -109,7 +109,7 @@ export default function CommentInput({commentList, setCommentList}) {
         <>
             <div className="commentInput__container">
                 <Counter className="commentInput__counter"/>
-                <form id="newCommentForm" onSubmit={handleSubmit(procesComment)}>
+                <form class="newCommentForm" id="newCommentForm" onSubmit={handleSubmit(procesComment)}>
                     <div className="textArea__container">
                         <textarea
                             className="commentInput__textarea"

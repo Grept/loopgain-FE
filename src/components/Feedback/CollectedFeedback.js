@@ -5,17 +5,38 @@ import "./CollectedFeedback.scss"
 
 export default function CollectedFeedback({mediaData, currentComment, setCurrentComment}) {
 
-    const {feedbackStringDtoList: feedbackStrings} = mediaData
+    const {feedbackStringDtoList: feedbackStringList} = mediaData
+    // const [commentCollection, setCommentCollection] = useState([]);
+
+    // useEffect(() => {
+    //     console.log("feedbackStringList");
+    //     console.log(feedbackStringList);
+    //
+    //
+    //     feedbackStringList.map((string) => {
+    //         string.commentList.map((c) => {
+    //             setCommentCollection(commentCollection.push(c));
+    //         })
+    //     })
+    //
+    //
+    //     console.log("commentCollection")
+    //     console.log(commentCollection)
+    //
+    // }, [])
+
+    // function sortCommentsByTime() {
+    //     const commentsByTime = commentCollection.sort((a, b) => a.timeStamp - b.timeStamp)
+    //     setCommentCollection(commentsByTime);
+    // }
 
     return (
         <div className="collected-feedback">
             <section className="collected-feedback__list">
                 <h2 className="collected-feedback__header">Collected Feedback</h2>
-                <button>Sort by Reviewer</button>
-                <button>Sort by Time</button>
                 <ul>
-                    {feedbackStrings &&
-                    feedbackStrings.map((feedbackString) => {
+                    {feedbackStringList &&
+                    feedbackStringList.map((feedbackString) => {
                         return (
                             <>
                                 <h3>{feedbackString.reviewer}</h3>

@@ -1,4 +1,5 @@
 import React from "react";
+import "./VerifyDelete.scss";
 
 export default function VerifyDelete({togglePopup, doDelete, itemName}) {
 
@@ -11,9 +12,11 @@ export default function VerifyDelete({togglePopup, doDelete, itemName}) {
     return (
       <section className="verifyDelete__container">
           <h3>Attention!</h3>
-          <p>Are you sure you want to delete "{itemName}" from this project?</p>
-          <button onClick={togglePopup}>CANCEL</button>
-          <button onClick={verifyDelete}>DELETE</button>
+          <p>Are you sure you want to delete <strong>"{itemName}"</strong>?</p>
+          <div className="verify__btns">
+              <button className="verify__btn" onClick={togglePopup}>cancel</button>
+              <button className="verify__btn" onClick={verifyDelete}>delete</button>
+          </div>
       </section>
     );
 }

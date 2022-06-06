@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Content from "../../components/Content/Content";
-import CommentInput from "../../components/CommentInput/CommentInput";
-import Feedback from "../../components/Feedback/Feedback";
 import "./ContentViewPage.scss"
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import CollectedFeedback from "../../components/Feedback/CollectedFeedback";
-import {set} from "react-hook-form";
+import CurrentComment from "../../components/CurrentComment/CurrentComment";
 
 export default function ContentViewPage() {
 
@@ -34,6 +32,7 @@ export default function ContentViewPage() {
         }
 
         getMediaData();
+
     }, [])
 
     return(
@@ -43,6 +42,10 @@ export default function ContentViewPage() {
                     className="contentViewPage__content"
                     id={id}
                 />
+
+                <CurrentComment currenComment={currentComment}>
+
+                </CurrentComment>
             </div>
 
             <CollectedFeedback

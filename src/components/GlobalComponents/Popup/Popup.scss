@@ -16,16 +16,14 @@
 }
 
 .popup__window {
-  background: $purple;
+  //background: $purple;
   height: content-box;
   width: content-box;
-  border-radius: 5%;
-  border: 2px solid $lightBlue;
+  //border-radius: 5%;
+  //border: 2px solid $lightBlue;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 
 }

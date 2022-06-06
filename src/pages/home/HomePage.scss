@@ -1,0 +1,10 @@
+@import "../../GlobalVariables";
+
+
+.bg_img {
+  width: 100%;
+  opacity: 30%;
+  //box-shadow: 60px 30px 20px 20px black inset;
+  //filter: grayscale(100%);
+  background: linear-gradient(top $black 0%, $lightBlue 80%);
+}

@@ -1,0 +1,35 @@
+@import "../../GlobalVariables";
+
+.verifyDelete__container {
+  background-image: linear-gradient($purple 50%, $black);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid $lightBlue;
+  border-radius: 15px;
+  //border-bottom: none;
+  max-height: 400px;
+}
+
+.verify__btn {
+  margin-top: 20px;
+  margin-left: 10px;
+  align-self: center;
+  background: $lightPurple;
+  color: $darkBlue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.verify__btn:active {
+  background: $lightBlue;
+  color: $purple;
+}
+
+.verify__btns {
+  display: flex;
+  justify-content: flex-end;
+}

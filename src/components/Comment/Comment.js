@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import "./Comment.scss"
 import {withRouter} from "react-router-dom";
 import formatCurrentTime from "../../helpers/formatCurrentTime";
@@ -8,7 +8,7 @@ import {AuthContext} from "../../context/AuthContext";
     function Comment({comment, reviewer, removeComment, currentComment, setCurrentComment}) {
 
     const {time, setPlayHead} = useContext(MediaPlayerContext);
-    const {user} = useContext(AuthContext)
+    const {user} = useContext(AuthContext);
 
     function playerToTimestamp() {
         console.log(`Video to timestamp ${formatCurrentTime(comment.timeStamp)}.`);
@@ -16,7 +16,9 @@ import {AuthContext} from "../../context/AuthContext";
     }
 
     function isCurrentComment() {
-        if(time >= comment.timeStamp){
+        if(time === comment.timeStamp){
+            console.log("currentComment")
+            console.log(comment)
             return true
         }
     }

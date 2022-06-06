@@ -1,9 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import video_1 from "../../assets/__TEST-MEDIA__/ledl-trailer-Apple Devices HD (Most Compatible).m4v"
-import video_2 from "../../assets/__TEST-MEDIA__/sputum-trailer-Apple Devices HD (Most Compatible).m4v"
-
 import "./Content.scss";
-import {withRouter} from "react-router-dom";
 import axios from "axios";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
@@ -12,7 +8,6 @@ function Content({id}) {
     const {time, setTime, playHead, setPlayHead} = useContext(MediaPlayerContext)
 
     useEffect(() => {
-        let keysPressed = {};
 
         const player = document.getElementById("player");
         player.addEventListener("timeupdate", () => {

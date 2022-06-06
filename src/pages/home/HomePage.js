@@ -1,14 +1,12 @@
 import React, {useContext, useEffect} from "react";
 import {ProjectContext} from "../../context/ProjectContext";
-import Popup from "../../components/GlobalComponents/Popup/Popup";
-import {PopupContext} from "../../context/PopupContext";
-import Counter from "../../components/Counter/Counter";
-import AddProjectForm from "../../components/AddForms/AddProjectForm/AddProjectForm";
+import background_image from "../../assets/images/background_filmmaking_02.jpg"
+import "./HomePage.scss";
 
 export default function HomePage() {
 
     const {project} = useContext(ProjectContext);
-    const {showPopup, togglePopup} = useContext(PopupContext);
+
 
     useEffect(() => {
         console.log(project);
@@ -17,6 +15,7 @@ export default function HomePage() {
     return (
         <>
             <h1>Home Page</h1>
+            <img className="bg_img" src={background_image} alt=""/>
         </>
     );
 }

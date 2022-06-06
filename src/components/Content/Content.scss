@@ -1,6 +1,4 @@
 .content__container {
-  //height: 100%;
-  //width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +8,9 @@
 }
 
 .content__videoplayer {
-  //border: 2px solid blue;
   width: calc(100% - 200px);
   height: auto;
   max-height: 100%;
   max-width: 100%;
+  aspect-ratio: 16/9;
 }

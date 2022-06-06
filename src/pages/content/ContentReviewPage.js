@@ -12,24 +12,23 @@ export default function ContentReviewPage() {
     const {id} = useParams();
 
     useEffect(() => {
-        async function getUserFeedbackString(mediaId) {
-            try {
-                const {data: {commentList}} = await axios.get(`http://localhost:8080/feedback/${mediaId}`, {
-                    headers: {
-                        "Content-type": "application/json",
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
-                    }
-                });
-
-                setCommentList(commentList)
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
         getUserFeedbackString(id)
-
     }, [])
+
+    async function getUserFeedbackString(mediaId) {
+        try {
+            const {data: {commentList}} = await axios.get(`http://localhost:8080/media/${mediaId}/feedback`, {
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+
+            setCommentList(commentList)
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     return (
         <>
@@ -50,6 +49,7 @@ export default function ContentReviewPage() {
                     commentList={commentList}
                     setCommentList={setCommentList}
                     mediaId={id}
+                    getUserFeedbackString={getUserFeedbackString}
                 />
             </main>
         </>
