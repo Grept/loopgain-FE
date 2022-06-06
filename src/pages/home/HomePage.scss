@@ -1,10 +1,12 @@
 @import "../../GlobalVariables";
 
 
-.bg_img {
+.homepage__container {
   width: 100%;
+  height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_heigth});
+
   opacity: 30%;
   //box-shadow: 60px 30px 20px 20px black inset;
   //filter: grayscale(100%);
-  background: linear-gradient(top $black 0%, $lightBlue 80%);
+  background-image: url("../../assets/images/background_filmmaking_02.jpg");
 }

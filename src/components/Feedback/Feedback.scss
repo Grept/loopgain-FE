@@ -52,3 +52,24 @@
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
 }
+
+.message__container {
+  background-image: linear-gradient($purple 50%, $black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border: 2px solid $lightBlue;
+  border-radius: 15px;
+  //border-bottom: none;
+  max-height: 400px;
+}
+
+.message__header {
+  color: $white;
+  align-self: center;
+}
+
+.message__text {
+  color: $white;
+}

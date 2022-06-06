@@ -14,8 +14,11 @@ export default function HomePage() {
 
     return (
         <>
-            <h1>Home Page</h1>
-            <img className="bg_img" src={background_image} alt=""/>
+            <main className="homepage__container">
+                <h1>Home Page</h1>
+
+            </main>
+            {/*<img className="bg_img" src={background_image} alt=""/>*/}
         </>
     );
 }

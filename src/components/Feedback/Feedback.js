@@ -102,7 +102,10 @@ function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString})
 
             {showSaveAlert &&
             <Popup toggle={toggleShowSaveAlert}>
-                <h3>{saveFeedbackMessage}</h3>
+                <section className="message__container">
+                    <h3 className="message__header">Attention!</h3>
+                    <p className="message__text">The feedbackstring has been saved.</p>
+                </section>
             </Popup>
             }
         </div>
