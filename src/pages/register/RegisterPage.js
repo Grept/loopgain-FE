@@ -5,22 +5,22 @@ import axios from "axios";
 import {useHistory} from "react-router-dom";
 
 export default function RegisterPage() {
-
-    const {register, handleSubmit, formState: {errors}} = useForm()
     const history = useHistory();
 
-    async function registerNewUser(data) {
-        // console.log(data)
+    // HOOKS
+    const {register, handleSubmit, formState: {errors}} = useForm();
 
+    // METHODS
+    async function registerNewUser(data) {
         try {
-            const response = await axios.post("http://localhost:8080/register", data)
-            // console.log(response);
-            history.push("/signin")
+            await axios.post("http://localhost:8080/register", data);
+            history.push("/signin");
         } catch (e) {
             console.log(e);
         }
     }
 
+    // RENDER
     return (
         <main className="register__page">
             <div className="register__container">

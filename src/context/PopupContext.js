@@ -4,6 +4,8 @@ export const PopupContext = createContext({})
 
 export default function PopupContextProvider({children}) {
 
+    // WEG???
+
     const [showPopup, setShowPopup] = useState(false);
 
     useEffect(() => {

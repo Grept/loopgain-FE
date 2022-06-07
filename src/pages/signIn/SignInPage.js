@@ -6,15 +6,18 @@ import {AuthContext} from "../../context/AuthContext";
 
 function SignInPage() {
 
+    // HOOKS
     const {loginFunction} = useContext(AuthContext);
     const {register, handleSubmit, formState: {errors}} = useForm()
 
+    // METHODS
     async function requestLogin(data) {
         try {
             const {headers: {authorization: bearerToken}} = await axios.post('http://localhost:8080/auth', {
                     username: data.username,
                     password: data.password
             });
+
             const jwtToken = bearerToken.slice(7);
             loginFunction(jwtToken);
         } catch (e) {

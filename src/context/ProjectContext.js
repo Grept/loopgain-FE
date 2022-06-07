@@ -5,6 +5,7 @@ export const ProjectContext = createContext({});
 
 export default function ProjectContextProvider({children}) {
 
+    // HOOKS
     const [project, setProject] = useState({
         id: null,
         projectName: "NO PROJECT SELECTED",
@@ -13,21 +14,13 @@ export default function ProjectContextProvider({children}) {
         projectMedia: []
     })
 
-    const [projectCollection, setProjectCollection] =useState([])
+    const [projectCollection, setProjectCollection] = useState([])
 
     useEffect(() => {
         getAllProjects();
     }, [])
 
-    useEffect(() => {
-        console.log("Project Collection:")
-        console.log(projectCollection)
-    }, [projectCollection])
-
-    useEffect(() => {
-        console.log("project changed")
-    }, [project])
-
+    // METHODS
     async function getAllProjects() {
         console.log("Request project List")
         try {
@@ -58,7 +51,6 @@ export default function ProjectContextProvider({children}) {
         }
     }
 
-
     const data = {
         project: project,
         setProject: setProject,
@@ -67,6 +59,7 @@ export default function ProjectContextProvider({children}) {
         getProject: getProject
     };
 
+    // RENDER
     return(
         <ProjectContext.Provider value={data}>
             {children}

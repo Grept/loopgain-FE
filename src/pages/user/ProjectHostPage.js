@@ -1,26 +1,21 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ProjectInfo from "../../components/ProjectInfo/ProjectInfo";
 import "./ProjectHostPage.scss";
 import axios from "axios";
 import AddProjectForm from "../../components/AddForms/AddProjectForm/AddProjectForm";
-import {set} from "react-hook-form";
 import Popup from "../../components/GlobalComponents/Popup/Popup";
-import {PopupContext} from "../../context/PopupContext";
-import {ProjectContext} from "../../context/ProjectContext";
 
 export default function ProjectHostPage() {
 
-    // STATE
+    // HOOKS
     const [showAddProject, setShowAddProject] = useState(false);
-    const [mediaList, setMediaList] = useState([{projectName: "testname"}]);
-    const [currentProject, setCurrentProject] = useState({projectMedia: []});
+    const [mediaList, setMediaList] = useState();
+    const [currentProject, setCurrentProject] = useState();
     const [projectList, setProjectList] = useState([]);
 
-    // CONTEXT
-    const {projectCollection, setProjectCollection} = useContext(ProjectContext)
+    // const {projectCollection, setProjectCollection} = useContext(ProjectContext)
 
-    // EFFECT
     useEffect(() => {
         getAllProjects();
     }, [])
@@ -32,7 +27,6 @@ export default function ProjectHostPage() {
 
     // METHODS
     function toggleAddProject() {
-        console.log("toggleAddProject")
         setShowAddProject(!showAddProject);
     }
 
@@ -58,7 +52,6 @@ export default function ProjectHostPage() {
     // RENDER
     return (
         <main className="userPage__container">
-            {/*<h3>User Page</h3>*/}
             <SideBar
                 currentProject={currentProject}
                 setCurrentProject={setCurrentProject}

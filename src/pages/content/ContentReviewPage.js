@@ -8,6 +8,7 @@ import axios from "axios";
 
 export default function ContentReviewPage() {
 
+    // HOOKS
     const [commentList, setCommentList] = useState([]);
     const {id} = useParams();
 
@@ -15,6 +16,7 @@ export default function ContentReviewPage() {
         getUserFeedbackString(id)
     }, [])
 
+    // METHODS
     async function getUserFeedbackString(mediaId) {
         try {
             const {data: {commentList}} = await axios.get(`http://localhost:8080/media/${mediaId}/feedback`, {
@@ -30,6 +32,7 @@ export default function ContentReviewPage() {
         }
     }
 
+    // RENDER
     return (
         <>
             <main className="contentReviewPage">

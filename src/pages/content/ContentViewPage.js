@@ -10,46 +10,40 @@ import {FeedbackContext} from "../../context/FeedbackContext";
 
 export default function ContentViewPage() {
 
+    // HOOKS
     const [mediaData, setMediaData] = useState({});
     const [currentComment, setCurrentComment] = useState()
     const {id} = useParams();
 
-    const {setCommentCollection, commentCollection} = useContext(FeedbackContext);
+    const {setCommentCollection} = useContext(FeedbackContext);
 
     useEffect(() => {
         async function getMediaData() {
             try {
-                const response = await axios.get(`http://localhost:8080/media/${id}/data`, {
+                const {data} = await axios.get(`http://localhost:8080/media/${id}/data`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 })
 
-                console.log("Media Metadata:");
-                console.log(response);
-
                 const commentCollection = [];
-                response.data.feedbackStringDtoList.map(s => s.commentList.map(c => {
+                data.feedbackStringDtoList.map(s => s.commentList.map(c => {
                     c.reviewer = s.reviewer;
                     return commentCollection.push(c);
                 }))
 
-                console.log("commentCollection:");
-                console.log(commentCollection);
-
-                setMediaData(response.data);
+                setMediaData(data);
                 setCommentCollection(commentCollection)
             } catch (e) {
                 console.error(e)
             }
         }
 
-        console.log("Going to fetch media data")
         getMediaData();
-
     }, [])
 
+    // RENDER
     return (
         <main className="contentViewPage">
             <div className="contentViewPage__liveContainer">
@@ -57,7 +51,6 @@ export default function ContentViewPage() {
                     className="contentViewPage__content"
                     id={id}
                 />
-
                 <CommentDisplay className="contentViewPage__commentDisplay"/>
             </div>
 

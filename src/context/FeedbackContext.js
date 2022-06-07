@@ -5,6 +5,7 @@ export const FeedbackContext = createContext({});
 
 export default function FeedbackContextProvider({children}) {
 
+    // HOOKS
     const {time} = useContext(MediaPlayerContext);
     const [commentCollection, setCommentCollection] = useState()
     const [currentComment, setCurrentComment] = useState({})
@@ -13,6 +14,7 @@ export default function FeedbackContextProvider({children}) {
         commentCollection && findCurrentComment();
     }, [time])
 
+    // METHODS
     function findCurrentComment() {
         const currentTime = Math.floor(time);
         const comment = commentCollection.find(c => Math.floor(c.timeStamp) === currentTime)
@@ -28,6 +30,7 @@ export default function FeedbackContextProvider({children}) {
         currentComment:currentComment
     }
 
+    // RENDER
     return(
         <FeedbackContext.Provider value={data}>
             {children}

@@ -1,18 +1,18 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
 import MediafileCard from "../../components/MediafileCard/MediafileCard";
 import "./ReviewRequestsPage.scss"
 
 export default function ReviewRequestsPage() {
 
+    // HOOKS
     const [allMedia, setAllMedia] = useState([])
 
     useEffect(() => {
-        console.log("ReviewRequestPage Loaded...")
         getAllMedia();
     }, [])
 
+    // METHODS
     async function getAllMedia() {
         try {
             const {data: response} = await axios.get("http://localhost:8080/media", {
@@ -27,7 +27,7 @@ export default function ReviewRequestsPage() {
         }
     }
 
-
+    // RENDER
     return (
         <main className="reviewRequestPage">
             <h1 className="reviewRequestPage__header">Review Request Page</h1>

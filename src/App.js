@@ -16,7 +16,6 @@ import ReviewRequestsPage from "./pages/user/ReviewRequestsPage";
 import RolesRoute from "./components/GlobalComponents/PrivateRoute/RolesRoute";
 import ContentReviewPage from "./pages/content/ContentReviewPage";
 import MediaPlayerContextProvider from "./context/MediaPlayerContext";
-import Popup from "./components/GlobalComponents/Popup/Popup";
 import PopupContextProvider from "./context/PopupContext";
 import FeedbackContextProvider from "./context/FeedbackContext";
 
@@ -33,25 +32,31 @@ function App() {
                                     <Route exact path="/">
                                         <HomePage/>
                                     </Route>
+
                                     <Route exact path="/signin">
                                         <SignInPage/>
                                     </Route>
+
                                     <Route exact path="/register">
                                         <RegisterPage/>
                                     </Route>
+
                                     <AuthRoute exact path="/user">
                                         <UserPage/>
                                     </AuthRoute>
+
                                     <AuthRoute exact path="/projecthost">
                                         <RolesRoute allowedRole="PROJECT_HOST">
                                             <ProjectHostPage/>
                                         </RolesRoute>
                                     </AuthRoute>
+
                                     <AuthRoute exact path="/review-requests">
                                         <RolesRoute allowedRole="REVIEWER">
                                             <ReviewRequestsPage/>
                                         </RolesRoute>
                                     </AuthRoute>
+
                                     <AuthRoute exact path="/content/:id">
                                         <RolesRoute allowedRole="PROJECT_HOST">
                                             <MediaPlayerContextProvider>
@@ -61,6 +66,7 @@ function App() {
                                             </MediaPlayerContextProvider>
                                         </RolesRoute>
                                     </AuthRoute>
+
                                     <AuthRoute exact path="/content-review/:id">
                                         <RolesRoute allowedRole="REVIEWER">
                                             <MediaPlayerContextProvider>

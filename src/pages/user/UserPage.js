@@ -1,20 +1,14 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import {Redirect} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 
 export default function UserPage() {
     const {user} = useContext(AuthContext)
 
-    useEffect(() => {
-        console.log("UserPage Loaded...")
-        console.log(user)
-    }, [])
-
     if(user.role === "PROJECT_HOST") {
         console.log("role:" + user.role)
         return(
             <>
-                {console.log("Redirect to projecthost")}
                 <Redirect exact to="projecthost" />
             </>
         );
@@ -22,13 +16,8 @@ export default function UserPage() {
         console.log("role:" + user.role)
         return(
             <>
-                {console.log("Redirect to review-request")}
                 <Redirect exact to="review-requests" />
             </>
         );
-
     }
-
-
-
 }

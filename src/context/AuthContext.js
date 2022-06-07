@@ -1,12 +1,13 @@
 import React, {createContext, useEffect, useState} from "react";
-import jwtDecode from "jwt-decode";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 
 export const AuthContext = createContext({})
 
 export default function AuthContextProvider({children}) {
+    const history = useHistory();
 
+    // HOOKS
     const [userAuth, setUserAuth] = useState({
         isAuth: false,
         user: {},
@@ -31,8 +32,7 @@ export default function AuthContextProvider({children}) {
         console.log(userAuth);
     }, [userAuth])
 
-    const history = useHistory();
-
+    // METHODS
     async function getUserData(jwtToken) {
         try {
             const {data} = await axios.get(`http://localhost:8080/getUserData`, {
@@ -41,8 +41,6 @@ export default function AuthContextProvider({children}) {
                     Authorization: `Bearer ${jwtToken}`
                 }
             })
-            console.log("getUserData response:")
-            console.log(data);
 
             setUserAuth({
                 ...userAuth,
@@ -59,9 +57,7 @@ export default function AuthContextProvider({children}) {
     }
 
     function logIn(jwtToken) {
-        // console.log("in login function...")
         localStorage.setItem("token", jwtToken);
-        // console.log("token: " + localStorage.getItem("token"));
         getUserData(localStorage.getItem("token"));
     }
 
@@ -85,6 +81,7 @@ export default function AuthContextProvider({children}) {
         logoutFunction: logOut
     }
 
+    // RENDER
     return(
         <AuthContext.Provider value={data}>
             {children}
