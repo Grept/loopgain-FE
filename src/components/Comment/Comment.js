@@ -5,7 +5,7 @@ import formatCurrentTime from "../../helpers/formatCurrentTime";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 import {AuthContext} from "../../context/AuthContext";
 
-    function Comment({comment, reviewer, removeComment, currentComment, setCurrentComment}) {
+    function Comment({comment, removeComment}) {
 
     const {time, setPlayHead} = useContext(MediaPlayerContext);
     const {user} = useContext(AuthContext);
@@ -34,7 +34,7 @@ import {AuthContext} from "../../context/AuthContext";
                     {comment.commentText}
                 </p>
                 <p className="comment__reviewer">
-                    {reviewer}
+                    {comment.reviewer}
                 </p>
             </div>
             {user.role === "REVIEWER" &&
