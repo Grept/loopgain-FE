@@ -8,7 +8,7 @@ function SignInPage() {
 
     // HOOKS
     const {loginFunction} = useContext(AuthContext);
-    const {register, handleSubmit, formState: {errors}} = useForm()
+    const {register, handleSubmit, formState: {errors}} = useForm();
 
     // METHODS
     async function requestLogin(data) {
@@ -25,6 +25,7 @@ function SignInPage() {
         }
     }
 
+    // RENDER
     return(
         <main className="signInPage">
             <div className="signIn__container">

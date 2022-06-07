@@ -1,8 +1,16 @@
 @import "../../../GlobalVariables";
 
 .footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   height: $footer_height;
   margin-top: auto;
 
   background-image: linear-gradient(90deg, $black, $purple 10% 90%, $black);
+}
+
+.footer__text {
+  font-size: 12px;
 }
