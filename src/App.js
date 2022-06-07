@@ -18,6 +18,7 @@ import ContentReviewPage from "./pages/content/ContentReviewPage";
 import MediaPlayerContextProvider from "./context/MediaPlayerContext";
 import Popup from "./components/GlobalComponents/Popup/Popup";
 import PopupContextProvider from "./context/PopupContext";
+import FeedbackContextProvider from "./context/FeedbackContext";
 
 function App() {
     return (
@@ -54,7 +55,9 @@ function App() {
                                     <AuthRoute exact path="/content/:id">
                                         <RolesRoute allowedRole="PROJECT_HOST">
                                             <MediaPlayerContextProvider>
-                                                <ContentViewPage/>
+                                                <FeedbackContextProvider>
+                                                    <ContentViewPage/>
+                                                </FeedbackContextProvider>
                                             </MediaPlayerContextProvider>
                                         </RolesRoute>
                                     </AuthRoute>

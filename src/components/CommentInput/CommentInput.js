@@ -115,7 +115,9 @@ export default function CommentInput({commentList, setCommentList}) {
                             className="commentInput__textarea"
                             {...register("commentText")}
                             id="commentInput"
-                            placeholder="Write your comment..."
+                            placeholder="Write your comment...&#10;Press SHIFT + ENTER to push to string"
+
+
                         />
                     </div>
                     <div className="commentInput__buttons">

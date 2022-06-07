@@ -4,18 +4,23 @@ $test: $navbar_height;
 
 .contentViewPage {
   display: flex;
-  max-height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_heigth});
-  overflow: auto;
-  //background: beige;
+  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+  //overflow: auto;
+  background-image: linear-gradient(black 66vh, $black);
 }
 
 .contentViewPage__liveContainer {
   height: 100%;
   width: 4/5frac;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+
 .contentViewPage__feedback {
-  max-height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_heigth});
+  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
   border: 2px solid red;
   width: 1/5frac;
 }

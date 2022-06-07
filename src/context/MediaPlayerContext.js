@@ -12,7 +12,6 @@ export default function MediaPlayerContextProvider({children}) {
         setTime: setTime,
         playHead: playHead,
         setPlayHead: setPlayHead
-
     }
 
     return(

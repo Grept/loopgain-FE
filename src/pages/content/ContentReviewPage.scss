@@ -5,6 +5,7 @@
   justify-content: space-between;
   height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
   overflow: hidden;
+  background-image: linear-gradient(black 66vh, $black)
 }
 
 .contentReviewPage__feedback {
