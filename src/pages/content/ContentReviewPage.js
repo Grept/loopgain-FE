@@ -18,6 +18,7 @@ export default function ContentReviewPage() {
 
     // METHODS
     async function getUserFeedbackString(mediaId) {
+        // The backend API makes sure only feedback owned by the logged-in user gets retrieved.
         try {
             const {data: {commentList}} = await axios.get(`http://localhost:8080/media/${mediaId}/feedback`, {
                 headers: {

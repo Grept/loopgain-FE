@@ -39,13 +39,13 @@ export default function ProjectContextProvider({children}) {
     async function getProject(projectId) {
         console.log("Request project")
         try {
-            const response = await axios.get(`http://localhost:8080/user/projects/${projectId}`, {
+            const {data} = await axios.get(`http://localhost:8080/user/projects/${projectId}`, {
                 headers: {
                     "Content-Type" : "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            setProject(response.data)
+            setProject(data)
         } catch (e) {
             console.error(e);
         }

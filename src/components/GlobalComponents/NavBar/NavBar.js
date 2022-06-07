@@ -1,15 +1,16 @@
 import React, {useContext} from "react";
-import {Link, useHistory, withRouter} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import logo from "../../../assets/logos/loopgain_gradient_circle-play.svg";
 import "./NavBar.scss";
 import {AuthContext} from "../../../context/AuthContext";
 
-function Navbar() {
+export default function Navbar() {
 
+    // HOOKS
     const history = useHistory();
     const {auth, logoutFunction, user} = useContext(AuthContext);
 
-
+    // RENDER
     return(
         <nav>
             <Link exact to="/">
@@ -62,5 +63,3 @@ function Navbar() {
         </nav>
     );
 }
-
-export default Navbar;

@@ -16,7 +16,6 @@ import ReviewRequestsPage from "./pages/user/ReviewRequestsPage";
 import RolesRoute from "./components/GlobalComponents/PrivateRoute/RolesRoute";
 import ContentReviewPage from "./pages/content/ContentReviewPage";
 import MediaPlayerContextProvider from "./context/MediaPlayerContext";
-import PopupContextProvider from "./context/PopupContext";
 import FeedbackContextProvider from "./context/FeedbackContext";
 
 function App() {
@@ -26,58 +25,56 @@ function App() {
                 <div className="container__inner">
                     <Navbar/>
                     <ProjectContextProvider>
-                        <PopupContextProvider>
-                            <div className="content">
-                                <Switch>
-                                    <Route exact path="/">
-                                        <HomePage/>
-                                    </Route>
+                        <div className="content">
+                            <Switch>
+                                <Route exact path="/">
+                                    <HomePage/>
+                                </Route>
 
-                                    <Route exact path="/signin">
-                                        <SignInPage/>
-                                    </Route>
+                                <Route exact path="/signin">
+                                    <SignInPage/>
+                                </Route>
 
-                                    <Route exact path="/register">
-                                        <RegisterPage/>
-                                    </Route>
+                                <Route exact path="/register">
+                                    <RegisterPage/>
+                                </Route>
 
-                                    <AuthRoute exact path="/user">
-                                        <UserPage/>
-                                    </AuthRoute>
+                                <AuthRoute exact path="/user">
+                                    <UserPage/>
+                                </AuthRoute>
 
-                                    <AuthRoute exact path="/projecthost">
-                                        <RolesRoute allowedRole="PROJECT_HOST">
-                                            <ProjectHostPage/>
-                                        </RolesRoute>
-                                    </AuthRoute>
+                                <AuthRoute exact path="/projecthost">
+                                    <RolesRoute allowedRole="PROJECT_HOST">
+                                        <ProjectHostPage/>
+                                    </RolesRoute>
+                                </AuthRoute>
 
-                                    <AuthRoute exact path="/review-requests">
-                                        <RolesRoute allowedRole="REVIEWER">
-                                            <ReviewRequestsPage/>
-                                        </RolesRoute>
-                                    </AuthRoute>
+                                <AuthRoute exact path="/review-requests">
+                                    <RolesRoute allowedRole="REVIEWER">
+                                        <ReviewRequestsPage/>
+                                    </RolesRoute>
+                                </AuthRoute>
 
-                                    <AuthRoute exact path="/content/:id">
-                                        <RolesRoute allowedRole="PROJECT_HOST">
-                                            <MediaPlayerContextProvider>
-                                                <FeedbackContextProvider>
-                                                    <ContentViewPage/>
-                                                </FeedbackContextProvider>
-                                            </MediaPlayerContextProvider>
-                                        </RolesRoute>
-                                    </AuthRoute>
+                                <AuthRoute exact path="/content/:id">
+                                    <RolesRoute allowedRole="PROJECT_HOST">
+                                        <MediaPlayerContextProvider>
+                                            <FeedbackContextProvider>
+                                                <ContentViewPage/>
+                                            </FeedbackContextProvider>
+                                        </MediaPlayerContextProvider>
+                                    </RolesRoute>
+                                </AuthRoute>
 
-                                    <AuthRoute exact path="/content-review/:id">
-                                        <RolesRoute allowedRole="REVIEWER">
-                                            <MediaPlayerContextProvider>
-                                                <ContentReviewPage/>
-                                            </MediaPlayerContextProvider>
-                                        </RolesRoute>
-                                    </AuthRoute>
+                                <AuthRoute exact path="/content-review/:id">
+                                    <RolesRoute allowedRole="REVIEWER">
+                                        <MediaPlayerContextProvider>
+                                            <ContentReviewPage/>
+                                        </MediaPlayerContextProvider>
+                                    </RolesRoute>
+                                </AuthRoute>
 
-                                </Switch>
-                            </div>
-                        </PopupContextProvider>
+                            </Switch>
+                        </div>
                     </ProjectContextProvider>
                     <Footer/>
                 </div>

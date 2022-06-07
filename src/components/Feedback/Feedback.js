@@ -4,12 +4,13 @@ import Comment from "../Comment/Comment";
 import axios from "axios";
 import Popup from "../GlobalComponents/Popup/Popup";
 
-function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString}) {
+export default function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString}) {
 
+    // HOOKS
     const [saveFeedbackMessage, setSaveFeedbackMessage] = useState();
-
     const [showSaveAlert, setShowSaveAlert] = useState(false);
 
+    // METHODS
     function toggleShowSaveAlert() {
         setShowSaveAlert(!showSaveAlert);
     }
@@ -38,7 +39,6 @@ function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString})
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-
         } catch (e) {
             console.error(e);
         }
@@ -47,15 +47,15 @@ function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString})
     function saveFeedback() {
         // Check if feedbackstring contains any comments.
         if (commentList.length !== 0) {
-            postNewFeedbackString();
-            setSaveFeedbackMessage("Feedback String Saved.")
+            uploadNewFeedbackString();
+            setSaveFeedbackMessage("The Feedback String has been saved.")
         } else {
             setSaveFeedbackMessage("There were no comments in the Feedback String. Nothing saved.")
         }
 
     }
 
-    async function postNewFeedbackString() {
+    async function uploadNewFeedbackString() {
         try {
             await axios.post(`http://localhost:8080/media/${mediaId}/feedback`, commentList, {
                 headers: {
@@ -67,12 +67,12 @@ function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString})
             // Do a new request for the feedbackstring so all comments have ID's.
             // This is necessary so they can be deleted without having to reload the page.
             getUserFeedbackString(mediaId);
-
         } catch (e) {
             console.error(e);
         }
     }
 
+    // RENDER
     return (
         <div className="feedback">
             <section className="feedback__list--container">
@@ -104,12 +104,10 @@ function Feedback({commentList, setCommentList, mediaId, getUserFeedbackString})
             <Popup toggle={toggleShowSaveAlert}>
                 <section className="message__container">
                     <h3 className="message__header">Attention!</h3>
-                    <p className="message__text">The feedbackstring has been saved.</p>
+                    <p className="message__text">{saveFeedbackMessage}</p>
                 </section>
             </Popup>
             }
         </div>
     );
 }
-
-export default Feedback;

@@ -1,28 +1,27 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import "./Comment.scss"
-import {withRouter} from "react-router-dom";
 import formatCurrentTime from "../../helpers/formatCurrentTime";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 import {AuthContext} from "../../context/AuthContext";
 
-    function Comment({comment, removeComment}) {
+export default function Comment({comment, removeComment}) {
 
+    // HOOKS
     const {time, setPlayHead} = useContext(MediaPlayerContext);
     const {user} = useContext(AuthContext);
 
+    // METHODS
     function playerToTimestamp() {
-        console.log(`Video to timestamp ${formatCurrentTime(comment.timeStamp)}.`);
-        setPlayHead(comment.timeStamp)
+        setPlayHead(comment.timeStamp);
     }
 
     function isCurrentComment() {
-        if(time === comment.timeStamp){
-            console.log("currentComment")
-            console.log(comment)
-            return true
+        if (time === comment.timeStamp) {
+            return true;
         }
     }
 
+    // RENDER
     return (
         <div className="comment-card">
             <div
@@ -38,14 +37,12 @@ import {AuthContext} from "../../context/AuthContext";
                 </p>
             </div>
             {user.role === "REVIEWER" &&
-                <button className="comment-card__btn" onClick={() => {
-                    removeComment(comment);
-                }}>
-                    <strong>x</strong>
-                </button>
+            <button className="comment-card__btn" onClick={() => {
+                removeComment(comment);
+            }}>
+                <strong>x</strong>
+            </button>
             }
         </div>
     );
 }
-
-export default withRouter(Comment);

@@ -1,27 +1,13 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import "./SideBar.scss";
-import {Link, withRouter} from "react-router-dom";
-import axios from "axios";
-import {logDOM} from "@testing-library/react";
 import {ProjectContext} from "../../context/ProjectContext";
-import {PopupContext} from "../../context/PopupContext";
-import ProjectCard from "../ProjectCard/ProjectCard";
 
-function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrentProject, projectList, setProjectList}) {
+export default function SideBar({toggleAddProject, loadProjectMedia}) {
 
-    // STATE
-    const {setProject, project, projectCollection, setProjectCollection} = useContext(ProjectContext)
-    const {togglePopup} = useContext(PopupContext)
+    // HOOKS
+    const {setProject, project, projectCollection} = useContext(ProjectContext)
 
-
-    // EFFECTS
-    useEffect(() => {
-        console.log("projectCollection:")
-        console.log(projectCollection)
-        console.log("projectList:")
-        console.log(projectList)
-    }, [projectCollection])
-
+    // RENDER
     return(
         <section className="sidebar">
             <section className="sidebar__projectList">
@@ -42,7 +28,6 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
                                         }}
                                     >
                                         {p.projectName}
-                                        {/*<ProjectCard project={p}/>*/}
                                     </button>
                                 </li>
                             );
@@ -55,7 +40,6 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
                 type="button"
                 onClick={() => {
                     toggleAddProject();
-                    togglePopup();
                 }}
             >
                 Add New Project
@@ -63,5 +47,3 @@ function SideBar({toggleAddProject, showAddProject, loadProjectMedia, setCurrent
         </section>
     );
 }
-
-export default withRouter(SideBar);

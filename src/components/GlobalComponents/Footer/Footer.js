@@ -1,16 +1,12 @@
 import React from "react";
 import "./Footer.scss"
-import {withRouter} from "react-router-dom";
 
-function Footer() {
+export default function Footer() {
 
+    // RENDER
     return(
         <>
-            <div className="footer__container">
-
-            </div>
+            <div className="footer__container"/>
         </>
     );
 }
-
-export default withRouter(Footer);

@@ -1,6 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import "./ProjectInfo.scss"
-import {Link, withRouter} from "react-router-dom";
 import AddMediaForm from "../AddForms/AddMediaForm/AddMediaForm";
 import {ProjectContext} from "../../context/ProjectContext";
 import MediafileCard from "../MediafileCard/MediafileCard";
@@ -10,10 +9,13 @@ import axios from "axios";
 
 function ProjectInfo() {
 
+    // HOOKS
     const [showAddMedia, setShowAddMedia] = useState(false);
     const [showVerifyDeleteProject, setShowVerifyDeleteProject] = useState(false);
-    const {project} = useContext(ProjectContext);
 
+    const {project, getAllProjects} = useContext(ProjectContext);
+
+    // METHODS
     function toggleShowAddMedia() {
         setShowAddMedia(!showAddMedia);
     }
@@ -24,19 +26,20 @@ function ProjectInfo() {
 
     async function deleteProject() {
         try {
-            const {response: {data}} = await axios.delete(`http://localhost:8080/user/projects/${project.id}`, {
+            await axios.delete(`http://localhost:8080/user/projects/${project.id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(data);
 
+            getAllProjects();
         } catch (e) {
             console.error(e.getMessage)
         }
     }
 
+    // RENDER
     return (
         <main className="projectInfo__container">
             <section className="projectInfo__info">
@@ -80,6 +83,7 @@ function ProjectInfo() {
                 </Popup>
                 }
             </section>
+
             <section className="projectInfo__btn">
                 <button
                     type="button"
@@ -102,4 +106,4 @@ function ProjectInfo() {
     );
 }
 
-export default withRouter(ProjectInfo);
+export default ProjectInfo;

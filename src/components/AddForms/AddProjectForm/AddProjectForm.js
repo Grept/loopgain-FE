@@ -4,17 +4,17 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {ProjectContext} from "../../../context/ProjectContext";
 
-function AddProjectForm({toggleAddProject}) {
+export default function AddProjectForm({toggleAddProject}) {
 
+    // HOOKS
     const {register, handleSubmit, formState: {errors}} = useForm()
 
     const {getAllProjects} = useContext(ProjectContext)
 
+    // METHODS
     async function addProject(data) {
-        // console.log(data);
-
         try {
-            const response = await axios.post("http://localhost:8080/user/projects", data, {
+            await axios.post("http://localhost:8080/user/projects", data, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -30,6 +30,7 @@ function AddProjectForm({toggleAddProject}) {
         }
     }
 
+    // RENDER
     return (
         <section className="addProject">
             <div className="addProject__container">
@@ -81,5 +82,3 @@ function AddProjectForm({toggleAddProject}) {
         </section>
     );
 }
-
-export default AddProjectForm;

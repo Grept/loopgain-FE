@@ -4,21 +4,21 @@ import axios from "axios";
 import {ProjectContext} from "../../../context/ProjectContext";
 import "./AddMediaForm.scss";
 
-function AddMediaForm({toggleShowAddMedia}) {
+export default function AddMediaForm({toggleShowAddMedia}) {
 
+    // HOOKS
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const {getAllProjects, project, setProject, getProject} = useContext(ProjectContext);
+    const {project, getProject} = useContext(ProjectContext);
 
+    // METHODS
     async function addMedia(data) {
-        console.log(data)
-
         // Omdat we een multipart-file sturen (de video-file) gebruiken we formData om mee te geven aan axios.
         const formData = new FormData();
         formData.append("fileName", data.fileName);
         formData.append("file", data.file[0]);
 
         try {
-            const response = await axios.post(`http://localhost:8080/project/${project.id}/media`, formData, {
+            await axios.post(`http://localhost:8080/project/${project.id}/media`, formData, {
                 headers: {
                     "Content-type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -27,12 +27,12 @@ function AddMediaForm({toggleShowAddMedia}) {
 
             toggleShowAddMedia();
             getProject(project.id)
-            // setProject(getProject(project.id));
         } catch (e) {
             console.error(e);
         }
     }
 
+    // RENDER
     return(
         <>
             <section className="addMedia">
@@ -79,4 +79,3 @@ function AddMediaForm({toggleShowAddMedia}) {
     );
 }
 
-export default AddMediaForm

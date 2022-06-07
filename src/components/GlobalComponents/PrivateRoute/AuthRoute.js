@@ -4,8 +4,10 @@ import {Redirect, Route} from "react-router-dom";
 
 export default function AuthRoute({children, ...rest}) {
 
+    // HOOKS
     const {auth} = useContext(AuthContext)
 
+    // RENDER
     return(
         <Route {...rest}>
             {auth ? children : <Redirect to="/signin" />}

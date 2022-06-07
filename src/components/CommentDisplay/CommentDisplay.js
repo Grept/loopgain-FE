@@ -5,14 +5,10 @@ import formatCurrentTime from "../../helpers/formatCurrentTime";
 
 export default function CommentDisplay() {
 
+    // HOOKS
     const {commentCollection, currentComment} = useContext(FeedbackContext)
 
-    useEffect(() => {
-        commentCollection && console.log("CommentDisplay Logs:")
-        commentCollection && console.log(commentCollection)
-    }, [])
-
-
+    // RENDER
     return (
         <>
             <section className="commentDisplay__container">

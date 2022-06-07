@@ -3,12 +3,13 @@ import "./VerifyDelete.scss";
 
 export default function VerifyDelete({togglePopup, doDelete, itemName}) {
 
+    // METHODS
     function verifyDelete() {
-        console.log("About to delete...")
         doDelete()
         togglePopup();
     }
 
+    // RENDER
     return (
       <section className="verifyDelete__container">
           <h3>Attention!</h3>

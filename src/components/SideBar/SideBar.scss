@@ -13,29 +13,12 @@
 
 }
 
-//.sidebar__userDetails {
-//  display: flex;
-//  flex-direction: column;
-//  align-items: center;
-//  justify-content: flex-start;
-//  background: $darkBlue;
-//  color: $lightBlue;
-//  padding: 20px;
-//  flex-grow: 0;
-//
-//}
-
-//.sidebar__userDetails > * {
-//  margin: 0 0 3px 0;
-//}
-
 .sidebar__projectList {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-  //flex-grow: 5;
   padding: 0 10px 0 10px;
 
 }
@@ -60,6 +43,8 @@ ul {
 
 .selectedProject {
   color: $lightBlue;
+  position: relative;
+  right: 20px;
 }
 
 .projectList__btn-addNew {

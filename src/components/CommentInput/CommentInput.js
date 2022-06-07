@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import "./CommentInput.scss"
 import Counter from "../Counter/Counter";
-import {withRouter} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {MediaPlayerContext} from "../../context/MediaPlayerContext";
 
@@ -10,10 +9,10 @@ export default function CommentInput({commentList, setCommentList}) {
     // HOOKS
     const [composingComment, setComposingComment] = useState(false);
     const [commentTime, setCommentTime] = useState(0);
-    const {time} = useContext(MediaPlayerContext)
-    const {register, handleSubmit, formState:{errors}} = useForm();
 
-    // STATE
+    const {time} = useContext(MediaPlayerContext)
+    const {register, handleSubmit, formState: {errors}} = useForm();
+
     useEffect(() => {
         /* Check if a comment is being typed */
         const textArea = document.getElementById("commentInput");
@@ -31,9 +30,7 @@ export default function CommentInput({commentList, setCommentList}) {
             keysPressed[e.key] = true;
 
             // Checks if Shift and Enter are being pressed
-            if(keysPressed["Shift"] && e.key == "Enter"){
-                console.log("shift + enter...")
-                console.log(keysPressed)
+            if (keysPressed["Shift"] && e.key == "Enter") {
                 submitBtn.click();
                 e.preventDefault();
             }
@@ -46,22 +43,14 @@ export default function CommentInput({commentList, setCommentList}) {
     }, [])
 
     useEffect(() => {
-        console.log("Composing comment?: " + composingComment)
-        console.log(time)
         setCommentTime(time)
     }, [composingComment])
 
-    useEffect(() => {
-        console.log("commentListChanged:")
-        console.log(commentList);
-
-    },[commentList])
-
     // METHODS
-    function checkIfEmpty(){
+    function checkIfEmpty() {
         // Check if a comment is being composed. If user is writing, save current time.
         const field = this.value;
-        if(field !== "") {
+        if (field !== "") {
             setComposingComment(true);
         } else {
             setComposingComment(false)
@@ -69,16 +58,16 @@ export default function CommentInput({commentList, setCommentList}) {
     }
 
     function procesComment(data) {
-        console.log("process comment...")
         // Empty comments are ignored
-        if(data.commentText !== "") {
+        if (data.commentText !== "") {
             const newComment = {...data, timeStamp: commentTime};
 
             // Duplicate comments are ignored
             // This also solves the unique-key problem in the commentList li-items
-            if(!commentAlreadyInList(newComment)) {
+            if (!commentAlreadyInList(newComment)) {
                 addCommentToList(newComment);
             } else {
+                // No need to make a visual alert for the user. This would distract.
                 console.log("comment already exists...")
             }
         }
@@ -105,19 +94,17 @@ export default function CommentInput({commentList, setCommentList}) {
     }
 
     // RENDER
-    return(
+    return (
         <>
             <div className="commentInput__container">
                 <Counter className="commentInput__counter"/>
-                <form class="newCommentForm" id="newCommentForm" onSubmit={handleSubmit(procesComment)}>
+                <form className="newCommentForm" id="newCommentForm" onSubmit={handleSubmit(procesComment)}>
                     <div className="textArea__container">
                         <textarea
                             className="commentInput__textarea"
                             {...register("commentText")}
                             id="commentInput"
                             placeholder="Write your comment...&#10;Press SHIFT + ENTER to push to string"
-
-
                         />
                     </div>
                     <div className="commentInput__buttons">

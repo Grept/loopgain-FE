@@ -1,24 +1,25 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import Comment from "../Comment/Comment";
 import "./CollectedFeedback.scss"
 import {FeedbackContext} from "../../context/FeedbackContext";
 
-export default function CollectedFeedback({setCurrentComment}) {
+export default function CollectedFeedback() {
 
-    const {commentCollection, setCommentCollection, currentComment} = useContext(FeedbackContext)
+    // HOOKS
+    const {commentCollection, setCommentCollection} = useContext(FeedbackContext)
 
+    // METHODS
     function sortByReviewer() {
         const sortedList = commentCollection.sort((a, b) => a.reviewer > b.reviewer ? 1 : -1);
-        // console.log(sortedList)
         setCommentCollection([...sortedList]);
     }
 
     function sortByTimeStamp() {
         const sortedList = commentCollection.sort((a, b) => a.timeStamp > b.timeStamp ? 1 : -1);
-        // console.log(sortedList)
         setCommentCollection([...sortedList]);
     }
 
+    // RENDER
     return (
         <div className="collected-feedback">
             <h2 className="collected-feedback__header">Collected Feedback</h2>
@@ -40,18 +41,13 @@ export default function CollectedFeedback({setCurrentComment}) {
                             >
                                 <Comment
                                     comment={comment}
-                                    reviewer={comment.reviewer}
-                                    currentComment={currentComment}
                                 />
                             </li>
                         )
                     })
                     }
-
                 </ul>
             </section>
-
         </div>
-    )
-        ;
+    );
 }

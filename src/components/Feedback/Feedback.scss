@@ -11,7 +11,7 @@
   border: 1px solid $purple;
   width: 200px;
 
-  max-height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_heigth});
+  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth} - 30px);
   color: $lightBlue;
   background: $darkBlue;
 
