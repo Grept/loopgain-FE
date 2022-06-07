@@ -2,6 +2,7 @@
 
 .userPage__container {
   display: flex;
-  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+
+  max-height: calc(100vh - #{$navbar_full_height} - #{$footer_height});
   overflow: auto;
 }

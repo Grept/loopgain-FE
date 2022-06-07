@@ -19,8 +19,8 @@ export default function FeedbackContextProvider({children}) {
         const currentTime = Math.floor(time);
         const comment = commentCollection.find(c => Math.floor(c.timeStamp) === currentTime)
 
-        // Omdat find undefined teruggeeft wanneer er niets gevonden wordt moet hier gechecked worden
-        // of comment wel een waarde heeft.
+        // Beceause find returns undefined when nothing is found we'll check if commend is defined before we pass
+        // it to the function setCurrentComment().
         comment && setCurrentComment(comment);
     }
 

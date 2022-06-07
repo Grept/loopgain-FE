@@ -7,21 +7,19 @@
 
   width: 100%;
   height: 100vh;
-
-  background: rgb(0, 0, 0, 0.5);
   overflow: hidden;
 
+  background: rgb(0, 0, 0, 0.5);
 }
 
 .popup__window {
-  height: content-box;
-
-  position: relative;
-  top: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  top: 100%;
+
+  height: content-box;
 
   animation: slide 0.4s forwards;
 }
@@ -30,5 +28,4 @@
   100% {
     top: calc(100% / 2 - 250px);
   }
-
 }

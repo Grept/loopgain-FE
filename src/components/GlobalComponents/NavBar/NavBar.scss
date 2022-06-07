@@ -4,9 +4,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: $black;
-    border-bottom: $navbar_bottom_border solid $purple;
+
     height: $navbar_height;
+    border-bottom: $navbar_bottom_border solid $purple;
+
+    background: $black;
 }
 
 .logo {
@@ -28,18 +30,21 @@ nav {
     display: flex;
     justify-content: space-between;
     align-content: center;
+
     margin: 10px;
+
     font-family: $mainFont;
 }
 
 .account__btn {
-    font-family: inherit;
-    font-size: 25px;
     margin-left: 8px;
-    background: none;
     border: none;
     border-radius: 5px;
+
+    background: none;
     color: $white;
+    font-family: $mainFont;
+    font-size: 25px;
     cursor: pointer;
 }
 

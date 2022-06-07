@@ -1,13 +1,14 @@
 @import "../../GlobalVariables";
 
 .collected-feedback {
-  height: calc(100vh - #{$navbar_height + $navbar_bottom_border + $footer_heigth} - 30px);
   max-width: 20%;
-  overflow: auto;
-  padding: 0 10px 0 10px;
+  height: calc(100vh - #{$navbar_height + $navbar_bottom_border + $footer_height} - 30px);
   margin: 10px 10px 0 10px;
+  padding: 0 10px 0 10px;
+  overflow: auto;
   border-radius: 10px;
   border: 1px $purple solid;
+
   background: $darkBlue;
 }
 
@@ -16,15 +17,16 @@
 }
 
 .collected-feedback__btn {
-  //margin-top: 20px;
-  margin-right: 10px;
   align-self: center;
-  background: $lightPurple;
-  color: $darkBlue;
+
+  margin-right: 10px;
+  padding: 5px 5px 5px 5px;
   border: none;
   border-radius: 5px;
-  padding: 5px 5px 5px 5px;
-  font-family: inherit;
+
+  background: $lightPurple;
+  color: $darkBlue;
+  font-family: $mainFont;
   font-size: inherit;
 }
 

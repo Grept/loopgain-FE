@@ -3,25 +3,29 @@
 .register__page {
   display: flex;
   justify-content: center;
+
   font-family: $mainFont;
   font-size: $mainFontSize;
 }
 
 .register__container {
-  background-image: linear-gradient($purple 50%, $black);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+
+  max-height: 500px;
   margin-top: 60px;
+  padding: 20px;
   border: 1px solid $darkBlue;
   border-bottom: none;
   border-radius: 10px;
-  max-height: 500px;
+
+  background-image: linear-gradient($purple 50%, $black);
 }
 
 .register__container-title {
-  margin-top: 0;
   align-self: center;
+
+  margin-top: 0;
 }
 
 .register__form {
@@ -32,10 +36,11 @@
 
 .register__form-field {
   border: 0;
-  background: inherit;
   border-bottom: 1px solid $darkBlue;
+
   font-family: inherit;
   font-size: inherit;
+  background: inherit;
 }
 
 .register__form-field:focus {
@@ -44,28 +49,21 @@
   outline: none;
 }
 
-.register__form-radio {
-
-}
-
 .register__form-btn {
-  margin-top: 20px;
   align-self: center;
-  background: $lightPurple;
-  color: $darkBlue;
+
+  margin-top: 20px;
   border: none;
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
+
+  background: $lightPurple;
+  color: $darkBlue;
   font-family: inherit;
   font-size: inherit;
 }
 
 .register__form-btn:active {
-  margin-top: 20px;
-  align-self: center;
   background: $lightBlue;
   color: $purple;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px 5px 10px;
 }

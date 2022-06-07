@@ -12,7 +12,7 @@ export default function AddMediaForm({toggleShowAddMedia}) {
 
     // METHODS
     async function addMedia(data) {
-        // Omdat we een multipart-file sturen (de video-file) gebruiken we formData om mee te geven aan axios.
+        // We use formData to pass data from a multipart-form (containing a multipart-file) to axios.
         const formData = new FormData();
         formData.append("fileName", data.fileName);
         formData.append("file", data.file[0]);

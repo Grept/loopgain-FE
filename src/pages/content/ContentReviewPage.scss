@@ -3,29 +3,26 @@
 .contentReviewPage {
   display: flex;
   justify-content: space-between;
-  height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+
+  height: calc(100vh - #{$navbar_full_height} - #{$footer_height});
   overflow: hidden;
+
   background-image: linear-gradient(black 66vh, $black)
 }
 
 .contentReviewPage__feedback {
   width: 300px;
   max-width: 300px;
-  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
+  max-height: calc(100vh - #{$navbar_full_height} - #{$footer_height});
   overflow: hidden;
 }
 
 .contentReviewPage__liveContainer {
-  max-height: calc(100vh - #{$navbar_full_heigth} - #{$footer_heigth});
-  //height: 30%;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  flex-grow: 1;
+
+  max-height: calc(100vh - #{$navbar_full_height} - #{$footer_height});
 }
-
-
-//.contentReviewPage__commentInput {
-//  flex-grow: 1;
-//}

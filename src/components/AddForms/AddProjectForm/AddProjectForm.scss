@@ -3,23 +3,27 @@
 .addProject {
   display: flex;
   justify-content: center;
-  font-family: $mainFont;
   flex-grow: 1;
+
+  font-family: $mainFont;
 }
 
 .addProject__container {
-  background-image: linear-gradient($purple 50%, $black);
   display: flex;
   flex-direction: column;
+
+  max-height: 400px;
   padding: 20px;
   border: 2px solid $lightBlue;
   border-radius: 10px;
-  max-height: 400px;
+
+  background-image: linear-gradient($purple 50%, $black);
 }
 
 .addProject__container-title {
-  margin-top: 0;
   align-self: center;
+
+  margin-top: 0;
 }
 
 .addProject__form {
@@ -30,29 +34,33 @@
 
 .addProject__form-field {
   border: 0;
-  background: inherit;
   border-bottom: 1px solid $darkBlue;
+
+  background: inherit;
   font-family: inherit;
   font-size: inherit;
 }
 
 .addProject__form-field:focus {
-  background: inherit;
   border: 0;
   border-bottom: 1px solid $lightBlue;
+
+  background: inherit;
   color: $lightBlue;
   outline: none;
 }
 
 .addProject__form-btn {
-  margin-top: 20px;
   align-self: center;
-  background: $lightPurple;
-  color: $darkBlue;
+
+  margin-top: 20px;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
-  font-family: inherit;
+
+  background: $lightPurple;
+  color: $darkBlue;
+  font-family: $mainFont;
   font-size: inherit;
 }
 

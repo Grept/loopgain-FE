@@ -12,18 +12,16 @@ $black: #222526;
 
 /*Define fonts*/
 //$mainFont: josefin_sansregular;
-$mainFont: Arial;
+$mainFont: "Helvetica Neue";
 $logoFont: oswaldmedium;
 $mainFontSize: 20px;
 
 /*Define Heights*/
 $navbar_height: 97.5;
 $navbar_bottom_border: 7px;
-$navbar_full_heigth: $navbar_height + $navbar_bottom_border;
-$footer_heigth: 30px;
-
-
+$navbar_full_height: $navbar_height + $navbar_bottom_border;
+$footer_height: 30px;
 
 .void { // helper brackets
-  font-family: "Diwan Kufi";
+  font-family: "Helvetica Neue";
 }

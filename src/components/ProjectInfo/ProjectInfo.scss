@@ -1,17 +1,16 @@
 @import "../../GlobalVariables";
 
 .projectInfo__container {
-  margin-top: 0;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 136px);
-
   flex-grow: 1;
+
+  margin-top: 0;
+  height: calc(100vh - 136px);
 }
 
 .projectInfo__container > * {
   margin-top: 0;
-
 }
 
 .projectInfo__list-container {
@@ -25,9 +24,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  //border-bottom: 1px solid $purple;
-  background-image: linear-gradient($purple, $black 90%);
+
   margin-bottom: 10px;
+
+  background-image: linear-gradient($purple, $black 90%);
 }
 
 .projectInfo__list {
@@ -38,19 +38,18 @@
 
 .projectInfo__info-title {
   margin-top: 4px;
-
 }
 
 .projectInfo__btn-addMedia {
-  background: $lightPurple;
-  color: $darkBlue;
+  margin: 0 7px 7px 7px;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0 7px 7px 7px;
-  font-size: 20px;
+
+  background: $lightPurple;
+  color: $darkBlue;
+  font-size: $mainFontSize;
+  font-family: $mainFont;
 }
 
 .projectInfo__btn-addMedia:active {
@@ -68,15 +67,15 @@
 }
 
 .projectInfo__btn-deleteProject {
-  background: $lightPurple;
-  color: $darkBlue;
+  margin: 0 7px 7px 7px;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0 7px 7px 7px;
-  font-size: 20px;
+
+  background: $lightPurple;
+  color: $darkBlue;
+  font-size: $mainFontSize;
+  font-family: $mainFont;
 }
 
 .projectInfo__btn-deleteProject:active {
@@ -92,6 +91,5 @@
 .projectInfo__btn-deleteProject:disabled:active {
   color: grey;
 }
-
 
 

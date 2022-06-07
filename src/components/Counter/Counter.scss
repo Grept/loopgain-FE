@@ -3,13 +3,16 @@
 .counter__container {
   display: flex;
   justify-content: center;
-  background: $purple;
-  border-radius: 7px;
+
   width: 200px;
+  border-radius: 7px;
+
+  background: $purple;
 }
 
 .counter__clock {
-  font-size: 30px;
-  color: $lightPurple;
   margin: 0;
+
+  color: $lightPurple;
+  font-size: 30px;
 }

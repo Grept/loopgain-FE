@@ -1,19 +1,20 @@
 @import "../../GlobalVariables";
 
 .commentInput__container {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 200px;
+  flex-grow: 1;
 
-  padding: 0 20px 0px 20px;
+  max-height: 200px;
   margin-top: 3vh;
-  font-family: $mainFont;
-  background: $darkBlue;
+  padding: 0 20px 0px 20px;
   border-radius: 10px;
   border: 1px solid $purple;
+
+  background: $darkBlue;
+  font-family: $mainFont;
 }
 
 .newCommentForm {
@@ -29,16 +30,18 @@
 .commentInput__counter {
   justify-self: center;
 }
+
 .commentInput__textarea,
 .commentInput__textarea:focus {
-  outline: none;
-  width: 100%;
   height: 100px;
+  width: 100%;
   resize: none;
-  font-size: 20px;
-  background: $lightPurple;
   border-radius: 5px;
+
+  background: $lightPurple;
+  outline: none;
   font-family: $mainFont;
+  font-size: $mainFontSize;
 }
 
 .commentInput__buttons {
@@ -46,40 +49,43 @@
   flex-direction: column;
   justify-content: space-around;
   flex-grow: 1;
-  margin: 20px 0 0 0;
 
+  margin: 20px 0 0 0;
 }
 
 .commentInput__buttons-btn {
   margin: 0 0 0 20px;
-  font-size: $mainFontSize;
-  background: $lightPurple;
-  color: $darkBlue;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+
+  background: $lightPurple;
   font-family: $mainFont;
+  font-size: $mainFontSize;
+  color: $darkBlue;
 }
 
 .commentInput__buttons-btn:active {
   margin: 0 0 0 20px;
-  font-size: $mainFontSize;
-  background: $lightBlue;
-  color: $purple;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+
+  background: $lightBlue;
+  color: $purple;
   font-family: $mainFont;
+  font-size: $mainFontSize;
 }
 
-
-
 .signIn__form-btn:active {
-  margin-top: 20px;
   align-self: center;
-  background: $lightBlue;
-  color: $purple;
+
+  margin-top: 20px;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+
+  background: $lightBlue;
+  color: $purple;
+  font-family: $mainFont;
 }

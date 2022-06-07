@@ -3,25 +3,29 @@
 .signInPage {
   display: flex;
   justify-content: center;
+
   font-family: $mainFont;
   font-size: $mainFontSize;
 }
 
 .signIn__container {
-  background-image: linear-gradient($purple 50%, $black);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+
+  height: 400px;
   margin-top: 60px;
+  padding: 20px;
   border: 1px solid $darkBlue;
   border-bottom: none;
   border-radius: 10px;
-  height: 400px;
+
+  background-image: linear-gradient($purple 50%, $black);
 }
 
 .signIn__container-title {
-  margin-top: 0;
   align-self: center;
+
+  margin-top: 0;
 }
 
 .signIn__form {
@@ -32,36 +36,35 @@
 
 .signIn__form-field {
   border: 0;
-  background: inherit;
   border-bottom: 1px solid $darkBlue;
+
   font-family: $mainFont;
   font-size: $mainFontSize;
+  background: inherit;
 }
 
 .signIn__form-field:focus {
   border-bottom: 1px solid $lightBlue;
-  color: $lightBlue;
   outline: none;
+
+  color: $lightBlue;
 }
 
 .signIn__form-btn {
-  margin-top: 20px;
   align-self: center;
-  background: $lightPurple;
-  color: $darkBlue;
+
+  margin-top: 20px;
+  padding: 5px 10px 5px 10px;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+
+  background: $lightPurple;
+  color: $darkBlue;
   font-family: $mainFont;
   font-size: $mainFontSize;
 }
 
 .signIn__form-btn:active {
-  margin-top: 20px;
-  align-self: center;
   background: $lightBlue;
   color: $purple;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px 5px 10px;
 }

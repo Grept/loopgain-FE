@@ -3,7 +3,7 @@
 
 .homepage__container {
   width: 100%;
-  height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_heigth});
+  height: calc(100vh - #{$navbar_height} - #{$navbar_bottom_border} - #{$footer_height});
 
   opacity: 30%;
   //box-shadow: 60px 30px 20px 20px black inset;

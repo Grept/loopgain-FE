@@ -4,30 +4,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid $white;
+  position: relative;
+
   width: 90%;
   margin: 0 5px 0 5px;
-  position: relative;
+  border-top: 1px solid $white;
 
 }
 
 .comment-card__btn {
-  background: $lightPurple;
-  border-style: none;
-  color: $black;
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
   justify-self: flex-end;
+  align-items: center;
   flex-grow: 0;
   position: absolute;
   right: -8px;
   top: 2px;
+
   height: 1.4em;
   width: 1.4em;
-  font-size: 15px;
+  border-style: none;
+  border-radius: 50%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: $lightPurple;
+  color: $black;
+  font-size: 15px;
+  font: $mainFont;
 }
 
 .highlight {
@@ -43,7 +46,7 @@
 }
 
 .comment-card__btn:hover {
-  // Dit is eigenlijk een border aan de binnenkant van de btn
+  // This forms a border on the inside of the button.
   box-shadow:0 0 0 2px $lightBlue inset;
 }
 
@@ -51,24 +54,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   width: 100%;
-  background-image: linear-gradient($purple, 50%, $black);
   margin: 10px 0 10px 0;
   padding: 0 10px 0 10px;
   border-radius: 10px;
-  box-shadow: 0 8px 12px black;
 
+  background-image: linear-gradient($purple, 50%, $black);
+  box-shadow: 0 8px 12px black;
 }
 
 .comment:active {
-  box-shadow: 0px 4px 6px $black;
+  box-shadow: 0 4px 6px $black;
   color: $lightBlue
 }
 
 .comment__timestamp {
-  margin-bottom: 0;
-  color: $white;
   align-self: center;
+
+  margin-bottom: 0;
+
+  color: $white;
 }
 
 .comment:hover {
