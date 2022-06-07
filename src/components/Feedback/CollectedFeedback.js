@@ -23,8 +23,8 @@ export default function CollectedFeedback({setCurrentComment}) {
         <div className="collected-feedback">
             <h2 className="collected-feedback__header">Collected Feedback</h2>
             <section className="collected-feedback__btns">
-                <button onClick={sortByReviewer}>sort by reviewer</button>
-                <button onClick={sortByTimeStamp}>sort by timestamp</button>
+                <button className="collected-feedback__btn" onClick={sortByReviewer}>sort by reviewer</button>
+                <button className="collected-feedback__btn" onClick={sortByTimeStamp}>sort by timestamp</button>
             </section>
             <section className="collected-feedback__list">
                 <ul>

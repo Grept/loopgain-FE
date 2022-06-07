@@ -16,13 +16,19 @@ export default function CommentDisplay() {
     return (
         <>
             <section className="commentDisplay__container">
-                {(commentCollection) &&
+                {commentCollection &&
                 <div className="commentDisplay__comment">
                     <h3 className="commentDisplay__timestamp">
-                        {formatCurrentTime(currentComment.timeStamp)}
+                        {currentComment.timeStamp &&
+                        formatCurrentTime(currentComment.timeStamp) ||
+                        "Comment Display Field"
+                        }
                     </h3>
                     <p className="commentDisplay__text">
-                        {currentComment.commentText}
+                        {currentComment.commentText &&
+                        currentComment.commentText ||
+                        "Comments will be displayed in this area"
+                        }
                     </p>
                     <p className="commentDisplay__reviewer">
                         {currentComment.reviewer}

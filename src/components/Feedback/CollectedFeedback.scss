@@ -1,14 +1,36 @@
 @import "../../GlobalVariables";
 
 .collected-feedback {
-  height: calc(100vh - #{$navbar_height + $navbar_bottom_border + $footer_heigth} - 15px);
+  height: calc(100vh - #{$navbar_height + $navbar_bottom_border + $footer_heigth} - 30px);
+  max-width: 20%;
   overflow: auto;
   padding: 0 10px 0 10px;
   margin: 10px 10px 0 10px;
   border-radius: 10px;
   border: 1px $purple solid;
   background: $darkBlue;
+}
 
+.collected-feedback__btns {
+  display: flex;
+}
+
+.collected-feedback__btn {
+  //margin-top: 20px;
+  margin-right: 10px;
+  align-self: center;
+  background: $lightPurple;
+  color: $darkBlue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.collected-feedback__btn:active {
+  background: $lightBlue;
+  color: $purple;
 }
 
 .collected-feedback__list {
