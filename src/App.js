@@ -18,7 +18,7 @@ import ContentReviewPage from "./pages/content/ContentReviewPage";
 import MediaPlayerContextProvider from "./context/MediaPlayerContext";
 import FeedbackContextProvider from "./context/FeedbackContext";
 
-function App() {
+export default function App() {
     return (
         <>
             <div className="container__outer">
@@ -82,5 +82,3 @@ function App() {
         </>
     );
 }
-
-export default App;

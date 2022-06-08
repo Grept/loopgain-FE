@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 
-function SignInPage() {
+export default function SignInPage() {
 
     // HOOKS
     const {loginFunction} = useContext(AuthContext);
@@ -58,5 +58,3 @@ function SignInPage() {
         </main>
     );
 }
-
-export default SignInPage;

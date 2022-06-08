@@ -13,7 +13,7 @@ export default function HomePage() {
                         feedback on mediaprojects. Register as a <strong className="keyword">Project-Host</ strong>, create a project, and upload a mediafile that needs reviewing.
                         Uploaded files will show up to users registered as a <strong className="keyword">Reviewer</ strong>. A Reviewer can watch the content and simultaniously write
                         remarks. When remarks are saved they show up for the Project-Host and feedback is
-                        collected. </p>
+                        collected. The comments are associated with a moment in the mediafile via timestamps.</p>
                     <p className="introtext introtext--demo-accounts">Checkout the demo accounts to get a feel of what's
                         possible. Login as Sam (password: sam123) to
                         experience Project-Host capabilities. Use the account Johan (password: johan123) to review
