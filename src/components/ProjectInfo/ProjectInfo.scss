@@ -9,6 +9,12 @@
   height: calc(100vh - 136px);
 }
 
+.projectInfo__header {
+  align-self: center;
+
+  color: $lightBlue;
+}
+
 .projectInfo__container > * {
   margin-top: 0;
 }
@@ -37,7 +43,10 @@
 }
 
 .projectInfo__info-title {
-  margin-top: 4px;
+  margin: 5px 0;
+
+  font-family: $logoFont;
+  font-size: $bigFontSize;
 }
 
 .projectInfo__btn-addMedia {

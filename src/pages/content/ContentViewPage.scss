@@ -1,7 +1,5 @@
 @import "../../GlobalVariables";
 
-$test: $navbar_height;
-
 .contentViewPage {
   display: flex;
 
@@ -20,10 +18,8 @@ $test: $navbar_height;
 
 }
 
-
 .contentViewPage__feedback {
   max-height: calc(100vh - #{$navbar_full_height} - #{$footer_height});
-
   width: 1/5frac;
   border: 2px solid red;
 }

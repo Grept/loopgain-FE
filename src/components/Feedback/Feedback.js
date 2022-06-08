@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./Feedback.scss"
 import Comment from "../Comment/Comment";
 import axios from "axios";

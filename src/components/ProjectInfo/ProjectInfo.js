@@ -7,7 +7,7 @@ import Popup from "../GlobalComponents/Popup/Popup";
 import VerifyDelete from "../VerifyDelete/VerifyDelete";
 import axios from "axios";
 
-function ProjectInfo() {
+export default function ProjectInfo() {
 
     // HOOKS
     const [showAddMedia, setShowAddMedia] = useState(false);
@@ -45,13 +45,13 @@ function ProjectInfo() {
             <section className="projectInfo__info">
                 <h1 className="projectInfo__info-title">{project.projectName}</h1>
                 <div className="projectInfo__info-other">
-                    <p>Director: {project.director}</p>
-                    <p>Producer: {project.producer}</p>
+                    <p><strong>Director:</strong> {project.director}</p>
+                    <p><strong>Producer:</strong> {project.producer}</p>
                 </div>
             </section>
 
             <section className="projectInfo__list-container">
-                <h3 className="projectInfo__header">Project Media:</h3>
+                <h3 className="projectInfo__header">PROJECT MEDIA:</h3>
 
                 <ul className="projectInfo__list">
                     {project &&
@@ -105,5 +105,3 @@ function ProjectInfo() {
         </main>
     );
 }
-
-export default ProjectInfo;

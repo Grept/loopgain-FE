@@ -14,6 +14,9 @@
 }
 
 .mediafileCard__header {
+  display: flex;
+  justify-content: center;
+
   margin-bottom: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -21,6 +24,7 @@
 
   background: $darkBlue;
   color: $white;
+  font-family: $mainFont;
   font-size: $mainFontSize;
   box-shadow: 0 8px 12px $black;
   cursor: pointer;

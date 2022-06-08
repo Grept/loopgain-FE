@@ -1,11 +1,15 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import "./SideBar.scss";
 import {ProjectContext} from "../../context/ProjectContext";
 
 export default function SideBar({toggleAddProject, loadProjectMedia}) {
 
     // HOOKS
-    const {setProject, project, projectCollection} = useContext(ProjectContext)
+    const {setProject, project, projectCollection, getAllProjects} = useContext(ProjectContext)
+
+    useEffect(() => {
+        getAllProjects();
+    }, [])
 
     // RENDER
     return(

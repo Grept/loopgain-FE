@@ -1,4 +1,4 @@
-import {createContext, useState, useEffect} from "react";
+import {createContext, useState} from "react";
 import axios from "axios";
 
 export const ProjectContext = createContext({});
@@ -15,10 +15,6 @@ export default function ProjectContextProvider({children}) {
     })
 
     const [projectCollection, setProjectCollection] = useState([])
-
-    useEffect(() => {
-        getAllProjects();
-    }, [])
 
     // METHODS
     async function getAllProjects() {
